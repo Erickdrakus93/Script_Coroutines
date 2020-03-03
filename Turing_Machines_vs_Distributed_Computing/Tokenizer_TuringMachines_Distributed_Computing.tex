@@ -1,0 +1,152 @@
+%! Author = erick-hdz
+%! Date = 10/01/20
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages use the same packages
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{algorithm, algorithmic}
+\usepackage{amsfonts}
+\usepackage{amsbsy}
+\usepackage{makeidx}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+
+% Status
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Avance de Tesis}
+\lhead{Comparacion de Modelos}
+\rfoot{Page \thepage}
+\author{Erick Hernandez Navarrete}
+\title{Simulacion de Modelos}
+
+% Document
+\begin{document}
+    %% En esta parte es solo la continuacion de la parte anterior
+    \begin{titlepage}
+        \begin{Large}
+            Segunda Parte del avance de Tesis.
+        \end{Large}
+    \end{titlepage}
+
+    \begin{abstract}
+        Expondremos las nociones y atributos de los conceptos que nos permita
+        hacer la simulacion entre el mundo distribuido y el mundo de las maquinas
+        de Turing.
+    \end{abstract}
+    \space
+    En esta parte del documento abordaremos el problema iniciando
+    con cierta estructura de dato que nos proporcionara el Puente
+    entre el mundo Distribuido y el mundo De maquinas de Turing.
+    \space
+    Una vez que tenemos la maquina de Turing $TM$ a uno de sus elementos
+    podemos observar el atributo \emph{Localidad} a los elementos de la cinta
+    de la maquina de turing, que es un caracter de $\sigma$, entonces mas concretamente
+    si tomamos una $w \in L(TM)$ donde $ w = w_{1} \mathellipsis w_{n}$, entonces podemos
+    denotar su atributo de localidad como $Loc(w_{i})$, para cada $w_{i}\in w$
+    nosotros usaremos la notacion:
+
+    %Recordar la arquitectura de memoria, y mejorar la formalizacion de la idea
+    %De localidad, que no es mas que la etiqueta de pertenencia.
+
+    \begin{equation}
+        LOCATIONS_{TM}(w) = (Loc(w_{1}),\mathellipsis, (Loc(w_{n}))),
+    \end{equation}
+
+    Para denotar el vector de Locaciones para una cadena que esta en Lenguaje
+    aceptado por la maquina de Turing $TM$
+    i.e para cada elemento de $w \in TM$
+
+    \space
+    Por otro lado podemos y de manera Analoga  definir la nocion de localidad
+    para la grafica del Mundo Distribuido, de la siguiente manera: para cada proceso $p$ en $V(G)$,
+    le notaremos el atributo de Localidad como $Loc(p)$
+
+    \begin{equation}
+        LOCATIONS_{DC}(G) = (Loc(p_{1}), \mathellipsis,(Loc(p_{n})))
+    \end{equation}
+    para denotar el vector de Localidades asignados a los procesos de $p_{i} \in G$ \newline
+    Podemos denotar la siguiente estructura de dato con esos dos atributos en ambos mundos,
+    es decir cada $p$ proceso en $G$ almacenara esta funcion de manera local:
+
+    \begin{equation}
+        Location\char95Function: LOCATIONS_{TM} \rightarrow LOCATIONS_{DC}
+    \end{equation}
+    \space
+    En particular podemos tener la funcion coordenada de la siguiente manera:
+    \begin{equation}
+        Location\char95Function_{j}(Loc_{TM}(w_{j})) = Loc_{DC}(v_{i})
+    \end{equation}
+    \\
+    \newline
+    Donde $w_{i}$ es parte de la cadena total que esta comiendo el Algoritmo, y en
+    particular la maquina de Turing $TM$ y el mapeo de locación, que en efecto hace
+    el puente entre el atributo de los objetos entre ambos modelos que es lo que nos
+    permitira solucionar el problema.
+
+    \newpage
+    \textbf{\emph{Diseño del Algoritmo:}} Sea un proceso $p$ que esta de manera local consumiendo
+    $w_{j}$ un pedazo de la cadena, y la funcion de Localidad que es una estructura de dato y ademas tenemos
+    como subrutina a la funcion $\delta$, entonces lo que
+    hara el proceso en una descripcion a un alto nivel, es hacer una llamada recursiva de $\delta$
+    hasta que la funcion $Location\char95Function_{j}(Location(w_j)) \neq loc(p)$ i.e hasta que la cadena que consume la subrutina
+    delta no pertenzca a la localidad de $p$, es decir que la funcion $Loc\char95Function$ sirve como un identificador
+    de las localidades de los caracteres de $w$ con respecto a la localidad de $p$.\newline
+
+    %TODO: Hacer notar que las localidades son correspondencias  de los correspondintes indices
+    %TODO: de los caracteres que son los elementos de la cadena que come la maquina de Turing;
+    Hagamos el Pseudocodigo en las siguientes lineas del pseudocodigo.
+    \begin{algorithm}
+        \begin{algorithmic}[1]
+            \STATE \textbf{init} $w = (w_{1}\mathellipsis w_{n})$
+            \STATE \textbf{sync}
+            \FORALL{$r$ \textbf{to} $m$} % Here we use the for in the var of rounds, not  in the number of processors
+                    \STATE \textbf{init} $q_0 = q$
+                    \COMMENT{Inicializacion el Estado Cero}
+                    \STATE \textbf{init} $w_{j}$
+                    \COMMENT{Inicializacion de la cinta en $w_{j}$}
+                    \STATE \textbf{init} $p_{i}(w_{j})$
+                    \COMMENT {El proceso hace una macros de Lectura del pedazo de la cadena que esta comiendo el proceso en cuestion}
+                    \REPEAT
+                       \STATE \textbf{call} $\delta(q, w_{j})$
+                    \UNTIL {$Location\char95Function_{j}(Loc_{TM}(w_{j})) \neq Loc_{DC}(p_{i}) $}
+                    \STATE \textbf{finally}
+                        \IF{$q_{final}=q_{accept}$}
+                           \STATE \textbf{return} $q_{accept}$
+                        \ELSE
+                           \STATE \textbf{send} $Msg \gets <q_{final}, loc_{final}>$ \COMMENT{Where $Loc_{final}$ is the output of the recursive call}
+                        \ENDIF
+           \ENDFOR
+        \end{algorithmic}
+        \caption{$\pi(w,G)$\label{lss}}
+    \end{algorithm}
+
+    %todo: Here we can do a concrete example as we can see in the part of the main example
+    %todo: Here we can todo the Rigorous part showig the theorem that prove the main part of
+    %todo: The algorithm, we can see this part as we can see in the next part of the example
+    \newpage
+    \begin{center}
+        \textbf{Ejemplo}
+    \end{center}
+    Una vez que tenemos de manera Abstracta,
+    Podemos exponer de manera concreta la siguiente situacion: tomar una linea de Procesos, de tal manera que el pariente de $i$ es $i+1$, para $i$ en el
+    conjunto de indices de los procesos de $V(G)$, y mas aun el pariente de $n$ es $1$.
+    \\
+    Entonces lo que podemos observar es que el mapeo $Location\char95 Function$ nos da la intuicion,
+    de lo que esta haciendo el algoritmo, ya que las localidades correspondientes a los procesos $loc(p_{j})$ es su
+    correspondiente $loc(w_{j})$, entonces una vez que tenemos las llamadas recursivas, los procesos estaran en \textbf{wait}
+    o \textbf{send} con la entrada que coman y reciban, hasta que la subrutina delta nos escupa la localidad correspondiente de la cadena.
+    \\
+    % Here we continue with the theorems that prove the correctness of the
+    % -- the algorithm todo: Enunciar los teoremas centrales.
+    %TODO: Hacer una mejora del documento, de tal forma que quede mas claro las ideas
+    %todo: Las ideas que tenemos en mente mejorando la formalidad y la redaccion del codigo fuente.
+\end{document}

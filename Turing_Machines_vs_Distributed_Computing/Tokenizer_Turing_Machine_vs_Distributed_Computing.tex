@@ -1,0 +1,83 @@
+%! Author = erick-hdz
+%! Date = 21/02/20
+% This is the corrections of the father of the last file
+% Preamble
+\documentclass[11pt]{article}
+% Packages (Here is the same structure of the father script)
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{amsbsy}
+\usepackage{makeidx}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+%Status
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Avances de tesis version 2}
+\lhead{Comparacion de Models y Formalizacion}
+\rfoot{page \thepage}
+\author{Erick Hernandez Navarrete}
+\title{Simulaciones de los modelos TM vs DC}
+% Document
+\begin{document}
+    %Todo: Mejorar la calidad anterior para que tenga una buena
+    %Todo: Presentacion de las cosas que hemos echo hasta esta parte
+    %TODO: This is init part is essentially the same as his father, so we
+    %TODO: Do the same as the main object as the part of the main example
+    \begin{titlepage}
+        \begin{large}
+            Correcciones del Documento padre y las formalizaciones.
+        \end{large}
+    \end{titlepage}
+
+    \begin{abstract}
+        Aqui vamos a formalizar las ideas que hemos expuesto en el documento
+        padre de este mismo, y vamos a dar los teoremas que demuestran la correccion del
+        algoritmo que estas ideas construyen.
+    \end{abstract}
+    \newline
+    En esta parte del Documento, vamos abordar el problema formalizando las nociones
+    que van a hacer que tengamos una subrutina que es el que va a dar el control en
+    la estructura recursiva, entonces definamos dichas nociones de la siguiente manera:
+    \space
+    Sea una maquina de Turing $MT$ y una cadena que es aceptada por dicha maquina de Turing, con los atributos que tiene la maquina de Turing,
+    Entonces definimos la nocion de localidad en $DC_{LOCAL}$ de la siguiente manera:
+    \begin{definition}{Localidad en $\psi$}
+        Sea $v \in VG$ un proceso en el modelo Distribuido,
+        vamos a denotar lo siguiente:
+        \begin{equation}
+            (w_{i},v)
+        \end{equation}
+        esto va a denotar que el elemento de la cadena de $\psi$ tiene localidad $v$
+    \end{definition}
+
+    \begin{remark}
+        Observemos que de la definicion anterior se desprende una relacion entre los elementos
+        de $\psi$ tal y como lo observamos en la siguiente definicion
+    \end{remark}
+
+    \begin{definition}
+        Sean $v\in VG$ y $w_{i} \in \psi$ entonces decimos que estan relacionados
+        si y solo si $(w_{i}, v)$
+    \end{definition}
+    \newline
+    Basicamente lo anterior lo que esta haciendo es hacer una formalizacion de las nociones
+    que tenemos en los documentos anteriores.
+    \newpage
+    Entonces una vez que tenemos esto bien definido, podemos hacer lo siguiente:
+    De manera local sea $(w_{i},v)$ entonces hacemos lo siguiente $v(w_{i})$ que es la asignacion que tiene
+    sentido entonces podemos hacer lo siguiente:
+    \textbf{Descripcion del Diseño del Algoritmo}
+    Una vez que tenemos la pareja entonces tenemos de manera computacional lo siguiente $v(w_{i}$ que es el
+    procedimiento computacional que hemos de desarrollar tal que solucione nuestro problema con la entrada
+    de localidad asignada, entonces lo que haremos es definir primero una instancia de $\delta$ de tal manera
+    que cuando hagamos la llamada a delta 
+\end{document}

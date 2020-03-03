@@ -1,0 +1,214 @@
+%%
+%% Author: erick
+%% 06/11/2019
+%% Here we can use the init form of the main theorem
+
+% Preamble
+\documentclass[11pt]{article}
+
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{algorithm,algorithmic}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{fourier}
+\usepackage{geometry}
+\usepackage{listings}
+
+% Status
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Avance de tesis}
+\lhead{Comparacion de modelos}
+\rfoot{Page \thepage}
+\author{Erick} % Previous here we defined in the sort.
+\newtheorem{theorem}{Theorem}
+\title{Simulaciones de Modelos}
+
+% Document
+\begin{document}
+
+    \begin{titlepage}
+        \begin{Large}
+            Resultados de la Comparacion de los Modelos de Computo
+        \end{Large}
+    \end{titlepage}
+
+    \begin{abstract}
+        Mostraremos los conceptos que nos permitiran enunciar los
+        teoremas centrales que desprenderan los problemas computacionales en Cuestion
+        asi como su solución.
+    \end{abstract}
+
+    En esta parte seremos muy breves en que es los conceptos que son elementales
+    para la solucion y presentacion de los problemas Computacionales en Cuestion.
+    \\
+    \begin{center}
+        \begin{Large}
+            Definiciones y conceptos
+        \end{Large}
+    \end{center}
+    \\
+    \textbf{\emph{Caracteristicas del Modelo de Computo Distribuido LOCAL}}
+    \\
+    \begin{itemize}
+        \item Cada proceso se inicializa en el mismo tiempo
+        \item Los eventos Comunicacion y Computo se ejecutan en rondas y de manera sincronizada
+    \end{itemize}
+    \\
+    \textbf{\emph{Nocion de solucionar un problema con un algoritmo Distribuido}}\\
+    %% TODO: Definir que es un algoritmo Correcto, para invocarlo al definir que significa que
+    %% TODO: ... que un problema sea resuelto por un un algoritmo en un sentido usual.
+    \textbf{Definicion}
+    Decimos que un algoritmo $\pi$  en el modelo \emph{LOCAL} es correcto con respecto a un problema $P$
+    si para cada instancia de la entrada $I$ ocurre que  $\pi(I) = P $\\
+    \textbf{Definicion}\\
+    Entonces decimos que un algoritmo soluciona a $P$ si existe un algoritmo $\pi()$ correcto con
+    respecto al problema en cuestion.
+    \\
+    % TODO: Falta la definicion de la extension de Decidible en el modelo
+    % TODO: Distribuido y formalizar lo que significa que un algoritmo se puede replicar en otro.
+
+    \textbf{\emph{Extension de la noción de Decibilidad en el sentido Distribuido}}\\
+    \textbf{Definicion}\\
+    Sea una cadena $x = x_{1}\mathellipsis x_{n}$, entonces decimos que dicha cadena es aceptada
+    por un algoritmo $\pi$ si al inicializar cada proceso $v_{i}(x_{i})$, donde $i = 1,\mathellipsis,n$,
+    al finalizar el computo al menos un proceso \emph{acepta} localmente.
+    %TODO: Mejorar en la definicion, tomando en cuenta la existencia del proceso
+    %TODO: Que hace que tenga convergencia en el sentido usual de maquinas de Turing
+    \\
+
+    %Aqui enunciremos al mismo tiempo que es que una maquina de Turing sea simulada por un algo
+    %-ritmo en el sentido Distribuido y reciprocamente.
+    Una vez que tenemos en mente las nociones anteriores es entonces cuando nos emprendemos
+    a hacer una conexion entre ambos mundos en el sentido de que podemos introducir la nocion de
+    simulacion en un sentido formal en teoria de la Computacion
+    \\
+    \textbf{\emph{Definicion}}\\
+    Sean $MT$ y un algoritmo distribuido (En el sentido en el que presentamos la extension del modelo
+    general) i.e $\pi$ y los lenguajes que deciden estos dos objetos, i.e $L(TM)$ y $L(\pi)$
+    entonces decimos que la maquina de Turing simula el algoritmo distribuido si $L(TM) = L(\pi)$
+    y reciprocamente.\\
+
+    Una vez que tenemos definido que es la simulacion en un sentido formal, es entonces cuando podemos
+    anunciar los teoremas de Conexion con todos los ingredientes de desarrollo de estos Objetos.
+
+    %TODO: Declarar los teoremas que enuncian la conexion de los modelos de Estudio
+
+    Por un lado queremos decir que si tomamos una maquina de Turing entonces existe un $\pi$ que
+    simula a dicha maquina de Turing diganos $TM$ \\
+
+    Y por otro lado queremos decir que si tomamos un algoritmo $\pi$
+    este algoritmo puede ser simulado por la maquina de Turing $TM$\\
+
+    Entonces declaremos lo anterior en Teoremas, de la siguinte manera:
+    \\
+    %TODO: Hacer que el teorema anterior se traduzca a un problema Computacional
+    \begin{theorem}
+        $\forall TM $ Maquina de Turing con $L(TM)$ entonces
+       $ \exists \pi$ tal que $L(\pi) = L(TM)$
+    \end{theorem}
+    %Teorema_2 que es el reciproco al teorema anteriormente enunciado
+    \begin{theorem}
+        $\forall \pi$ Algoritmo Distribuido con $L(\pi)$ el Lenguaje que decide dicho
+        algoritmo, entonces $\exists TM$ tal que $L(TM) = L(\pi)$
+    \end{theorem}
+
+    %TODO:Dar propuestas de Algoritmos y programas en el sentido de TM tal que
+    %TODO: Den una demostracion de un lado de la demostracion.
+    \\
+    Iniciaremos con el primer Teorema, entonces para ello, tomamos una maquina de Turing,
+    y lo que queremos es exhibir que existe un algoritmo $\pi$ distribuido tal que simula a $TM$
+
+    % TODO: Mostrar el Pseudocodigo del Algoritmo que soluciona el problema por un lado.
+    % Esto se reduce a diseñar el algoritmo Distribuido que solucine el problema en Cuestion.
+    \\
+
+    \begin{algorithm}
+        \begin{algorithmic}
+            \STATE $\pi(x_{1}\mathellipsis x_{n})$
+            \FORALL {$r=0$ \textbf{to} $n$}
+               \STATE \textbf{init} $v_{i}(x_{i})$
+                 \IF {$x_{i} \in L(TM)$}
+                    \STATE \textbf{return} $q_{accept}$
+                 \ELSE
+                    \STATE \textbf{send} $ x_{i}$
+                 \ENDIF
+            \ENDFOR
+            \STATE \textbf{finally} \textbf{return} $q_{accept}$
+        \end{algorithmic}
+        \caption{$\pi(x_{i}\mathellipsis x_{n}$)\label{lss}}
+    \end{algorithm}
+
+    \\
+    En este Diseño del Algoritmo $\pi(x)$ donde $x = x_{1},\mathellipsis, x_{n}$
+    es una cadena que pertenece al $L(TM)$ que es el lenguaje aceptado por
+    la maquina de Turing, ya que por un lado del Teorema Tenemos todos los elementos
+    de la maquina de Turing.
+    \\
+    En el siguiente Teorema Encapsulara una de las cuestiones que tiene el algoritmo
+    con respecto a como se esta haciendo el control de la cadena sobre las entradas de
+    las subrutinas que tienen comunicación una a la otra para solucionar el problema.
+    % TODO: Mostrar en que momentos puede existir una falla en el programa Anterior.
+    \\
+    \begin{theorem}
+        Sea una cadena $x$, entonces dicha cadena es aceptada por la maquina 
+        de Turing si y solo si es aceptada por $\pi$. Donde $\pi$ es un algoritmo
+        Distribuido.
+    \end{theorem}
+
+    \newpage
+    Con base al Diseño del Algoritmo anterior y al teorema Anterior podemos,
+    encontrar una cadena que es decidible por $TM$ pero que no es decidible
+    con nuestro algoritmo descrito anteriormente.
+    \\
+    El siguiente programa hace que se solucione esta cuestion:
+
+    % Esta es la subrutina que hemos de describir de manera trivial como sigue:
+    \begin{algorithm}
+        \begin{algorithmic}
+            \FORALL {$r \leftarrow 1$ \textbf{to} $n$}
+            \STATE $\pi(x_{1},\mathellipsis, x_{n})$
+            \STATE \textbf{init} $p_{i}(x)$
+               \STATE \textbf{return} $q_{accept}$
+            \ENDFOR
+        \end{algorithmic}
+        \caption{$\pi(x,G)$\label{lss}}
+    \end{algorithm}
+    \\
+
+    Podemos observar que esta subrutina hace que el problema se trivialice;
+    ya que estamos alimentando a cada proceso con toda la entrada que come
+    $\pi$, lo cual rompe con el paradigma Distribuido, ya que todos los procesos
+    tiene toda la informacion.
+
+    %TODO: Hacer de las subrutinas anteriores una subroutina tal que
+    %TODO: Podamos hacer una primitiva con la operacion Broadcast de la cual
+    %TODO: Podamos hacer de los algoritmos anteriores primitivas
+
+    Sea una gráfica de diametro D, podemos diseñar el siguiente algoritmo
+    solucionando de manera correcta el problema en cuestión $P$ reduciendo
+    un grado de libertad con la restricción anterior sobre el diametro de
+    la gráfica, y con los dos programas anteriores como subrutinas podemos
+    hacer los siguientes algoritmos:
+
+    \begin{algorithm}
+        \begin{algorithmic}
+            \STATE $\pi_{finally}(x, G(D))$
+            \STATE Donde $x$ es una cadena en $L(TM)$
+            \STATE $x \leftarrow (x_{1}\mathellipsis x_{n})$
+            \FORALL {$r \leftarrow 1$ \textbf{to} $m$}
+               \STATE $\pi(x, G(r))$
+               \STATE \textbf{broadcast($v_{0},G(r), M$)}
+               \STATE Donde $G(r)$ es una grafica de diametro $r$
+            \ENDFOR
+        \end{algorithmic}
+        \caption{$\pi(x,G)$\label{lss}}
+    \end{algorithm}
+\end{document}
