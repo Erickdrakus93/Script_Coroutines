@@ -2,7 +2,7 @@
 %! Date = 10/01/20
 
 % Preamble
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 
 % Packages use the same packages
 \usepackage{amsmath}
@@ -10,7 +10,7 @@
 \usepackage[spanish]{babel}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
-\usepackage{algorithm, algorithmic}
+\usepackage{algorithm,algorithmic}
 \usepackage{amsfonts}
 \usepackage{amsbsy}
 \usepackage{makeidx}
@@ -18,15 +18,21 @@
 \usepackage{listings}
 \usepackage[T1]{fontenc}
 \usepackage{natbib}
+\usepackage{amsthm}
+\usepackage{amssymb}
 
 % Status
+\newtheorem*{corrolary}{Corollary}
+\newtheorem*{remark}{Remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{Avance de Tesis}
-\lhead{Comparacion de Modelos}
+\lhead{Comparación de Modelos}
 \rfoot{Page \thepage}
 \author{Erick Hernandez Navarrete}
-\title{Simulacion de Modelos}
+\title{Simulación de Modelos}
 
 % Document
 \begin{document}
@@ -39,114 +45,143 @@
 
     \begin{abstract}
         Expondremos las nociones y atributos de los conceptos que nos permita
-        hacer la simulacion entre el mundo distribuido y el mundo de las maquinas
+        hacer la simulación entre el mundo distribuido y el mundo de las maquinas
         de Turing.
     \end{abstract}
     \space
-    En esta parte del documento abordaremos el problema iniciando
-    con cierta estructura de dato que nos proporcionara el Puente
-    entre el mundo Distribuido y el mundo De maquinas de Turing.
-    \space
-    Una vez que tenemos la maquina de Turing $TM$ a uno de sus elementos
-    podemos observar el atributo \emph{Localidad} a los elementos de la cinta
-    de la maquina de turing, que es un caracter de $\sigma$, entonces mas concretamente
-    si tomamos una $w \in L(TM)$ donde $ w = w_{1} \mathellipsis w_{n}$, entonces podemos
-    denotar su atributo de localidad como $Loc(w_{i})$, para cada $w_{i}\in w$
-    nosotros usaremos la notacion:
+    \begin{center}
+        \textbf{Definiciones}
+    \end{center}
+    En esta parte del documento vamos a formalizar las nociones, de las cuales se desprenderá casi de manera
+    inmediata la subrutina que dara el control en la estructura recursiva.\\
+    Entonces definamos las nociones de la siguiente manera:
+    \\
+    Una vez que tenemos la maquina de Turing como modelo formal en Computación, entonces con los elementos que tiene la
+    maquina de Turing y el modelo particular $LOCAL$ de computo Distribuido haremos lo siguiente, definamos la noción de localidad de la siguiente manera:
+
+    \theoremstyle{definition}
+    \begin{definition}
+        Sea $v \in VG$ un proceso en el modelo Formal \textbf{LOCAL}, vamos a denotar lo siguiente:
+        $(w_{i},p)$ que va a denotar que el elemento de la cadena $w_{i}$ tiene localidad $v$,
+        o en otros términos, que a $v$ le pertenece el elemento de localidad $i$.
+    \end{definition}
+    De aquí se desprende la relación que existe entre los elementos de la cadena y los procesos
+    del modelo $\textbf{LOCAL}$
+
+    \theoremstyle{definition}
+    \begin{definition}
+        Sean $v \in VG$ y $w_{i} \in w$ un proceso y un elemento de la cadena que es aceptada por $TM$
+        entonces decimos que están relacionados si y solo si $(w_{i},v)$, i.e si y solo si $w_{i}$ tiene localidad $v$
+    \end{definition}
+    \\
+    \begin{remark}
+        Una vez que tenemos esas nociones podemos construir un conjunto para cada proceso $v$ en $LOCAL$:\\
+        $LOC(P) = \{w_{i} \in w : (w_{i},P)\}$  que es generada por la relación definida anteriormente,
+        este conjunto esta encapsulando las nociones anteriormente descritas.
+    \end{remark}
 
     %Recordar la arquitectura de memoria, y mejorar la formalizacion de la idea
-    %De localidad, que no es mas que la etiqueta de pertenencia.
-
-    \begin{equation}
-        LOCATIONS_{TM}(w) = (Loc(w_{1}),\mathellipsis, (Loc(w_{n}))),
-    \end{equation}
-
-    Para denotar el vector de Locaciones para una cadena que esta en Lenguaje
-    aceptado por la maquina de Turing $TM$
-    i.e para cada elemento de $w \in TM$
-
+    %De localidad, que no es mas que la etiqueta de pertenencia
+    Entonces una vez que tenemos esto bien definido, podemos hacer lo siguiente:\\
+    De manera local sea $(w_{i},v)$ entonces en un sentido computacional y de entrada como un sistema computacional
+    se traduce a $v(w_{i})$.
+    \begin{titlepage}
+    \textbf{Descripción del Diseño del Algoritmo}
+    \end{titlepage}
     \space
-    Por otro lado podemos y de manera Analoga  definir la nocion de localidad
-    para la grafica del Mundo Distribuido, de la siguiente manera: para cada proceso $p$ en $V(G)$,
-    le notaremos el atributo de Localidad como $Loc(p)$
-
-    \begin{equation}
-        LOCATIONS_{DC}(G) = (Loc(p_{1}), \mathellipsis,(Loc(p_{n})))
-    \end{equation}
-    para denotar el vector de Localidades asignados a los procesos de $p_{i} \in G$ \newline
-    Podemos denotar la siguiente estructura de dato con esos dos atributos en ambos mundos,
-    es decir cada $p$ proceso en $G$ almacenara esta funcion de manera local:
-
-    \begin{equation}
-        Location\char95Function: LOCATIONS_{TM} \rightarrow LOCATIONS_{DC}
-    \end{equation}
-    \space
-    En particular podemos tener la funcion coordenada de la siguiente manera:
-    \begin{equation}
-        Location\char95Function_{j}(Loc_{TM}(w_{j})) = Loc_{DC}(v_{i})
-    \end{equation}
+    Una vez que tenemos la pareja entonces tenemos de manera computacional lo siguiente $v(w_{i})$ que es el
+    procedimiento computacional que hemos de desarrollar tal que solucione nuestro problema con la entrada
+    de localidad asignada, entonces lo que haremos es definir primero una instancia de $\delta$ de tal manera
+    que cuando hagamos la llamada a delta esta llamada sera iterativa hasta que la localidad de la cadena que nos
+    de la subrutina delta nos de una localidad distinta al que tiene el proceso actual entonces tendremos un mensaje
+    $M$ o en su defecto acabara su computo en esa ronda, pero si no lo que hará es enviar es el estado que produjo
+    y la cadena que nos genero en esa ronda $r$ el proceso $p$.\\
+    Pero para ello construiremos una subrutina Booleana que lo que hará es un token en las entradas via nuestra noción
+    de localidad.
+    Una vez que tenemos las estructuras bien definidas hacemos lo siguiente:
     \\
-    \newline
-    Donde $w_{i}$ es parte de la cadena total que esta comiendo el Algoritmo, y en
-    particular la maquina de Turing $TM$ y el mapeo de locación, que en efecto hace
-    el puente entre el atributo de los objetos entre ambos modelos que es lo que nos
-    permitira solucionar el problema.
-
-    \newpage
-    \textbf{\emph{Diseño del Algoritmo:}} Sea un proceso $p$ que esta de manera local consumiendo
-    $w_{j}$ un pedazo de la cadena, y la funcion de Localidad que es una estructura de dato y ademas tenemos
-    como subrutina a la funcion $\delta$, entonces lo que
-    hara el proceso en una descripcion a un alto nivel, es hacer una llamada recursiva de $\delta$
-    hasta que la funcion $Location\char95Function_{j}(Location(w_j)) \neq loc(p)$ i.e hasta que la cadena que consume la subrutina
-    delta no pertenzca a la localidad de $p$, es decir que la funcion $Loc\char95Function$ sirve como un identificador
-    de las localidades de los caracteres de $w$ con respecto a la localidad de $p$.\newline
-
-    %TODO: Hacer notar que las localidades son correspondencias  de los correspondintes indices
-    %TODO: de los caracteres que son los elementos de la cadena que come la maquina de Turing;
-    Hagamos el Pseudocodigo en las siguientes lineas del pseudocodigo.
     \begin{algorithm}
-        \begin{algorithmic}[1]
-            \STATE \textbf{init} $w = (w_{1}\mathellipsis w_{n})$
-            \STATE \textbf{sync}
-            \FORALL{$r$ \textbf{to} $m$} % Here we use the for in the var of rounds, not  in the number of processors
-                    \STATE \textbf{init} $q_0 = q$
-                    \COMMENT{Inicializacion el Estado Cero}
-                    \STATE \textbf{init} $w_{j}$
-                    \COMMENT{Inicializacion de la cinta en $w_{j}$}
-                    \STATE \textbf{init} $p_{i}(w_{j})$
-                    \COMMENT {El proceso hace una macros de Lectura del pedazo de la cadena que esta comiendo el proceso en cuestion}
-                    \REPEAT
-                       \STATE \textbf{call} $\delta(q, w_{j})$
-                    \UNTIL {$Location\char95Function_{j}(Loc_{TM}(w_{j})) \neq Loc_{DC}(p_{i}) $}
-                    \STATE \textbf{finally}
-                        \IF{$q_{final}=q_{accept}$}
-                           \STATE \textbf{return} $q_{accept}$
-                        \ELSE
-                           \STATE \textbf{send} $Msg \gets <q_{final}, loc_{final}>$ \COMMENT{Where $Loc_{final}$ is the output of the recursive call}
-                        \ENDIF
-           \ENDFOR
+        \begin{algorithmic}
+            \IF{$(w_{i},p)$}
+              \RETURN{true}
+            \ELSE
+              \RETURN{false}
+            \ENDIF
         \end{algorithmic}
-        \caption{$\pi(w,G)$\label{lss}}
+        \caption{$Func\char95 Boolean(w_{i},p)$}
     \end{algorithm}
-
-    %todo: Here we can do a concrete example as we can see in the part of the main example
-    %todo: Here we can todo the Rigorous part showig the theorem that prove the main part of
-    %todo: The algorithm, we can see this part as we can see in the next part of the example
-    \newpage
+    \\
+    Básicamente lo que esta haciendo es dar una estructura booleana que sera la afirmación
+    que dara el control en el siguiente algoritmo.
+    Una vez que tenemos la subrutina de tipo Booleana, diseñemos el algoritmo principal del cual demostrara que la cadena $w$ es una
+    cadena aceptada por el modelo $\textbf{LOCAL}$, y esto a un alto nivel demostrara nuestro teorema principal.
+    \\\\
+    \begin{algorithm}
+        \begin{algorithmic}
+            \STATE $w \gets (w_{1}, \mathellipsis, w_{n})$
+            \STATE \textbf{Síncronamente}
+            \FORALL{$r$ \TO{to} $m$}
+                    \STATE $p(w_i,\delta())$
+                    \STATE $q \gets q_{0}$
+                    \WHILE{$func\char95 boolean(w_{i},p)$}
+                      \STATE \textbf{call} $\delta(q,w_{i}) \gets (q_{R},w_{R},Pos)$
+                    \ENDWHILE
+                    \IF{$q_{R}=q_{accept}$}
+                       \RETURN{$q_{accept}$}
+                    \ELSE
+                       \STATE $M = <q_{R},w_{R}, Pos>$
+                       \STATE \textbf{send} $M$
+                    \ENDIF
+            \ENDFOR
+        \end{algorithmic}
+        \caption{$Simulate\char95 Algo \char95 TM(w,G,TM)$\label{lss}}
+    \end{algorithm}
+    \\\\
     \begin{center}
-        \textbf{Ejemplo}
+       Ejemplo
     \end{center}
-    Una vez que tenemos de manera Abstracta,
-    Podemos exponer de manera concreta la siguiente situacion: tomar una linea de Procesos, de tal manera que el pariente de $i$ es $i+1$, para $i$ en el
-    conjunto de indices de los procesos de $V(G)$, y mas aun el pariente de $n$ es $1$.
+    Podemos exponer de manera concreta la siguiente situación: \\ tomar una linea de procesos, de tal manera que el pariente de $i$ es $i+1$, para $i$ en el
+    conjunto de indices de los procesos de $V(G)$, y mas aun el pariente de $n$ es $1$.\\
+    Entonces lo que podemos observa es que tenemos computacionalmente es que la subrutina
+    $func \char95 boolean()$ es el que da el control del computo que tienen los procesos del modelo $LOCAL$,
+    asi que este ejemplo nos da una noción natural de lo que esta ocurriendo por que en particular se tiene:\\
+    $(w_{i},p_{j})$ si y solo si $i=j$, esta asignación es por construcción de la topología de la gráfica,
+    esto nos da una noción geométrica de lo que computacionalmente esta ocurriendo en este algoritmo distribuido.
     \\
-    Entonces lo que podemos observar es que el mapeo $Location\char95 Function$ nos da la intuicion,
-    de lo que esta haciendo el algoritmo, ya que las localidades correspondientes a los procesos $loc(p_{j})$ es su
-    correspondiente $loc(w_{j})$, entonces una vez que tenemos las llamadas recursivas, los procesos estaran en \textbf{wait}
-    o \textbf{send} con la entrada que coman y reciban, hasta que la subrutina delta nos escupa la localidad correspondiente de la cadena.
+    Lo que prosigue es la demostración de la corrección del algoritmo.
     \\
+
     % Here we continue with the theorems that prove the correctness of the
-    % -- the algorithm todo: Enunciar los teoremas centrales.
-    %TODO: Hacer una mejora del documento, de tal forma que quede mas claro las ideas
-    %todo: Las ideas que tenemos en mente mejorando la formalidad y la redaccion del codigo fuente.
+    %!Anuncion de los teoremas Centrales
+    \begin{theorem}
+        El algoritmo $Simulate\char95 Algo\char95 TM$ es correcto.
+    \end{theorem}
+    \begin{proof}
+        Sea $i=r$ una roda en la ejecución del algoritmo.\\
+        En esa ronda tenemos la siguiente estructura de dato $M = <w_{R}, q_{R}, P>$ donde
+        $P\in {LEFT,RIGHT,STAY}$ para esa ronda tenemos que el $w_{R}$ que es el resultado de la
+        llamada recursiva de $\delta$, podemos concluir que $func-boolean(w_{r},p) = false $
+        por lo tanto no es de la localidad de $p$, entonces podemos tomar las siguientes decisiones:
+        como $w_{R}\in w$ es decidible en el sentido de la maquina de Turing, entonces $q_{R}$ puede que
+        sea el estado de aceptación, en ese caso el algoritmo toma la decision regresar $q_{R}$ en su defecto
+        toma la decision de enviar el mensaje $M$ a sus vecinos,
+        para el cual como $TM$ es tal que $w$ es decidible entonces sin perdida de generalidad en la ronda $r=i+1$ se tendrá el estado de aceptación
+        para un $p$ proceso $p$ con el ambiente de $LOCAL$.\\
+        Por lo tanto existe un proceso $p$ tal que regresa un estado de aceptación.\\
+        $\therefore w \in L(Simulate\char95 Algo\char95 TM)$.\\
+        $\therefore Simulate\char95 algo\char95 TM()$ es correcto.
+    \end{proof}
+
+    \begin{corrolary}
+        $\forall w \in L(TM)$ $\exists \pi$ algoritmo en el modelo $LOCAL$ tal que
+        $w\in L(\pi)$.
+    \end{corrolary}
+    \begin{proof}
+        Por el teorema anterior hemos construido un algoritmo en $LOCAL$ tal que
+        hace decidible a $w$, i.e $w \in L(Simulate\char95 Algo\char95 TM)$(En el sentido distribuido).\\
+        Mas aún como $w$ es tal que $w \in L(TM)$ entonces podemos concluir que $\pi = Simulate\char95 Algo\char95 TM$.\\
+        $ \therefore \forall w \in L(TM), w\in L(\pi)$.
+    \end{proof}
+    %!Con esto hemos terminado el teorema Principal de esta tesis.
+
 \end{document}

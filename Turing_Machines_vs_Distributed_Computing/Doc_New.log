@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  12 NOV 2019 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  6 APR 2020 20:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -739,60 +739,55 @@ l.65     \textbf
                 {\emph{Nocion de solucionar un problema con un algoritmo Dis...
 
 ? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
-
- []
-
-LaTeX Font Info:    Try loading font information for FML+futmi on input line 68
+LaTeX Font Info:    Try loading font information for FML+futmi on input line 69
 .
 (/usr/share/texlive/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 68.
+(Font)              scaled to size 10.07397pt on input line 69.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 68.
+(Font)              scaled to size 7.63599pt on input line 69.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 68.
-LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+(Font)              scaled to size 5.51999pt on input line 69.
+LaTeX Font Info:    Try loading font information for U+msa on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 68.
+LaTeX Font Info:    Try loading font information for U+msb on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 68.
+(Font)              scaled to size 10.07397pt on input line 69.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 68.
+(Font)              scaled to size 7.63599pt on input line 69.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 68.
+(Font)              scaled to size 5.51999pt on input line 69.
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--70
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 74--82
+Underfull \hbox (badness 10000) in paragraph at lines 65--77
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--94
+Underfull \hbox (badness 10000) in paragraph at lines 78--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+Underfull \hbox (badness 10000) in paragraph at lines 89--98
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
+Underfull \hbox (badness 10000) in paragraph at lines 104--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
 
  []
 
@@ -803,7 +798,7 @@ We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
 [1]
-Underfull \hbox (badness 10000) in paragraph at lines 106--110
+Underfull \hbox (badness 10000) in paragraph at lines 110--114
 
  []
 
@@ -814,7 +809,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122     I
+l.126     I
            niciaremos con el primer Teorema, entonces para ello, tomamos una...
 
 ? 
@@ -825,7 +820,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128 
+l.132 
       
 ? 
 
@@ -835,12 +830,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.146     E
+l.150     E
            n este Diseño del Algoritmo $\pi(x)$ donde $x = x_{1},\mathellip...
 
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--157
+Underfull \hbox (badness 10000) in paragraph at lines 150--161
 
  []
 
@@ -852,7 +847,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.181 
+l.185 
       
 ? 
 [3] (./Doc_New.aux
@@ -870,7 +865,7 @@ Here is how much of TeX's memory you used:
  10274 multiletter control sequences out of 15000+600000
  57809 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,43p,274b,503s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,43p,274b,503s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/share/texlive/texmf-di
@@ -878,7 +873,7 @@ st/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/adobe/utopia/putbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/ut
 opia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a
 .pfb>
-Output written on Doc_New.pdf (4 pages, 72904 bytes).
+Output written on Doc_New.pdf (4 pages, 73495 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  29 compressed objects within 1 object stream
