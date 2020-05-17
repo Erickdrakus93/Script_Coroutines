@@ -1,0 +1,108 @@
+%! Author = erick-hdz
+%! Date = 15/05/20
+
+% Preamble
+\documentclass[10pt a4paper]{report}
+
+
+% Packages
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{algorithm, algorithmic}
+\usepackage{amsfonts}
+\usepackage{amsbsy}
+\usepackage{makeidx}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+%Status of the document
+\newtheorem*{corrollary}{Corrollary}
+\newtheorem*{remark}{Remark}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Sección de tesis}
+\lhead{Simulación de modelos}
+\rfoot{Page\thepage}
+\author{Erick Hernandez Navarrete}
+\title{Simulacion de modelos}
+
+
+% Document
+\begin{document}
+    \maketitle
+    \chapter{Decibilidad en los modelos}\label{ch:decibilidad-en-los-modelos}
+    \section{Introducción}\label{sec:introducción}
+    En este documento expondremos las nociones de decibilidad
+    en el mundo de maquinas de Turing y en el mundo distribuido,
+    asi como formalizaremos la nocion de simulacion de modelos
+    computacionales,demostrando que el modelo A de la maquina de
+    Turing es equivalente en poder al modelo distribuido.
+
+    \subsection{Decibilidad en el modelo de maquinas de Turing}\label{subsec:decibilidad-en-el-modelo-de-maquinas-de-turing}
+    Primero enunciaremos los elementos del modelo de maquina de Turing,
+    \theoremsyle{Definición}
+    \begin{definition}
+        Una maquina de Turing is una 7-tupla, $Q,\sigma,\lambda,\delta,q_{0},q_{accept},q_{reject})$
+        donde $Q,\sigma,\lambda$ son conjuntos finitos.
+        \begin{enumerate}
+            \item $Q$ es el conjunto de estados,
+            \item $\sigma$ es el alfabeto de entrada que no contiene el simbolo blanco $\sqcup$
+            \item $\lambda$ es la cinta del alfabeto, donde  $\sqcup\in\lambda$ y ademas $\sigma\in\lambda$,
+            \item $\delta: Q\times\lambda \rightarrow Q\times\lambda\times\{L,R,S\}$ es la funcion de transición.
+            \item $q_{0}$ es el estado de iniciación,
+            \item $q_{accept}$ es el estado de aceptacion
+            \item $q_{reject}$ es el estado de rechazo,donde $q_{accept} \neq q_{reject}$,
+
+        \end{enumerate}
+
+    \end{definition}
+    Esta definición esta encapsulando los elementos del modelo,
+    asi que una vez que tenemos los elementos, podremos definir la semantica
+    de que un problema se soluble en este clasico modelo,definiendo
+    la noción de decidibilidad.
+    \space
+    Podemos observar que este modelo,las estructuras de dato que estan consumiendo
+    son cadenas finitas,entonces una vez que le damos como entrada a una maquina de
+    Turing una cadena $w$, podemos decir que esa cadena es aceptada o rechazada,
+    entonces definimos lo siguiente:
+    \theoremstyle{Definición}
+    \begin{definition}
+        Decimos que una maquina de Turing acepta una entrada $w$ si existe una secuencia de configuraciones
+        $C_{1},\mathellipsis C_{n}$ tal que:
+        \begin{enumerate}
+            \item $C_{1}$ es la configuración inicial
+            \item Cada $C_{i}$ le sigue $C_{i+1}$ y
+            \item $C_{k}$ es el estado de aceptación
+
+        \end{enumerate}
+    \end{definition}
+
+    \theoremstyle
+    \theoremstyle{Definición}
+    \begin{definition}
+        Sea M una maquina de Turing.
+        La colección de cadenas tales que $M$ las acepta,
+        es un lenguaje decidible por $M$, y lo denotamos
+        de la siguiente manera: $L(M)$.
+    \end
+    \subsection{Decibilidad en el modelo de computo distribuido  \textbf{LOCAL}}\label{subsec:decibilidad-en-el-modelo-de-computo-distribuido-local}
+    Ahora lo que haremos es definir el modelo de computo distribuido de manera formal,
+    y tomar un modelo en particular en la que enfocaremos nuestro estudio, para posteriormente
+    estudiar la noción de decibilidad en dicho modelo.
+    \theoremsyle{Definición}
+    %todo:Definir los elementos del modelo Distribuido
+    %Definir de manera clara los elementos, para su legibilidad
+    \begin{definition}
+
+
+    \end{definition}
+\end{document}

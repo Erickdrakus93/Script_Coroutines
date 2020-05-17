@@ -36,12 +36,8 @@
 
 % Document
 \begin{document}
-    %% En esta parte es solo la continuacion de la parte anterior
-    \begin{titlepage}
-        \begin{Large}
-            Segunda Parte del avance de Tesis.
-        \end{Large}
-    \end{titlepage}
+    \maketitle
+    \section{Introducción del avance de tesis}\label{sec:introducción-del-avance-de-tesis}     %% En esta parte es solo la continuacion de la parte anterior
 
     \begin{abstract}
         Expondremos las nociones y atributos de los conceptos que nos permita
@@ -49,9 +45,7 @@
         de Turing.
     \end{abstract}
     \space
-    \begin{center}
-        \textbf{Definiciones}
-    \end{center}
+    \subsection{Definiciones}\label{subsec:definiciones}
     En esta parte del documento vamos a formalizar las nociones, de las cuales se desprenderá casi de manera
     inmediata la subrutina que dara el control en la estructura recursiva.\\
     Entonces definamos las nociones de la siguiente manera:
@@ -85,10 +79,7 @@
     Entonces una vez que tenemos esto bien definido, podemos hacer lo siguiente:\\
     De manera local sea $(w_{i},v)$ entonces en un sentido computacional y de entrada como un sistema computacional
     se traduce a $v(w_{i})$.
-    \begin{titlepage}
-    \textbf{Descripción del Diseño del Algoritmo}
-    \end{titlepage}
-    \space
+    \section{Descripcion del diseño del algoritmo}\label{sec:descripcion-del-diseño-del-algoritmo}
     Una vez que tenemos la pareja entonces tenemos de manera computacional lo siguiente $v(w_{i})$ que es el
     procedimiento computacional que hemos de desarrollar tal que solucione nuestro problema con la entrada
     de localidad asignada, entonces lo que haremos es definir primero una instancia de $\delta$ de tal manera
@@ -102,7 +93,7 @@
     \\
     \begin{algorithm}
         \begin{algorithmic}
-            \IF{$(w_{i},p)$}
+            \IF{$(w_{i},p)$} \COMMENT{relacionados via la localidad}\\
               \RETURN{true}
             \ELSE
               \RETURN{false}
@@ -111,6 +102,7 @@
         \caption{$Func\char95 Boolean(w_{i},p)$}
     \end{algorithm}
     \\
+    \space
     Básicamente lo que esta haciendo es dar una estructura booleana que sera la afirmación
     que dara el control en el siguiente algoritmo.
     Una vez que tenemos la subrutina de tipo Booleana, diseñemos el algoritmo principal del cual demostrara que la cadena $w$ es una
@@ -124,22 +116,20 @@
                     \STATE $p(w_i,\delta())$
                     \STATE $q \gets q_{0}$
                     \WHILE{$func\char95 boolean(w_{i},p)$}
-                      \STATE \textbf{call} $\delta(q,w_{i}) \gets (q_{R},w_{R},Pos)$
+                      \STATE \textbf{call} $(q_{R},w_{R},Pos) \gets \delta(q,w_{i})$
                     \ENDWHILE
                     \IF{$q_{R}=q_{accept}$}
                        \RETURN{$q_{accept}$}
                     \ELSE
                        \STATE $M = <q_{R},w_{R}, Pos>$
-                       \STATE \textbf{send} $M$
+                       \STATE \textbf{send} $M$ via sus vecinos.
                     \ENDIF
             \ENDFOR
         \end{algorithmic}
         \caption{$Simulate\char95 Algo \char95 TM(w,G,TM)$\label{lss}}
     \end{algorithm}
-    \\\\
-    \begin{center}
-       Ejemplo
-    \end{center}
+    \\
+    \section{Ejemplos}\label{sec:ejemplos}
     Podemos exponer de manera concreta la siguiente situación: \\ tomar una linea de procesos, de tal manera que el pariente de $i$ es $i+1$, para $i$ en el
     conjunto de indices de los procesos de $V(G)$, y mas aun el pariente de $n$ es $1$.\\
     Entonces lo que podemos observa es que tenemos computacionalmente es que la subrutina
@@ -152,7 +142,8 @@
     \\
 
     % Here we continue with the theorems that prove the correctness of the
-    %!Anuncion de los teoremas Centrales
+    %!Anuncion de los teoremas Centrales via una seccion
+    \section{Teoremas y Corolarios}\label{sec:teoremas-y-corolarios}
     \begin{theorem}
         El algoritmo $Simulate\char95 Algo\char95 TM$ es correcto.
     \end{theorem}
