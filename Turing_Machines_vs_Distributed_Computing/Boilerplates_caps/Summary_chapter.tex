@@ -21,6 +21,7 @@
 \usepackage{natbib}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{latexsymb}
 
 %Status of the document
 \newtheorem*{corrollary}{Corrollary}
@@ -98,11 +99,58 @@
     Ahora lo que haremos es definir el modelo de computo distribuido de manera formal,
     y tomar un modelo en particular en la que enfocaremos nuestro estudio, para posteriormente
     estudiar la noción de decibilidad en dicho modelo.
-    \theoremsyle{Definición}
-    %todo:Definir los elementos del modelo Distribuido
-    %Definir de manera clara los elementos, para su legibilidad
-    \begin{definition}
+    \subsection{Presentación del modelo de computo Distrubuido}\label{subsec:presentación-del-modelo-de-computo-distrubuido}
+    \subsubsection{Prsentacion del protocolo de Comunicacion}
+
+    Este modelo tendra una capa de abstracción de comunicacion, asi como su respectiva capa de
+    computación de la siguiente manera.
+    \subsubsection{Capa de comunicacion}
+    El modelo de comunicación consiste en un protocolo uno a uno en la red que sera descrita por
+    una grafica conexa, no dirigida $G=(V,E)$, donde los vertices $V=\{ v_{1},\mathellipsis v_{n}\}$
+    representan a los procesos de la red y los aristas representan los canales de comunicación bidireccionales
+    operando entre ellos.
+    Inicialmente consiraremos identificadores unicos asignados a los procesos de la grafica $G$,
+    Mas concretamente consideraremos a estos identifiadores de un conjunto ordenado de enteros:
+    de la siguiente manera:
+    \begin{equation}
+        S = \{ s_{1},\mathellipsis,s_{n}\}
+        donde: s_{i} < s_{i+1} \forall i\leq 1
+    \end{equation}
+    Entonces con esta notacion, una ID-asignación es un mapeo:
+    $ID:V\rightarrow S$ entonce nos referiremos a su identificador como:
+    $ID(v)$
+    Entonces la comunicación se llevara acabo de la siguiente manera:
+    Cada vertice tendra asociado el numero de puertos como el $deg_{G}(v)$,
+    entonces en este sentido el conjunto de aristas adjacentes al vertice
+    contiene exactamente $deg_{G}(v)$,donde cada arista esta conectado en un puerto de v.
+    \space
+    Podemos denotar que a cada arista $(u,v)$ le corresponde la pareja
+    $((u,i),(v,j))$ donde $1\leq i \leq deg_{G}(u) $ y $1\leq j \leq deg_{G}(v)$
+    que le da la semantica de que el canal esta conectado en el canal $i$ del proceso $u$
+    con el puerto $j$ del proceso $v$.
+    \subsubsection{Capa de Computacion}
+    Una vez que tenemos la capa de comunicacion,presentaremos la capa formal del modelo de
+    computo.
+    El modelo estara governado por un algoritmo $\pi$ que estara compuesto de protocolos
+    $\pi_{1},\mathellipsis,\pi_{n}$ donde cada $\pi_{i}$ residira en el proceso
+    $p_{i}$.
+    \theoremstyle
+    \begin{remark}
+        Podemos observar que podemos modelar a cada $p_{i}$ como una maquina de estado con su
+        correspodiente estado $Q_{i}$ conteniendo su estado inicial  $q_{0i}$ tal que en un
+        momento dado el proceso $p_{i}$ esta en el estado $q_{i}$ de $Q_{i}$.
+    \end{remark}
+    Por otro lado en el lado de la capa de comunicacion tendremos el siguiente esquema:
+    En cualquier momento dado y en cualquier canal de comunicación $e_{i}=(u,v)$ esta en algun estado
+    $\overline{q_{i}}$ del conjunto de estados $Q_{i}$
+    el estado $\overline{q_{i}}$ esta compuesto de dos componentes denotadas de la siguiente manera:
+    $\overline{q_{u\leftarrow v}}$ y $\overline{q_{v\leftarrow v}}$ una por cada direccion del canal
+    de comunicación.
+    Vamos a denotar de la
 
 
-    \end{definition}
+
+
+
+
 \end{document}
