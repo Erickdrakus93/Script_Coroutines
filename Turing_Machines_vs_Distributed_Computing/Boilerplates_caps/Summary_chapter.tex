@@ -146,11 +146,100 @@
     el estado $\overline{q_{i}}$ esta compuesto de dos componentes denotadas de la siguiente manera:
     $\overline{q_{u\leftarrow v}}$ y $\overline{q_{v\leftarrow v}}$ una por cada direccion del canal
     de comunicación.
-    Vamos a denotar de la
+    Vamos a denotar como $\Mu$ como la colleccion de todos los posibles mensajes que se pueden enviar
+    que se pueden enviar de un proceso a otro en toda ejecucion del algoritmo,
+    cada uno de los dos componentes $\overline{q_{u \leftarrow v}}$ es un elemento de $\Mu \cup \lambda$,
+    $\overline{q_{u\leftarrow v}} = MSG\in \Mu$ significa que ahora el mensaje $MSG$ esta en transicion de
+    $u$ a $v$, y denotaremos que $\overline{q_{u\leftarrow v}} = \lambda$ para representar el echo de que
+    el canal actual esta vacio en esa dirección.
+    En el inicio del computo, todos los procesos estan en el estado inicial $q_{0,i}$
+    y todos los canales de comunicación estan vacios.
+    Es decir que sintacticamente: $\overline{q_{i,0}} = <\lambda,\lambda>$
 
+    \subsubsection{Ejecución de un algorimo en este modelo}
+    La ejecución del algoritmo en este ambiente consistira de \textbf{Eventos} ocurriendo en diversos
+    lugares de la red y afectando a los procesos afectados.
+    Los eventos puede ser del tipo:
+    \begin{itemize}
+        \item Computacional:representando un paso en un procesador
+        \item Comunicación: representando la entrega o la recepción de un mensaje.
+    \end{itemize}
+    Donde cada evento de comunicación tiene una semantica de:
+    $SEND(i,j,MSG)$ o $DELIVER(i,j,MSG)$ para algún $MSG\Mu$.
+    Entonces a manera de reportorio de eventos tenemos:
+    \begin{enumerate}
+        \item Evento $Compute(i)$:El proceso $v_{i}$ ejecuta una operación interna, basado en su estado local, y
+        posiblemente cambie su estado local.
+        \item Event $SEND(i,j,MSG)$:El proceso $v_{i}$ envia de salida un mensaje $MSG\in \Mu$ en algun canal de
+        comunicacion link $e_{l}$ con destino al proceso $v_{j}$
+        \item Event:$DELIVER(i,j,MSG)$: El mensaje $M\in \Mu$ originado de un proceso $v_{i}$
+        que es enviado por el canal de comunicación $e_{l}$ es entregado en la entrada del destino $v_{j}$
+    \end{enumerate}
+    Entonces la computación en un sistema distribuido lo podemos pensar de la siguiente manera:
+    Como una secuencia de configuraciones, capturando el estado actual de los procesos y los canales de comunicación,
+    Cada evento cambia de estado para algun procesador $v_{i}$, y posiblemente también para un canal de comunicación
+    y eso cambiara la configuracion del sistema.
+    En terminos formales lo podemos pensar de la siguiente manera:
+    \theoremstyle
+    \begin{definition}
+        Una configuracion es una tupla $(q_{1},\mathellipsis,q_{n},\overline{q_{1}},\mathellipsis,\overline{q_{m}})$
+        donde $q_{i},\overline{q_{j}}$ es el estado del procesador $p_{i}$ y del canal de comunicación $e_{j}$ respectivamente
+        y la configuración inicial es $q_{0,1},\mathellipsis,q_{0,n},\overlineq_{0,1},\mathellipsis \overlineq_{0,m}$
+        Entonces modelaremos la computación del algoritmo como una (posible) infinia secuencia de configuraciones alternado
+        con eventos.
+    \end{definition}
+    \theoremstyle
+    \begin{definition}
+        La ejecución de un algoritmo $\Phi$ en una grafica con cirta topologia es
+        $G$ con una entrada inicial $I$ en los procesos es denotado como $\kappa_{\Phi(G,I)}$.
+        Formalmente, una \textbf{ejecución} es una secuencia de la forma:
+        \begin{equation}
+            \kappa = (C_{0},\rho_{1},C_{1},C_{1},\rho_{2},C_{2})
+        \end{equation}
+        donde cada $C_{k}$ es una configuración y cada $\rho_{j}$ es un evento.
+    \end{definition}
+    $C_{0}$ es la configuración inicial y el mapeo $C_{k-1}, \rho_{k},C_{k}$ tiene una semantica natural,
+    i.e por decir que $\rho_{k}$ es un evento de naturaleza computacional para un proceso $v_{i}$,llamado por
+    el nombre del repertorio de eventos $Compute(i)$ entonces el unico cambio en $C_{k}$ con respecto a $C_{k-1}$
+    es en el estado de $v_{i}$ (es decir es un cambio local), mas concretamente, el estado de $v_{i}$ en $C_{k}$
+    es el resultado de applicar la función de transición de $v_{i}$ al estado de transición al estado de $C_{k-1}$
+    %Aqui es importante recalcar que esto es una traduccion del hecho de que estamos haciendo en los procesos
+    %Una simulacion de maquinas de estado.
+    De igual manera los eventos pueden ser de naturaleza en la capa de comunicación:
+    i.e $\rho_{k}$ podriamos pensar que es $SEND(i,j,MSG)$ entonces los unicos cambios de la
+    configuracion involucra a los estados de las partes que ese evento esta envuelto, es decir
+    cambiara el estado del proceso $v_{i}$, del canal de comunicación $e_{l}$ que conecta con el proceso $v_{j}$
+    (en particular el cambio del estaddo $v_{i}$ reflajara el cambio del estado $e_{l}$, $\overline{q_{v_{i}\rightarrow v_{j}}}$
+    hara que cambie del estado $\lambda$ a $MSG$.
+    Igualmente se pensamos que $\rho_{k}$ es el evento $DELIVER(i,j,MSG)$ enonces los cambios del estado de $v_{j}$ se
+    reflejan el estado del canal de comunicación $e_{l}$ que conecta con el proceso $v_{i}$, que es actualizado reflejando
+    el echo de que el el canal es vacio y nuevamente el proceso tiene una entrada en donde conecta con el canal de
+    comunicación $e_{l}$ que es a saber el mensaje $MSG$.
+    \theoremstyle
+    \begin{remark}
+        Podemos ovservar que podemos agregar mas condiciones a la ejecución
+        del algoritmo.
+        En el modelo \textbf{asincrono}: Podemos decir que una ejecución es legal si cada
+        proceso un numero infinito de eventos del tipo computacional,
+        y ademas cualquiera que sean los eventos de comunicacion de algun canal de comunicación,
+        este cambie de $MSG\in\Mu$ a $\delta$ en un tiempo finito.
+        Lo anterior lo podemos pensar:Que estamos haciendo un mapeo 1-1 con cada $SENT(i,j,MSG)$
+        con eventos del tipo $DELIVER(i,j,MSG)$.
+    \end{remark}
 
-
-
+    Tendremos por convención que un proceso $v_{i}$ despues de un evento del tipo
+    $DELIVER(j,i,MSG)$ tendra un evento del tipo computacional.
+    Para el modelo síncrono ademas de tener los requirimientos del modelo de computo
+    asincrono se tendra como requerimiento que los procesos se ejecuten en pasos por
+    bloqueo.Entonces diremos que una ejecución es legal en dicho modelo si ademas de los
+    requerimientos del modelo asincrono, la condición es que los eventos computacionale
+    ocurriran en \textbf{rondas}.
+    Una de las condiciones de estas restricciones es que a cada proceso se le permite un evento
+    del tipo computacional por cada ronda.
+    Y ademas cada evento de computo en la ronda $r$ aparecera despues de los
+    eventos de computo de la ronda $r-1$.
+    Y ademas cada mensaje enviado en la ronda $r$ tendra que ser enviado antes de
+    los eventos de computo de la ronda $r+1$.
 
 
 \end{document}
