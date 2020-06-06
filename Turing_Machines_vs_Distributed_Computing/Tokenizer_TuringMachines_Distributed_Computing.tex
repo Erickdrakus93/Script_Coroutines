@@ -37,6 +37,7 @@
 % Document
 \begin{document}
     \maketitle
+    \tableofcontents
     \section{Introducción del avance de tesis}\label{sec:introducción-del-avance-de-tesis}     %% En esta parte es solo la continuacion de la parte anterior
 
     \begin{abstract}
@@ -56,7 +57,7 @@
     \theoremstyle{definition}
     \begin{definition}
         Sea $v \in VG$ un proceso en el modelo Formal \textbf{LOCAL}, vamos a denotar lo siguiente:
-        $(w_{i},p)$ que va a denotar que el elemento de la cadena $w_{i}$ tiene localidad $v$,
+        $(w_{i},v)$ que va a denotar que el elemento de la cadena $w_{i}$ tiene localidad $v$,
         o en otros términos, que a $v$ le pertenece el elemento de localidad $i$.
     \end{definition}
     De aquí se desprende la relación que existe entre los elementos de la cadena y los procesos
@@ -70,7 +71,7 @@
     \\
     \begin{remark}
         Una vez que tenemos esas nociones podemos construir un conjunto para cada proceso $v$ en $LOCAL$:\\
-        $LOC(P) = \{w_{i} \in w : (w_{i},P)\}$  que es generada por la relación definida anteriormente,
+        $LOC(P) = \{w_{i} \in w :   (w_{i},P)\}$  que es generada por la relación definida anteriormente,
         este conjunto esta encapsulando las nociones anteriormente descritas.
     \end{remark}
 
@@ -128,7 +129,8 @@
         \end{algorithmic}
         \caption{$Simulate\char95 Algo \char95 TM(w,G,TM)$\label{lss}}
     \end{algorithm}
-    \\
+    \\\\
+    \newpage
     \section{Ejemplos}\label{sec:ejemplos}
     Podemos exponer de manera concreta la siguiente situación: \\ tomar una linea de procesos, de tal manera que el pariente de $i$ es $i+1$, para $i$ en el
     conjunto de indices de los procesos de $V(G)$, y mas aun el pariente de $n$ es $1$.\\
@@ -164,7 +166,8 @@
     \end{proof}
 
     \begin{corrolary}
-        $\forall w \in L(TM)$ $\exists \pi$ algoritmo en el modelo $LOCAL$ tal que
+        Sea $TM$ una maquina de Turing, entonces:
+        $\forall w \in L(TM)$ $\exists \Pi$ algoritmo en el modelo $LOCAL$ tal que
         $w\in L(\pi)$.
     \end{corrolary}
     \begin{proof}
@@ -173,6 +176,6 @@
         Mas aún como $w$ es tal que $w \in L(TM)$ entonces podemos concluir que $\pi = Simulate\char95 Algo\char95 TM$.\\
         $ \therefore \forall w \in L(TM), w\in L(\pi)$.
     \end{proof}
-    %!Con esto hemos terminado el teorema Principal de esta tesis.
+    %!Con esto hemos terminado un lado del teorema principal de esta tesis.
 
 \end{document}
