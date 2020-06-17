@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  4 JUN 2020 14:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  9 JUN 2020 16:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -466,11 +466,11 @@ e
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 44.
-LaTeX Font Info:    Try loading font information for U+msa on input line 45.
+LaTeX Font Info:    Try loading font information for U+msa on input line 46.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 45.
+LaTeX Font Info:    Try loading font information for U+msb on input line 46.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -492,7 +492,7 @@ Overfull \hbox (0.28325pt too wide) detected at line 17
 
 ]
 Cap\'{\i }tulo 1.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 53.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 54.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [2
@@ -501,27 +501,27 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ! Undefined control sequence.
 <recently read> \Mu 
                     
-l.153     Vamos a denotar como $\Mu
+l.155     Vamos a denotar como $\Mu
                                    $ como la colleccion de todos los posible...
 
 ? 
 ! Undefined control sequence.
 <recently read> \Mu 
                     
-l.155 ..._{u \leftarrow v}$ es un elemento de $\Mu
+l.157 ..._{u \leftarrow v}$ es un elemento de $\Mu
                                                    \cup \lambda$,
 ? 
 ! Undefined control sequence.
-l.156 ...\overline{q}_{u\leftarrow v} = MSG\in \Mu
+l.158 ...\overline{q}_{u\leftarrow v} = MSG\in \Mu
                                                   $ significa que ahora el m...
 
 ? 
 ! Undefined control sequence.
-l.172 ... o $DELIVER(i,j,MSG)$ para algÃºn $MSG\Mu
+l.174 ... o $DELIVER(i,j,MSG)$ para algÃºn $MSG\Mu
                                                   $.
 ? 
 
-Overfull \hbox (21.10231pt too wide) in paragraph at lines 171--174
+Overfull \hbox (21.10231pt too wide) in paragraph at lines 173--176
 \T1/cmr/m/n/10 Donde ca-da even-to de co-mu-ni-ca-ción tie-ne una se-man-ti-ca 
 de: $\OML/cmm/m/it/10 SEND\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 i; j; MSG\OT1/cmr/m
 /n/10 )$ \T1/cmr/m/n/10 o $\OML/cmm/m/it/10 DELIVER\OT1/cmr/m/n/10 (\OML/cmm/m/
@@ -529,21 +529,21 @@ it/10 i; j; MSG\OT1/cmr/m/n/10 )$
  []
 
 ! Undefined control sequence.
-l.177 ...}$ envia de salida un mensaje $MSG\in \Mu
+l.179 ...}$ envia de salida un mensaje $MSG\in \Mu
                                                   $ en algun canal de
 ? 
 ! Undefined control sequence.
-l.179 ...:$DELIVER(i,j,MSG)$: El mensaje $M\in \Mu
+l.181 ...:$DELIVER(i,j,MSG)$: El mensaje $M\in \Mu
                                                   $ originado de un proceso ...
 
 ? 
 [4]
 ! Undefined control sequence.
-l.233         este cambie de $MSG\in\Mu
+l.235         este cambie de $MSG\in\Mu
                                        $ a $\delta$ en un tiempo finito.
 ? 
 
-Overfull \hbox (5.47394pt too wide) in paragraph at lines 238--256
+Overfull \hbox (5.47394pt too wide) in paragraph at lines 240--258
 []\T1/cmr/m/n/10 Tendremos por con-ven-ción que un pro-ce-so $\OML/cmm/m/it/10 
 v[]$ \T1/cmr/m/n/10 des-pues de un even-to del ti-po $\OML/cmm/m/it/10 DELIVER\
 OT1/cmr/m/n/10 (\OML/cmm/m/it/10 j; i; MSG\OT1/cmr/m/n/10 )$
@@ -551,7 +551,7 @@ OT1/cmr/m/n/10 (\OML/cmm/m/it/10 j; i; MSG\OT1/cmr/m/n/10 )$
 
 [5]
 ! Undefined control sequence.
-l.269            \forall \Kappa
+l.271            \forall \Kappa
                                _{\Pi(G,w)} \ \exists v_{t} \ t\in\{1,\mathel...
 
 ? 
@@ -566,79 +566,83 @@ LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 
 ! Undefined control sequence.
-l.49 ...elax \protect \edef n{sc}\protect \xdef \T
+l.50 ...elax \protect \edef n{sc}\protect \xdef \T
                                                   1/cmr/m/sc/10 {\T1/cmr/m/n...
 
 ? 
 ! Undefined control sequence.
-l.49 ...ef n{sc}\protect \xdef \T1/cmr/m/sc/10 {\T
+l.50 ...ef n{sc}\protect \xdef \T1/cmr/m/sc/10 {\T
                                                   1/cmr/m/n/10 }\T1/cmr/m/sc...
 
 ? 
 ! Undefined control sequence.
-l.49 ... \xdef \T1/cmr/m/sc/10 {\T1/cmr/m/n/10 }\T
+l.50 ... \xdef \T1/cmr/m/sc/10 {\T1/cmr/m/n/10 }\T
                                                   1/cmr/m/sc/10 \size@update...
 
 ? 
 ! Undefined control sequence.
-l.49 ...\size@update \enc@update \protect \xdef \T
+l.50 ...\size@update \enc@update \protect \xdef \T
                                                   1/cmr/m/sc/10 {\T1/cmr/m/n...
 
 ? 
 ! Undefined control sequence.
-l.49 ...@update \protect \xdef \T1/cmr/m/sc/10 {\T
+l.50 ...@update \protect \xdef \T1/cmr/m/sc/10 {\T
                                                   1/cmr/m/n/10 }\T1/cmr/m/sc...
 
 ? 
 ! Undefined control sequence.
-l.49 ... \xdef \T1/cmr/m/sc/10 {\T1/cmr/m/n/10 }\T
+l.50 ... \xdef \T1/cmr/m/sc/10 {\T1/cmr/m/n/10 }\T
                                                   1/cmr/m/sc/10 \size@update...
 
 ? 
 ! Undefined control sequence.
-l.49 ...let \size@update \relax }\protect \xdef \T
+l.50 ...let \size@update \relax }\protect \xdef \T
                                                   1/cmr/m/sc/10 {\T1/cmr/m/n...
 
 ? 
 ! Undefined control sequence.
-l.49 ...\relax }\protect \xdef \T1/cmr/m/sc/10 {\T
+l.50 ...\relax }\protect \xdef \T1/cmr/m/sc/10 {\T
                                                   1/cmr/m/n/10 }\T1/cmr/m/sc...
 
 ? 
 ! Undefined control sequence.
-l.49 ... \xdef \T1/cmr/m/sc/10 {\T1/cmr/m/n/10 }\T
+l.50 ... \xdef \T1/cmr/m/sc/10 {\T1/cmr/m/n/10 }\T
                                                   1/cmr/m/sc/10 \size@update...
 
 ? 
-) ) 
+)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6452 strings out of 492609
- 86464 string characters out of 6131461
+ 6453 strings out of 492609
+ 86477 string characters out of 6131461
  179387 words of memory out of 5000000
- 10231 multiletter control sequences out of 15000+600000
+ 10232 multiletter control sequences out of 15000+600000
  27545 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,10n,43p,798b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam
-10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/t
-exmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/pub
-lic/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx144
-0.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/te
-xmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/publ
-ic/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000
-.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/tex
-mf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/publi
-c/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.
-pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc1000.pfb>
-Output written on Summary_chapter.pdf (10 pages, 306772 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam1
+0.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/te
+xmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/publ
+ic/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440
+.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/tex
+mf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/publi
+c/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.
+pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texm
+f/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public
+/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.p
+fb></usr/share/texmf/fonts/type1/public/cm-super/sfxc1000.pfb>
+Output written on Summary_chapter.pdf (10 pages, 306838 bytes).
 PDF statistics:
  126 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream
