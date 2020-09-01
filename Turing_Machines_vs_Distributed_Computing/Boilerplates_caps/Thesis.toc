@@ -1,0 +1,21 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Decidibilidad en los modelos}{\es@scroman {ii}}%
+\contentsline {section}{\numberline {1.1}Introducción}{\es@scroman {ii}}%
+\contentsline {section}{\numberline {1.2}Decidibilidad en el modelo de máquinas de Turing}{\es@scroman {ii}}%
+\contentsline {subsection}{\numberline {1.2.1}Cadenas y lenguajes}{\es@scroman {ii}}%
+\contentsline {subsection}{\numberline {1.2.2}Elementos del modelo}{\es@scroman {iv}}%
+\contentsline {subsection}{\numberline {1.2.3}Decidibilidad}{\es@scroman {v}}%
+\contentsline {section}{\numberline {1.3}Decidibilidad en el modelo de computo distribuido \textbf {LOCAL}}{\es@scroman {ix}}%
+\contentsline {subsection}{\numberline {1.3.1}Presentación del modelo de computo distribuido}{\es@scroman {ix}}%
+\contentsline {subsubsection}{Presentación del protocolo de comunicación}{\es@scroman {ix}}%
+\contentsline {subsubsection}{Capa de comunicación}{\es@scroman {x}}%
+\contentsline {subsubsection}{Capa de Computación}{\es@scroman {x}}%
+\contentsline {subsubsection}{Ejecución de un algoritmo en este modelo}{\es@scroman {xi}}%
+\contentsline {subsubsection}{Ejemplos}{\es@scroman {xii}}%
+\contentsline {subsection}{\numberline {1.3.2}Decidibilidad}{\es@scroman {xiii}}%
+\contentsline {chapter}{\numberline {2}Simulación de modelos Maquina de Turing y \textbf {LOCAL}}{\es@scroman {xiv}}%
+\contentsline {section}{\numberline {2.1}Noción de simulación en modelos}{\es@scroman {xiv}}%
+\contentsline {section}{\numberline {2.2}Diseño del algoritmo}{\es@scroman {xv}}%
+\contentsline {section}{\numberline {2.3}Descripción del algoritmo}{\es@scroman {xvi}}%
+\contentsline {section}{\numberline {2.4}Demostración del procedimiento $Simula\char 95Algo\char 95TM$}{\es@scroman {xvi}}%
+\contentsline {subsection}{\numberline {2.4.1}Complejidad del algoritmo}{\es@scroman {xvii}}%

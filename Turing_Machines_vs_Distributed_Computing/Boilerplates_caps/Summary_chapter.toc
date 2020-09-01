@@ -3,17 +3,19 @@
 \contentsline {section}{\numberline {1.1}Introducci\IeC {\'o}n}{\es@scroman {ii}}% 
 \contentsline {section}{\numberline {1.2}Decidibilidad en el modelo de maquinas de Turing}{\es@scroman {ii}}% 
 \contentsline {subsection}{\numberline {1.2.1}Elementos del modelo}{\es@scroman {ii}}% 
-\contentsline {subsection}{\numberline {1.2.2}Decidibilidad}{\es@scroman {iii}}% 
-\contentsline {section}{\numberline {1.3}Decidibilidad en el modelo de computo distribuido \textbf {LOCAL}}{\es@scroman {iii}}% 
-\contentsline {subsection}{\numberline {1.3.1}Presentaci\IeC {\'o}n del modelo de computo distribuido}{\es@scroman {iii}}% 
-\contentsline {subsubsection}{Presentaci\IeC {\'o}n del protocolo de comunicaci\IeC {\'o}n}{\es@scroman {iii}}% 
-\contentsline {subsubsection}{Capa de comunicaci\IeC {\'o}n}{\es@scroman {iii}}% 
-\contentsline {subsubsection}{Capa de Computacion}{\es@scroman {iv}}% 
-\contentsline {subsubsection}{Ejecuci\IeC {\'o}n de un algorimo en este modelo}{\es@scroman {iv}}% 
-\contentsline {subsection}{\numberline {1.3.2}Decidibilidad}{\es@scroman {vi}}% 
-\contentsline {chapter}{\numberline {2}Simulaci\IeC {\'o}n de modelos Maquina de Turing y \textbf {LOCAL}}{\es@scroman {vii}}% 
-\contentsline {section}{\numberline {2.1}Noci\IeC {\'o}n de simulaci\IeC {\'o}n en modelos}{\es@scroman {vii}}% 
-\contentsline {section}{\numberline {2.2}Dise\IeC {\~n}o del algoritmo}{\es@scroman {vii}}% 
-\contentsline {section}{\numberline {2.3}Descripci\IeC {\'o}n del algoritmo}{\es@scroman {viii}}% 
-\contentsline {section}{\numberline {2.4}Demostraci\IeC {\'o}n del procedimiento $Simula\char 95Algo\char 95TM$}{\es@scroman {ix}}% 
-\contentsline {subsection}{\numberline {2.4.1}Complejidad del algoritmo}{\es@scroman {ix}}% 
+\contentsline {subsection}{\numberline {1.2.2}Decidibilidad}{\es@scroman {iv}}% 
+\contentsline {subsubsection}{Ejemplo de lenguajes decidibles}{\es@scroman {vi}}% 
+\contentsline {section}{\numberline {1.3}Decidibilidad en el modelo de computo distribuido \textbf {LOCAL}}{\es@scroman {viii}}% 
+\contentsline {subsection}{\numberline {1.3.1}Presentaci\IeC {\'o}n del modelo de computo distribuido}{\es@scroman {viii}}% 
+\contentsline {subsubsection}{Presentaci\IeC {\'o}n del protocolo de comunicaci\IeC {\'o}n}{\es@scroman {viii}}% 
+\contentsline {subsubsection}{Capa de comunicaci\IeC {\'o}n}{\es@scroman {viii}}% 
+\contentsline {subsubsection}{Capa de Computaci\IeC {\'o}n}{\es@scroman {viii}}% 
+\contentsline {subsubsection}{Ejecuci\IeC {\'o}n de un algoritmo en este modelo}{\es@scroman {ix}}% 
+\contentsline {subsubsection}{Ejemplo}{\es@scroman {xi}}% 
+\contentsline {subsection}{\numberline {1.3.2}Decidibilidad}{\es@scroman {xii}}% 
+\contentsline {chapter}{\numberline {2}Simulaci\IeC {\'o}n de modelos Maquina de Turing y \textbf {LOCAL}}{\es@scroman {xiii}}% 
+\contentsline {section}{\numberline {2.1}Noci\IeC {\'o}n de simulaci\IeC {\'o}n en modelos}{\es@scroman {xiii}}% 
+\contentsline {section}{\numberline {2.2}Dise\IeC {\~n}o del algoritmo}{\es@scroman {xiii}}% 
+\contentsline {section}{\numberline {2.3}Descripci\IeC {\'o}n del algoritmo}{\es@scroman {xiv}}% 
+\contentsline {section}{\numberline {2.4}Demostraci\IeC {\'o}n del procedimiento $Simula\char 95Algo\char 95TM$}{\es@scroman {xv}}% 
+\contentsline {subsection}{\numberline {2.4.1}Complejidad del algoritmo}{\es@scroman {xv}}% 
