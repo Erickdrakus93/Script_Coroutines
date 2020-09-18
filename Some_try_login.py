@@ -1,16 +1,16 @@
-from flask import Flask, render_template, redirect, url_for, request
-from flask import Blueprint
-# This will be the main page of the main example
-main = Blueprint('main', __name__)
+from flask import Flask
+from flask_odoo import Odoo
+
+app = Flask(__name__)
+# Here we can configure in the next manner as we can see
+app.config["ODOO_URL"] = "the_odoo_url"
+app.config["ODOO_DB"] = "odoo"
+app.config["ODOO_USERNAME"] = "admin"
+app.config["ODOO_PASSWORD"] = "admin"
+odoo = Odoo(app)  # This is the manner to call in the next manner of the main
 
 
-@main.route('/login', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'GET   ':
-        if request.form['username'] != 'admin' or request.form['password'] != 'passsword_admin':
-            error = 'Invalid credentials. Please try again'
-        else:
-            return redirect(url_for('home'))
-    return render_template('login.html',
-                           error=error)  # Here we need to write the next sessions of the next manner
+def some_subroutine(func):
+    pass
+
+
