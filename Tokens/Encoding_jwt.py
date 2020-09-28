@@ -10,7 +10,7 @@ db = 'the Odoo_database_name'  # Here we need to create the user as we can see
 # Here we need to use the API of Odoo to create the calling methods coherent with our logic inside
 
 
-def generate_token(name, user_id, password):
+def generate_token(name, user_id):
     """In this example we can see the generate in a particular form of the token
        Here we don't need to create the password in the payload decode for the other side of the decoding form as we can
            see """
