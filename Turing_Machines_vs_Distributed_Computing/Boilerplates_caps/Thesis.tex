@@ -53,7 +53,7 @@
     \tableofcontents{}
     \chapter{Decidibilidad en los modelos}\label{ch:decidibilidad-en-los-modelos}
     \section{Introducción}\label{sec:introducción}
-    En este documento se expondrán las nociones de decibilidad,complejidad en ambos modelos %Add complexity part of both worlds
+    En este documento se expondrán las nociones de decibilidad, complejidad en ambos modelos %Add complexity part of both worlds
     en el mundo de máquinas de Turing y en el mundo distribuido,
     así como también se hará la formalización de la noción de simulación de modelos
     computacionales, demostrando que el modelo $A$ de  la máquina de
@@ -65,60 +65,60 @@
     %!todo: Hacer un feedback con la escritura para que se pula la parte de la gramática
 
 
-    \subsection{Cadenas y lenguajes}\label{sec:Cadenas-y-lenguajes
+    \subsection{Cadenas y lenguajes}\label{sec:Cadenas-y-lenguajes}
     Ahora, se definirán los bloques constructores de ciencias de la computación, es decir las cadenas de carácteres.
     Con el propósito de definir lo siguiente:\space
     \begin{definition}
-            Decimos que un alfabeto es cualquier co njunto $X$ tal que $X != \emptyset$
+            Decimos que un alfabeto es cualquier conjunto $X$ tal que $X != \emptyset$
     \end{definition}
     \newline
-    Una vez que se define el concepto de alfabeto, los elementos del lenguaje son los símbolos del alfabeto
-    Podemos usar la convención de usar letras mayúsculas para los alfabetos y letras minúsculas para los símbolos.
-    En virtud de ello, podemos enuciar algunos ejemplos de alfabetos:
+    Una vez que se define el concepto de alfabeto, los elementos del lenguaje son los símbolos del alfabeto.
+    Se estipulará que las letras mayúsculas se usarán para los alfabetos y letras minúsculas para los símbolos.
+    En virtud de ello se pude enuciar algunos ejemplos de alfabetos:
     \begin{itemize}
         \item $\Theta_{1} = \{0,1,2,3,4,5,6,7,8,9 \}$
         \item $\Theta_{2} = \{a,b,c,d,e,f,g,h,i,j,k,l \}$
         \item $\Omega = { 0,1,x,y,z,t}$
     \end{itemize}\space
-    Ahora vamos a definir la noción de una cadena sobre un alfabeto, que para los fines de nuestro estudio
-    son los bloques constructores del mismo, y es al mismo tiempo en el modelo de
-    máquinas de Turing las entradas de instancias de este modelo, lo que nos dara la noción de cómputo en este sentido.
+    Lo siguiente es definir la noción de una cadena sobre un alfabeto, que para los fines de este estudio
+    son los bloques constructores del mismo, y que son, al mismo tiempo, en el modelo de
+    máquinas de Turing las entradas de instancias de este modelo, lo que dará la noción de cómputo.
     \begin{definition}
         Una \textbf{cadena} sobre un alfabeto $\Sigma$ es una secuencia finita de símbolos del alfabeto,
-        usualmente escrito cada simbolo uno sobre otro y sin separación por comas
+       que es usualmente escrito cada símbolo uno sobre otro y sin separación por comas.
     \end{definition}
-    Una vez que tenemos la noción de cadena sobre un alfabeto, podemos dar unos cuantos ejemplos:
+    Una vez que se tiene la noci ón de cadena sobre un alfabeto, se puede dar unos cuantos ejemplos:
     \begin{itemize}
         \item Si $\Sigma_{1} = \{a,b\}$, entonces la cadena $abbaba$ es una cadena sobre $\Sigma_{1}$
         \item Si $\Sigma_{2} = \{ 2,3,5 \}$, entonces la cadena $32225$ es una cadena sobre $\Sigma_{2}$
     \end{itemize}
-    Entonces una vez que tenemos definido este concepto podemos definir atributos a las cadenas definidas sobre un
+    Entonces ahora que se definió el concepto cadena sobre un alfabeto podemos definir atributos a las cadenas definidas sobre un
     alfabeto $\Sigma$,\newline
     \begin{definition}
-        Sea $w$ una cadena sobre un alfabeto $\Sigma$, decimos que dicha cadena tiene \textbf{longitud},
-        y la denotaremos como $|w|$, y diremos que es el número de símbolos que contiene.
+        Sea $w$ una cadena sobre un alfabeto $\Sigma$,dicha cadena tiene \textbf{longitud},
+        y se denotorá como $|w|$, y asi se concluirá que es el número de símbolos que contiene.
 
     \end{definition}
-    Entonces con base a esa definición, llamaremos vacía a la cadena tal que su longitud es cero, y la
+    Entonces con base a esa definición, se denominará vacía a la cadena tal que su longitud es cero, y la
     distinguiremos como $\epsilon$.\newline
-    Podemos escribir a una cadena $w = w_{1},\mathellipsis w_{n}$, sobre un alfabeto $\Sigma$ si cada $w_{i} \in \Sigma$;
+    Se puede escribir a una cadena $w = w_{1},\mathellipsis w_{n}$, sobre un alfabeto $\Sigma$ si cada $w_{i} \in \Sigma$;
     \space
-    A continuación definiremos ciertas operaciones o atributos asociados a estas estructuras de datos.
+    A continuación se definirán ciertas operaciones o atributos asociados a estas estructuras de datos.
     \begin{definition}
-        Sea una cadena $w$, asociaremos a la cadena $w$ la cadena reversa denotada como $w^R$
+        Sea una cadena $w$, se asociará a la cadena $w$ la cadena reversa denotada como $w^R$
         y con la notación, si $w = w_{1},\mathellipsis w_{n}$, entonces $w^{R} = w_{n},\mathellipsis,w_{1}$.
     \end{definition}
-    También tendremos la noción de sub-cadena:\newline
+    También se dará la noción de sub-cadena, la cual enunciaremos de la siguiente manera:\newline
     \begin{definition}
-        Sean $z,w$ cadenas, diremos que $z$ es una sub-cadena de $w$ si aparece de manera consecutiva dentro de $w$.
+        Sean $z,w$ cadenas, se puede decir que $z$ es una sub-cadena de $w$ si aparece de manera consecutiva dentro de $w$.
     \end{definition}
     Ejemplos de subcadenas son:
     \begin{itemize}
         \item $abc$ es una sub-cadena de la cadena $abcdedfg$
         \item $cdcd$ es una subcadena de la cadena $cdasdcadccdcd$
     \end{itemize}
-    También vamos a definir una operación entre dos cadenas, la cual es
-    la concatenación, entonces vamos a definirla formalmente:\newline
+    También se definirá una operación entre dos cadenas, la cual es
+    la concatenación, entonces se define formalmente de la siguiente manera:\newline
     \begin{definition}
         Sean $w_{1}$ y $w_{2}$ dos cadenas finitas, esto es:\newline
         $\exists n,\ \exists m$ tal que $|w_{1}|=n$ y $|w_{2}|=m$
@@ -126,45 +126,49 @@
         $w_{1}$.\newline
         En notacion es: $concat(w_{1},w_{2}) = w_{1}w_{2}$
     \end{definition}
-    Entonces con esta definición de operación podemos hacer lo que en matemáticas hacer potencía con esta operación,
+    Entonces con esta definición de operación se hará el equivalente en potencia en matemáticas,
     formalmente lo podemos decir:\newline
     \begin{definition}
         Sea $x$ una cadena sobre un alfabeto $\Sigma$, entonces concatenar dicha cadena
         $m-veces$, con $m\in\N$ se escribirá así:\newline
         $x\dots x = x^m$
     \end{definition}
-    Finalmente pensaremos en términos del "universo" de las cadenas para algún alfabeto, que lo formalizaremos de la
+    Finalmente se tiene los terminos "universo" de las cadenas para algún alfabeto, que se formalizará de la
     siguiente manera:
     \begin{definition}
-        Sea un alfabeto $\Sigma$, decimos que un lenguaje es un conjunto de cadenas sobre el alfabeto $\Sigma$, i.e
+        Sea un alfabeto $\Sigma$, se dice que un lenguaje es un conjunto de cadenas sobre el alfabeto $\Sigma$, i.e
         \begin{equation}
             \label{eq:equation7}
              L = \{w : w\ es \ una \ cadena\ sobre \Sigma \}
         \end{equation}
     \end{definition}
-    Entonces una vez que ya tenemos la definición de lenguaje, nos moveremos a presentar el modelo de máquina de Turing,
-    ya que en este contexto los problemas serán modelados en términos de lenguaje, con la noción anteriormente anunciada.
+    Entonces, una vez que se tiene la definición de lenguaje, lo siguiente es presentar el modelo de máquina de Turing,
+    ya que en este contexto los problemas se modelarán en términos de lenguaje, con la noción anteriormente anunciada.
 
 
     \subsection{Elementos del modelo}\label{subsec:elementos-del-modelo-de-máquina-de-turing}
-    Presentaremos la definición del modelo formal de computo, a saber el modelo de máquina de Turing,
-    para ello tendremos primero una presentación intuitiva del modelo.\newline
-    El modelo de máquina de Turing es a grandes razgos un modelo poderoso, lo cual quiere decir que tendremos la posibilidad
-    de resolver una cantidad de problemas, pero con ciertas limitantes.\newline
+    Ahora, se dará la definición del modelo formal de computo, a saber el modelo de máquina de Turing,
+    para ello se tendrá una presentación intuitiva del modelo.\newline
+    El modelo de máquina de Turing es a grandes razgos un modelo acaparable; lo cual quiere decir, se tendrá la posiblidad
+    de resolver una cantidad de problemas, pero con ciertas limitantes.
     \space
+
     Este modelo fue propuesto por primera vez en 1936 por el matemático \textbf{Alan Turing} similares a
-    otros modelos de computo que no presentaremos en esta tesis, como son solo por decir: autómatas finitos.
-    El modelo de máquina de Turing usa una cinta "infinita" como su memoria ilimitada,
-    además esta tiene un cabezal, que es la que permité leer y escribir símbolos además de moverse
-    a lo largo de la cinta.\space
-    Inicialmente la cinta contiene únicamente como entrada a la cadena, y en lo demás es blanco.\space
-    Si la máquina necesita almacenar información esta tendrá que ser escrita en la cinta.\space
+    otros modelos de cómputo que no se presentará en esta tesis, como son solo por decir: autómatas finitos.
+    El modelo de máquina de Turing usa una cinta infinita como su memoria ilimitada,
+    además tine el cabezal, que es la que permité leer y escribir símbolos además de moverse
+    a lo largo de la cinta.
+    \space
+    Inicialmente la cinta contiene únicamente como entrada a la cadena, y lo demás es blanco.
+    Si la máquina necesita almacenar información que tendrá que ser escrita en la cinta.
     Para leer la información que ha sido escrita en la cinta esta tendrá que mover su cabezal sobre ella.\space
-    La máquina continurá "computando" hasta que tenga una salida, y esto quiere decir que tendrá una sucesión de pasos
-    como los que fueron descritos anteriormente, hasta que demos una definición formal de la palabra "computo".
-    Las salidas "aceptación" y rechazo" son obtenidos una vez que se ha entrado en los "estados" de "aceptacion" y  "rechazo",
-    por otro lado si no entrá en alguno de los "estados" mencionados anteriormente, la máquina continurá para siempre, i.e
-    está nunca terminara de hacer su computo.\space
+    La máquina continurá computando hasta que tenga una salida, lo que se traduce a que tendrá una sucesión de pasos
+    como los que se describieron anteriormente, hasta que se dé la definición formal de la palabra cómputo.
+    \space
+
+    Las salidas "aceptación, rechazo" se obtienen una vez que se ha entrado en los estados de "aceptacion, rechazo",
+    por otro lado si no entrá en alguno de los estados que se mencionaron anteriormente, la máquina continurá para siempre, i.e
+    ésta nunca terminará de hacer su cómputo.\space
     Esta es la presentación intuitiva de este modelo, entonces lo que sigue es definir de manera formal los elementos del modelo,
 
 
@@ -173,134 +177,138 @@
         donde $Q,\Sigma,\Lambda$ son conjuntos finitos.
         \begin{enumerate}
             \item $Q$ es el conjunto de estados,
-            \item $\Sigma$ es el alfabeto de entrada que no contiene el simbolo blanco $\sqcup$
-            \item $\Lambda$ es el alfabeto de la cinta, donde  $\sqcup\in\Lambda$ y ademas $\Sigma\subseteq\Lambda$,
+            \item $\Sigma$ es el alfabeto de entrada que no contiene el símbolo blanco $\sqcup$
+            \item $\Lambda$ es el alfabeto de la cinta donde  $\sqcup\in\Lambda$ y además $\Sigma\subseteq\Lambda$,
             \item $\delta: Q\times\Lambda \rightarrow Q\times\Lambda\times\{L,R,S\}$ es la función de transición
             \item $q_{0}$ es el estado de iniciación,
             \item $q_{accept}$ es el estado de aceptacion
-            \item $q_{reject}$ es el estado de rechazo, donde $q_{accept} \neq q_{reject}$,
+            \item $q_{reject}$ es el estado de rechazo donde $q_{accept} \neq q_{reject}$,
 
         \end{enumerate}
         Aquí los símbolos $L,R,S$ son el imperativo para el movimiento del cabezal \textbf{Left}, \textbf{Right} y \textbf{Stay}
     \end{definition}
-    Una vez que tenemos la definición presentaremos como es el cómputo:\newline
-    Inicialmente tendrá como entrada una cadena $w = w_{1}\dots w_{n}$ en $\Sigma$, en a lo más $n$ cuadros
-    a la izquierda y el resto de la cinta esta en blanco, esto quiere decir que están rellenados con símbolos blanco,
+    Una vez que se tiene la definición se presentará como es el cómputo:\newline
+    Inicialmente, se tendrá como entrada una cadena $w = w_{1}\dots w_{n}$ en $\Sigma$, en a lo más $n$ cuadros
+    a la izquierda y el resto de la cinta esta en blanco.Ésto quiere decir que están rellenados con símbolos blancos,
     y la manera de identificar el final de la entrada $w$ es marcado por el primer símbolo en blanco en la cinta,
     ya que el alfabeto $\Sigma$ no contiene dicho símbolo.
-    Entonces una vez que inicia la máquina $M$ con la entrada $w$, el cómputo estará gobernado por la función $\delta$.
-    Algo que podemos observar es que si en algún momento del cómputo el cabezal intenta moverse a la izquierda del lado
-    izquierdo extremo este se quedará en el mismo lugar, aunque la función de transición indique un movimiento del cabezal $L$.
-    Entonces el cómputo continuará hastá que entre en el estado de $q_{accept}$ ó $q_{reject}$,
+    \space
+
+    Luego, una vez que inicia la máquina $M$ con la entrada $w$, el cómputo estará gobernado por la función $\delta$.
+    Algo que se puede observar es que si en algún momento del cómputo el cabezal intenta moverse a la izquierda del lado
+    izquierdo extremo, éste se quedará en el mismo lugar, aunque la función de transición indique un movimiento del cabezal $L$.
+
+    \space
+    Finalmente, el cómputo continuará hastá que entre en el estado de $q_{accept}$ ó $q_{reject}$,
     si no sucede lo anterior $M$ continuará para siempre.
-    \newline
-    Una vez presentado el modelo y una visión intuitiva del cómputo en el mismo, nos adentraremos a la noción de
-    \textbf{decidible} que es la noción a la que queremos converger en este modelo para hacer la conexión con el modelo
+    Una vez presentado el modelo y una visión intuitiva del cómputo en el mismo, se adentrará a la noción de
+    \textbf{decidible}, que es la noción a la que se quiere converger en este modelo para hacer la conexión con el modelo
     de cómputo distribuido.
 
-
-
-    \textbf{decidibles}
+    \newspace
     %!todo:Definir como se estan resolviendo los problemas en el contexto de maquinas de Turing
     %!todo:Esto quiere decir que es un lenguaje etc.
     %!Final de las observaciones de la edicion de este capitulo.
-    \subsection{Decidibilidad}\label{subsec:decidibilidad2}
-    Presentaremos la nocion de \textbf{configuración} que es lo que nos permitirá formalizar el movimiento del
+     \subsection{Decidibilidad}\label{subsec:decidibilidad2}
+    Ahora la noción de \textbf{configuración} es lo que nos permitirá formalizar el movimiento del
     cabezal de la máquina, que esto en esencia será la formalización del cómputo en este modelo.
     \newline
-    La manera en que $M$ hace el compúto, de manera intuitiva podemos decir que ocurren ciertos eventos, a saber:
+    La manera en que $M$ hace el compúto, de manera intuitiva se puede decir que ocurren ciertos eventos, a saber:
     \begin{itemize}
-        \item Cambio en el estado actual.
-        \item Cambio en el contenido de la cinta.
-        \item Cambio en la localidad del cabezal.
+        \item Cambio en el estado actual
+        \item Cambio en el contenido de la cinta
+        \item Cambio en la localidad del cabezal
     \end{itemize}
-    Estos eventos los formalizaremos definiendo la noción de configuración.
-    Los elementos serán en esencia tomarse el estado actual, digamos $q_{a}$, el contenido actual de la cinta:
-    digamos $uv$ con $u,v$ cadenas para el alfabeto $\Sigma$, y la localidad actual de la cinta, que sera el primer
+    Estos eventos se constituirán al definir el término configuración.
+    Los elementos serán en esencia tomarse el estado actual, digamos $q_{a}$, el contenido actual de la cinta, por ejemplo:
+    $uv$ con $u,v$ cadenas para el alfabeto $\Sigma$ y la localidad actual de la cinta, que será el primer
     símbolo de la cadena $v$. \newline
-    Esto lo podemos pensar en la triada
+    Esto se puede plantear en la triada:
     \begin{equation}
         C = (u,q,v)
     \end{equation}
     Con $u,v$ cadenas y $q$ es el estado actual, y la posición actual es el primer símbolo de la cadena $v$,
-    en este sentido podemos escribir de la siguiente manera esta noción:
+    en este sentido se puede escribir de la siguiente manera esta noción:
     \begin{equation}
         uqv
     \end{equation}
     Para enfatizar que en ese momento del compúto, el cabezal esta en la localidad del primer símbolo de la cadena
-    $v$, colocamos a el estado actual $q$ entre la cadena $u$ y $v$; esto da una "semántica" a la notación de la noción
+    $v$, se coloca a el estado actual $q$ entre la cadena $u$ y $v$; esto da un significado formal a la notación del concepto
     de configuración.
-    \newspace
-    Entonces esta noción es la que nos va a dar el paso de formalizar el compúto, por lo cual de manera intuitiva
-    vamos a tener una secuencia de configuraciones digamos:
+    \\
+    \newline
+    Entonces esta noción es la que va a dar el paso de formalizar el compúto, por lo cual de manera intuitivamente se va
+    a tener una secuencia de configuraciones:
     \begin{equation}
         C_{0}\mathellipsis C_{n}, n\in \N
     \end{equation}
     Pero este proceso se definirá entre dos estados a priorí $C_{i},C_{j}$;
-    entonces esta noción me permitirá definir lo siguiente:
+    entonces esta noción permitirá definir lo siguiente:
     \begin{definition}
-        Vamos a decir que la \textbf{configuraciónes} $C_{j}$ le sigue a $C_{k}$ si:
-        Tomamos $u,v$ cadenas de $\Gamma$, y tomamos $a,b\in \Sigma$.
-        entonces decimos que: si pasa $\delta(q_{k},b) = (q_{j},c,L)$,
+        Se dice que la \textbf{configuración} $C_{j}$ le sigue a $C_{k}$ si:
+        Se toman las cadenas $u,v$ de $\Gamma$, y también $a,b\in \Sigma$.
+        entonces se concluye que: si pasa $\delta(q_{k},b) = (q_{j},c,L)$,
         entonces $uacq_{j}v$ le sigue de $uaq_{k}bv$
 
     \end{definition}
     La anterior noción se esta definiendo con la función $\delta$, que es la que esta formalizando esta noción.
-    Como mencionamos anteriormente, queremos definir secuencias de configuraciónes, entonces
-    vamos a tener una configuración inicial:
+    Como se menciono anteriormente, se estipula que las secuencias de configuraciónes, entonces se tendrá una configuración
+    inicial.
     \begin{definition}
         Sea $M$ una máquina de Turing, $w$ una cadena,
-        vamos a decir que la configuracion inicial es con base a la escritura
-        anterior, vamos a definir a $C_{0}$ a $q_{0}w$
-    \end{definition}
-    Que el significado de la notación de la configuración inicial es que esta en
-    el estado cero, $q_{0}$ y el cabezal esta en el primera localidad de lado izquierdo de la cinta.
-    Ahora vamos a hablar de la configuraciones que intuitivamente son las candidatas para
+        a la configuracion inicial $C_{0}$ la representaremos con base a lo anterior como $q_{0}w$
+        \end{definition}
+    El significado de la notación de la configuración inicial es que esta en
+    el estado cero $q_{0}$ y el cabezal esta en el primera localidad de lado izquierdo de la cinta.
+    Ahora las configuraciones que intuitivamente son las candidatas para
     que sean las configuraciones finales si es que la máquina termina en algun momento de este
-    proceso; pero por el momento llamaremos a esas configuraciones:\newline
+    proceso; pero por el momento se llamará a esas configuraciones:\newline
     \begin{equation}
         q_{accept}, q_{reject}\label{eq:equation8}
     \end{equation}
-    A estas configuraciones las vamos a nombrar configuraciones de paro, ya que estan definidas
-    en terminos del estado en el que entran; que son los estado de paro y de aceptación respectivamente.
+    A estas configuraciones se les nombrarán como configuraciones de paro, ya que están definidas
+    en términos del estado en el que entran; que son los estado de paro y de aceptación respectivamente.
     %TODO: Hacer una revisión gramatical de la tesis
-    Entonces podemos decir formalmente que una máquina de Turing se detiene si entra en los estados
-    $q_{accept0},q_{reject}$ y con base a esto podemos hacer una generalización de la función delta tomando
+    Entonces se puede formalizar que una máquina de Turing se detiene si entra en los estados
+    $q_{accept0},q_{reject}$ y con base a esto se hace eneralización de la función delta tomando
     un conjunto de estados en el que no esta los estado de detención
     \newline
-    Una vez aclarado esto, ya tenemos los elementos para definir que: dada una máquina $M$ acepta a una
+    Una vez aclarado esto, se tienen los elementos para definir que:\\
+    dada una máquina $M$ acepta a una
     cadena arbitraria $w$.
     \begin{definition}
         Sea una cadena $w$ y una máquina de Turing $M$,\newline
-        entonces decimos que $M$ acepta a la cadena $w$ si:
+        entonces $M$ acepta a la cadena $w$ si:
         \begin{enumerate}
             \item $C_{1}$ es la configuración inicial con entrada $w$
             \item cada $C_{i+1}$ le sigue de $C_{i}$
-            \item existe un $k \in \N$ tal que $C_{k}$ es una configuración de aceptación.
+            \item existe un $k \in \N$ tal que $C_{k}$ es una configuración de aceptación
         \end{enumerate}
     \end{definition}
     %! Esta es una descripción a un alto nivel de estos objectos formale
-    Esta es la formalizacion de que una máquina de Turing \textbf{acepte} a una cadena $w$,
-    entonces, lo que podemos observar es que los problemas que se plantean se están
-    escribiendo en terminos del lenguaje, en el sentido formal de lenguaje, que son los
-    conjuntos de cadenas formadas sobre un alfabeto dado $\Sigma$
+    Esta es la formalizacion de que una máquina de Turing \textbf{acepte} a una cadena $w$
+    y lo que se observa es que los problemas que se plantean, se
+    escriben en términos del lenguaje, es decir, el sentido formal de lenguaje; que son los
+    conjuntos de cadenas formadas sobre un alfabeto dado $\Sigma$.
     \newpage
-    Entonces en este sentido, dada una máquina de Turing $M$, podemos tener la "coleccióń" de todas
+    En este sentido, dada una máquina de Turing $M$,se puede tener la "coleccióń" de todas
     las cadenas que son aceptadas por $M$, que con base a la definición de lenguaje en el mundo de máquinas de Turing
     esto es el conjunto de cadenas con el atributo de que son aceptadas por $M$, sobre un alfabeto $\Sigma$.
     \newline
-    En estos términos, lo vamos a formalizar de la siguiente manera:
+    Ahora se formalizara de la siguiente manera:
     \begin{definition}
         Sea $M$ una máquina de Turing, al conjunto de cadenas $w$ que son aceptadas por $M$ sobre el alfabeto $\Sigma$,
-        lo vamos a llamar el lenguaje que \textbf{reconoce} $M$.\newline
-        Y lo vamos a denotar como $L(M)$.
+        lo vamos a llamar el lenguaje que \textbf{reconoce} $M$, se escribirá como $L(M)$.
+
     \end{definition}
 
-    Ahora con estas nociónes, tendremos la siguiente noción: \newline Sea $L$ un lenguaje sobre un alfabeto $\Sigma$,
-    vamos a definir en terminos de la existencia de una máquina de Turing que lo hacé reconocible.\newline
-    Esto lo formalizamos de la siguiente manera: \newline
+    Ahora con estas nociónes,se tendrá la siguiente noción: \newline Sea $L$ un lenguaje sobre un alfabeto $\Sigma$,
+    se estipulará en términos de la existencia de una máquina de Turing que lo hacé reconocible;
+    así se formalizará de la siguiente manera: \newline
+    %Todo: Hacer las correcciones de edicion de las partes faltantes para concluir esta parte correspondiente
+
     \begin{definition}
-        Sea $L$ un lenguaje, decimos que es Turing-reconocible si:
+        Sea $L$ un lenguaje, se dice que es Turing-reconocible si:
         existe una máquina de Turing que lo hace Turing-reconocible.
     \end{definition}
 
@@ -313,13 +321,13 @@
         \end{itemize}
     \end{remark}
     %!Aqui vamos a hacer el enfasis de que siempre tendremos maquinas que paren.
-    En este caso, tomaremos solamente máquinas de Turing que se detienen para todas sus entradas,
+    En este caso, tomaremos solamente máquinas de Turing que se detienen en algun momento en la ejucución para todas sus entradas,
     por lo tanto en términos formales; dichas máquinas siempre se dentendrán en algún momento de la
     ejecución de $M$, para $\forall w$ entrada.
     Formalizaremos lo anterior con una definición.
     \begin{definition}
-        Sea $M$ máquina de Turing tal que $\forall w$ entrada, esta se detiene en algún momento de la ejecución,
-        entonces decimos que dicha máquina de Turing tiene el atributo de ser
+        Sea $M$ máquina de Turing tal que $\forall w$ entrada, si esta se detiene en algún momento de la ejecución,
+        entonces se dice que dicha máquina de Turing tiene el atributo de ser
         \textbf{decidible}\newline
         Donde $w$ es una cadena sobre el alfabato $\Sigma$
         Es decir, siempre entrán en su estado de \textbf{aceptación}
