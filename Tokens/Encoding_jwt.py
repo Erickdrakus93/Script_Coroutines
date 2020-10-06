@@ -20,7 +20,7 @@ def generate_token(name, user_id):
 
 
 def token_to_string(token):
-    """This function is to create the token in a graphene form"""
+    """This function is to convert the token to bytes in text as we can note"""
     return token.decode('utf-8')
 
 
@@ -47,7 +47,7 @@ class CreateAuth(graphene.Mutation):
             # to call inside
             return CreateAuth(token=token)
         else:
-            raise ConnectionError
+            raise ConnectionError  # Here we define the next part of an authentication error
 
 
 class Mutation(graphene.ObjectType):

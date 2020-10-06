@@ -1,6 +1,7 @@
 import sys
+import os
 import array
-
+import math
 
 from past.builtins import raw_input
 
@@ -30,4 +31,5 @@ def print_the_exit_as_c(some_str):
     some_str = input(some_str) # Here we call as the input
     some_str = raw_input(some_str)
     print("The input is the next",  some_str)
+
 

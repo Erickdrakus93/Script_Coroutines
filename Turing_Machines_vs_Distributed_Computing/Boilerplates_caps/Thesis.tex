@@ -246,7 +246,7 @@
     entonces esta noción permitirá definir lo siguiente:
     \begin{definition}
         Se dice que la \textbf{configuración} $C_{j}$ le sigue a $C_{k}$ si:
-        Se toman las cadenas $u,v$ de $\Gamma$, y también $a,b\in \Sigma$.
+        Se toman las cadenas $u,v$ de $\Gamma$, y también tomamos $a,b\in \Sigma$.
         entonces se concluye que: si pasa $\delta(q_{k},b) = (q_{j},c,L)$,
         entonces $uacq_{j}v$ le sigue de $uaq_{k}bv$
 
@@ -255,9 +255,10 @@
     Como se menciono anteriormente, se estipula que las secuencias de configuraciónes, entonces se tendrá una configuración
     inicial.
     \begin{definition}
-        Sea $M$ una máquina de Turing, $w$ una cadena,
-        a la configuracion inicial $C_{0}$ la representaremos con base a lo anterior como $q_{0}w$
+        Sea $M$ una máquina de Turing, $w$ una cadena, tomamos a
+         la configuracion inicial $C_{0}$, y se representa con base a lo anterior como $q_{0}w$
         \end{definition}
+    \newline
     El significado de la notación de la configuración inicial es que esta en
     el estado cero $q_{0}$ y el cabezal esta en el primera localidad de lado izquierdo de la cinta.
     Ahora las configuraciones que intuitivamente son las candidatas para
@@ -267,18 +268,18 @@
         q_{accept}, q_{reject}\label{eq:equation8}
     \end{equation}
     A estas configuraciones se les nombrarán como configuraciones de paro, ya que están definidas
-    en términos del estado en el que entran; que son los estado de paro y de aceptación respectivamente.
+    en términos del estado en el que entran; que son los estado de paro y de aceptación respectivamente.\newline
     %TODO: Hacer una revisión gramatical de la tesis
-    Entonces se puede formalizar que una máquina de Turing se detiene si entra en los estados
-    $q_{accept0},q_{reject}$ y con base a esto se hace eneralización de la función delta tomando
+    Entonces se formalizará que una máquina de Turing se detiene si entra en los estados
+    $q_{accept0},q_{reject}$ y con base a esto se hará una generalización de la definición de la función delta, tomando
     un conjunto de estados en el que no esta los estado de detención
     \newline
-    Una vez aclarado esto, se tienen los elementos para definir que:\\
-    dada una máquina $M$ acepta a una
-    cadena arbitraria $w$.
+    Una vez aclarado esto, se tienen los elementos para definir que:\newline
+    Dada una máquina $M$ acepta a una
+    cadena arbitraria $w$.  
     \begin{definition}
         Sea una cadena $w$ y una máquina de Turing $M$,\newline
-        entonces $M$ acepta a la cadena $w$ si:
+        entonces se dice que $M$ acepta a la cadena $w$ si:
         \begin{enumerate}
             \item $C_{1}$ es la configuración inicial con entrada $w$
             \item cada $C_{i+1}$ le sigue de $C_{i}$
@@ -286,7 +287,7 @@
         \end{enumerate}
     \end{definition}
     %! Esta es una descripción a un alto nivel de estos objectos formale
-    Esta es la formalizacion de que una máquina de Turing \textbf{acepte} a una cadena $w$
+    Esto esta formalizando la noción de que una máquina de Turing \textbf{acepta} a una cadena $w$
     y lo que se observa es que los problemas que se plantean, se
     escriben en términos del lenguaje, es decir, el sentido formal de lenguaje; que son los
     conjuntos de cadenas formadas sobre un alfabeto dado $\Sigma$.
@@ -295,15 +296,15 @@
     las cadenas que son aceptadas por $M$, que con base a la definición de lenguaje en el mundo de máquinas de Turing
     esto es el conjunto de cadenas con el atributo de que son aceptadas por $M$, sobre un alfabeto $\Sigma$.
     \newline
-    Ahora se formalizara de la siguiente manera:
+    Ahora se formalizara lo anterior de la siguiente manera:
     \begin{definition}
         Sea $M$ una máquina de Turing, al conjunto de cadenas $w$ que son aceptadas por $M$ sobre el alfabeto $\Sigma$,
-        lo vamos a llamar el lenguaje que \textbf{reconoce} $M$, se escribirá como $L(M)$.
+        se llamarán el lenguaje que \textbf{reconoce} $M$, se escribirá como $L(M)$.
 
     \end{definition}
-
-    Ahora con estas nociónes,se tendrá la siguiente noción: \newline Sea $L$ un lenguaje sobre un alfabeto $\Sigma$,
-    se estipulará en términos de la existencia de una máquina de Turing que lo hacé reconocible;
+    \space
+    Ahora con estas definiciones, se tendrá la siguiente noción: \newline Sea $L$ un lenguaje sobre un alfabeto $\Sigma$,
+    se estipulará en términos de la existencia de una máquina de Turing que lo hace reconocible;
     así se formalizará de la siguiente manera: \newline
     %Todo: Hacer las correcciones de edicion de las partes faltantes para concluir esta parte correspondiente
 
@@ -313,7 +314,7 @@
     \end{definition}
 
     \begin{remark}
-        Cuando iniciamos una máquina de Turing con entrada $w$, pueden pasar tres "eventos":
+        Cuando se inicia una máquina de Turing con entrada $w$, pasan tres posibles eventos:
         \begin{itemize}
             \item acepta,
             \item rechaza,
@@ -321,26 +322,26 @@
         \end{itemize}
     \end{remark}
     %!Aqui vamos a hacer el enfasis de que siempre tendremos maquinas que paren.
-    En este caso, tomaremos solamente máquinas de Turing que se detienen en algun momento en la ejucución para todas sus entradas,
-    por lo tanto en términos formales; dichas máquinas siempre se dentendrán en algún momento de la
+    En este caso, se tomará solamente máquinas de Turing que se detienen en algun momento en la ejucución para todas sus entradas,
+    por lo tanto en términos formales, dichas máquinas siempre se dentendrán en algún momento de la
     ejecución de $M$, para $\forall w$ entrada.
-    Formalizaremos lo anterior con una definición.
+    Se formalizará lo anterior con una definición.
     \begin{definition}
         Sea $M$ máquina de Turing tal que $\forall w$ entrada, si esta se detiene en algún momento de la ejecución,
-        entonces se dice que dicha máquina de Turing tiene el atributo de ser
+        entonces dicha máquina de Turing tiene el atributo de ser
         \textbf{decidible}\newline
         Donde $w$ es una cadena sobre el alfabato $\Sigma$
         Es decir, siempre entrán en su estado de \textbf{aceptación}
-        o en su estado de \textbf{rechazo}, en algún momento de la ejecución.
+        o en su estado de \textbf{rechazo} en algún momento de la ejecución.
     \end{definition}
     Y por el lado de la noción del lenguaje definimos lo siguiente:
     \begin{definition}
-        Decimos que un lenguaje es \textbf{decidible} si existe un máquina de Turing
+        Se dicé que un lenguaje es \textbf{decidible} si existe un máquina de Turing
         que lo \textbf{decide}.
         i.e que la máquina tiene el atributo de ser decidible.
     \end{definition}
     %!Exponer un ejemplo de máquina de Turing, tanto en esta version, como en la versión final de esta tesis
-    Una vez que tenemos el concepto de máquina de Turing, daremos un ejemplo de un lenguaje que es decidible,
+    Una vez que se tiene el concepto de máquina de Turing, daremos un ejemplo de un lenguaje que es decidible,
     i.e expondremos una máquina de turing \textbf{decidible}.
 
     \begin{example}
@@ -351,24 +352,24 @@
         Es el lenguaje que consta de cadenas de 0's tal que su longitud es una
         potencia de 2.
     \end{example}
-    Entonces afirmamos que $M_{2}$ es un lenguaje decidible.
+    Entonces se afirma que $M_{2}$ es un lenguaje decidible.
     %!Hacer un sketch de que es un lenguaje decidible
-    Entonces podemos hacer las instrucciones (alto  nivel) para $M_{2}$ como sigue:
+    Entonces se puede hacer las instrucciones (alto  nivel) para $M_{2}$ como sigue:
     \begin{enumerate}
-        \item recorrer de izquierda a derecha a través de la cinta, tachando uno de cada dos ceros.
-        \item Si en la etapa 1, la cinta contenia un solo $0$, entonces \textbf{acepta}.
-        \item Si en la etapa 1, la cinta contenía mas de un $0$ y ademas contenía un numero impar, mayor a $1$, \textbf{rechaza}.
-        \item Regresa el cabezal al lado izquierdo      al final de la cinta.
-        \item Ve a la etapa 1.
+        \item Recorrer de izquierda a derecha a través de la cinta, tachando uno de cada dos ceros
+        \item Si en la etapa 1, la cinta contenia un solo $0$, entonces \textbf{acepta}
+        \item Si en la etapa 1, la cinta contenía mas de un $0$ y además un número impar, mayor a $1$, \textbf{rechaza}
+        \item Regresa el cabezal al lado izquierdo al final de la cinta
+        \item Ve a la etapa 1
     \end{enumerate}
-    Una vez que tenemos la descripción de la máquina de Turing a un alto nivel, podemos hacer un puente
+    Una vez que se tiene la descripción de la máquina de Turing a un alto nivel, se puede hacer un puente
     a un bajo nivel, que es formalmente describir la máquina con sus elementos que la definen para una entrada $w$,
     el cual nuestro puente será en describir la función $\delta$ vía un diagrama de estados
     %!Describiendo el alto nivel de la maquina de Turing a un alto nivel.
     En la etapa 1 de $M_{2}$, corta el número de ceros a la mitad. Mientras la máquina barre tráves de la cinta en la
     etapa 1, lleva la cuenta de $0$'s vistos si es par o impar.\newline Si el número es impar mayor a 1, entonces el número original
     de $0$'s en la entrada no puede ser una potencia de 2. Entonces la máquina \textbf{rechaza} en esa instancia.
-    Como sea, si el número de 0's visto es 1, entonces el número original tiené que ser una potencia de 2, entonces en ese
+    Si el número de 0's visto es 1, entonces el número original tiené que ser una potencia de 2, entonces en ese
     caso la máquina \textbf{acepta}.
     %!Descripción formal de la máquina de Turing.
     Sea $M_{2} =(Q,\Sigma,\Lambda,\delta,q_{1},q_{accept},q_{reject})$:
@@ -376,21 +377,22 @@
         \item $Q = \{q_{1},q_{2},\dots,q_{5},q_{accept},q_{reject}$,
         \item $\Sigma = \{ 0 \}$ and
         \item $\Lambda = \{0,x,\sqcup \}$.
-        \item Describirimos a $\delta$ con un diagrama de estado.
+        \item Se describirá a $\delta$ con un diagrama de estado.
         \item Los estados de inicio, aceptación y rechazo son $q_{1},q_{accept},q_{reject}$ respectivamente.
     \end{enumerate}
     \newline
     %!Todo: Hacer el diagrama de estado para que sea una mejor presentación.
+    %!Este diagrama se hara de la manera de draw.io
 
     \begin{center}
-        \includegraphics{Im_1.jpg}
+        \includegraphics{Untitled Diagram.jpg}
     \end{center}
     \newline
-    En este diagrama, la etiqueta $0\rightarrow \sqcup,R$ que aparecé en la transición del estado $q_{1}$ al estado $q_{2}$,
+    En este diagrama, la etiqueta $0\rightarrow \sqcup,R$ que muestra en la transición del estado $q_{1}$ al estado $q_{2}$,
     tiene la semántica de la definición de la función $\delta$, que en otras palabras se describe como si:\newline
     en el estado $q_{1}$ con el cabezal leyendo $0$, la máquina va al estado $q_{2}$, escribe $\sqcup$ y mueve el cabezal
     a la derecha.\newline
-    Lo cúal en términos formales significa que: $\delta(q_{1},0) = (q_{2},\sqcup, R)$.
+    Lo que en términos formales significa que: $\delta(q_{1},0) = (q_{2},\sqcup, R)$.
     Otra escritura que usaremos para hacer la notación en este ejemplo mas compacta,
     es denotar: $0\leftarrow R$, que la semántica es que se hace la transición del estado $q_{3}$ al estado $q_{4}$, que
     es la etiqueta que se aprecia en el diagrama de estados, y ademas significa que la máquina se mueve a la derecha en
