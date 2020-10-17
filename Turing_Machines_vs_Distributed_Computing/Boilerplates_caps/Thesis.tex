@@ -59,7 +59,7 @@
     computacionales, demostrando que el modelo $A$ de  la máquina de
     Turing es equivalente en poder al modelo distribuido $B$, en particular al modelo \textbf{LOCAL}
 
-    \section{Decidibilidad en el modelo de máquinas de Turing}\label{sec:decidibilidasd-en-el-modelo-de-máquinas-de-turing}
+    \section{Decidibilidad del modelo máquinas de Turing}\label{sec:decidibilidasd-en-el-modelo-de-máquinas-de-turing}
     %!todo:Hacer una explicacion intuitiva de lo que es una máquina de Turing,despues de esta done
     %!todo: de esta explicación intuitiva
     %!todo: Hacer un feedback con la escritura para que se pula la parte de la gramática
@@ -393,20 +393,20 @@
     en el estado $q_{1}$ con el cabezal leyendo $0$, la máquina va al estado $q_{2}$, escribe $\sqcup$ y mueve el cabezal
     a la derecha.\newline
     Lo que en términos formales significa que: $\delta(q_{1},0) = (q_{2},\sqcup, R)$.
-    Otra escritura que usaremos para hacer la notación en este ejemplo mas compacta,
+    Otra escritura que se usará para la notación en este ejemplo más compacta,
     es denotar: $0\leftarrow R$, que la semántica es que se hace la transición del estado $q_{3}$ al estado $q_{4}$, que
     es la etiqueta que se aprecia en el diagrama de estados, y ademas significa que la máquina se mueve a la derecha en
     el momento en el que lee un $0$ en el estado $q_{3}$, pero que no altera la cinta(\no hace una operación escritura),
     entonces $\delta(q_{3}),0) = (q_{4},0,R)$ en términos del mapeo que se esta generando.\newline
-    Esta máquina inicia escribiendo un simbolo blanco sobre el último $0$ de lado izquierdo. En particular esto sirve
-    para delimitar el final de la cinta con el simbolo blanco $\sqcup$, en esta particular máquina de Turing.
+    Esta máquina inicia escribiendo un símbolo blanco sobre el último $0$ de lado izquierdo. En particular esto sirve
+    para delimitar el final de la cinta con el símbolo blanco $\sqcup$, en esta particular máquina de Turing.
     \newline
-    Ahora vamos a hacer una ejecución de esta maquina, $M_{2}$ con la entrada $w = 0000$, en el cual escribiremos la función
-    transición $\delta$ con la semántica de las configuraciones.
+    Ahora haremos una ejecución de esta maquina, $M_{2}$ con la entrada $w = 0000$, con lo cual se escribirá la función
+    transición $\delta$ con la semántica y escritura de las configuraciones.
 
     %!Here we can use the next sessions of the rows as we can see
     La siguiente secuencia es la ejecución de $M_{2}$ con la entrada en particular $w = 0000$,
-    Se lee hacía abajo de las columnas de izquierda a derecha.
+    Se leé hacía abajo de las columnas de izquierda a derecha.
 
     \begin{center}
         \begin{tabular}{c c c}
@@ -424,13 +424,13 @@
 
     %! Final del ejemplo de la máquina de Turing.Inicio de la teoria de Computo Distribuido.
     %! TODO: Hacer la solución gramatical en el siguiente capitulo.
-    \section{Decidibilidad en el modelo de computo distribuido  \textbf{LOCAL}}\label{sec:decidibilidad-en-el-modelo-de-computo-distribuidotextbf}
-    Ahora lo que haremos es definir el modelo de computo distribuido de manera formal,
-    y tomar un modelo en particular en la que enfocaremos nuestro estudio, para posteriormente
+    \section{Decidibilidad en el modelo de cómputo distribuido  \textbf{LOCAL}}\label{sec:decidibilidad-en-el-modelo-de-computo-distribuidotextbf}
+    Ahora lo que se hará es definir el modelo de cómputo distribuido de manera formal
+    y se tomará un modelo en particular en la que se enfocará nuestro estudio, para posteriormente
     estudiar la noción de decibilidad en dicho modelo.\newline
 
     En este modelo presentaremos las partes que lo conforman, todo ello de manera formal para ello
-    haremos uso de elementos de computo teorico, a priori esto se podra ver como una gráfica donde cada
+    haremos uso de elementos de cómputo teórico, a priori esto se podrá ver como una gráfica donde cada
     nodo se puede representar como una máquina de estados.
 
 
@@ -444,108 +444,111 @@
     El modelo de comunicación consiste en una red de comunicación 1-1 que será descrita en términos formales por
     una gráfica conexa, no dirigida $G=(V,E)$, donde los vertices $V=\{ v_{1},\mathellipsis v_{n} \}$,\space
     operando entre ellos.
-    Inicialmente, consideraremos identificadores unicos asignados a los procesos de la gráfica $G$.\space
-    Más concretamente consideraremos a estos identificadores de un conjunto ordenado de enteros:
-    de la siguiente manera:
+    Inicialmente, se considerará identificadores únicos asignados a los procesos de la gráfica $G$.\space
+    Concretamente consideramos a estos identificadores de un conjunto ordenado de enteros, de la siguiente manera:
 
     \begin{equation}
         S = \{ s_{1},\mathellipsis,s_{n}\} \
         donde:\ s_{i} < s_{i+1} \ \forall i\geq 1\label{eq:equation}
     \end{equation}
     Entonces con esta notación, una ID-asignación es un mapeo:
-    $ID:V\rightarrow S$, entonces nos referiremos a su identificador como:
+    $ID:V\rightarrow S$, entonces se refiere a su identificador con la siguiente notación:
     $ID(v)$. \newline
-    Entonces la comunicación se llevara acabo de la siguiente manera: \newline
-    Cada vertice tendra asociado el numero de puertos, como el $deg_{G}(v)$,
-    entonces en este sentido, el conjunto de aristas adyacentes al vertice
+    Se tiene que la comunicación se lleva acabo de la siguiente manera:\\
+    \newline
+    Cada vértice tendrá asociado el numero de puertos, como el $deg_{G}(v)$,
+    luego en este sentido decimos que el conjunto de aristas adyacentes al vertíce
     contiene exactamente $deg_{G}(v)$, donde cada arista esta conectado en un puerto de $v$.
     \newline
-    Podemos denotar que a cada arista $(u,v)$ le corresponde la pareja
+    Se denotará que a cada arista $(u,v)$ le corresponde la pareja
     $((u,i),(v,j))$, donde $1\leq i \leq deg_{G}(u) $ y $1\leq j \leq deg_{G}(v)$,
-    con semántica:\newline \textbf{un canal de comunicación conectadose en el puerto $i$  de $u$ con el puerto $j$ de
+    con el siguiente contexto :\newline \textbf{un canal de comunicación que se conecta en el puerto $i$  de $u$ con el puerto $j$ de
     $v$.}\newline
-    El vertice $u$ envía(ejecuta la operación $send()$) un mensaje a sus vecinos $v$, cargando el mensaje en un puerto apropiado, digamos $i$.
+    El vértice $u$ envía(ejecuta la operación $send()$) un mensaje a sus vecinos $v$, cargando el mensaje en un puerto apropiado, digamos $i$.
     Este mensaje es recibido($deliver()$) por $v$, a tráves del puerto $j$. \newline
     %!Aqui se ha acaabado las correcciones de la capa de comunicacion.
 
     %!Inicio de las correcciones de la capa de computacion.
     \subsubsection{Capa de Computación}
-    Una vez que tenemos la capa de comunicación, presentaremos la capa formal del modelo de
-    computo.\newline
-    El modelo estara governado por un algoritmo $\Pi$, que estará compuesto de protocolos
+    Una vez que se tiene la capa de comunicación, se presentará la capa formal del modelo de
+    cómputo.\newline
+    El modelo estara controlado por un algoritmo $\Pi$, que estará compuesto de protocolos(algoritmos)
     $\Pi_{1},\mathellipsis,\Pi_{n}$, donde cada $\Pi_{i}$ residirá en su correspondiente $v_{i}$.
     \newline
     \begin{remark}
-        Hasta ahora hemos hablado a secas de los vertices, pero podemos darle una semántica
-        de computo en términos de \textbf{procesos}, el cual significa que es una entidad de computo, y entonces a cada $v_{i}$
-        lo nombraremos como el proceso $p_{i}$.\newline
-        Con esta convención podemos decir que cada protocolo(algoritmo local) $\Pi_{i}$ residirá en su respectivo proceso:
+        Hasta ahora hemos hablado a secas de los vértices, pero se dará un contexto
+        de cómputo en términos de \textbf{procesos}, lo cual significa que es una entidad de cómputo, y entonces a cada $v_{i}$
+        se nombrará como el proceso $p_{i}$.\newline
+        Con esta convención se dirá que cada protocolo(algoritmo local) $\Pi_{i}$ residirá en su respectivo proceso:
         $p_{i}$.
 
     \end{remark}
     %!Aqui haremos el entendimiento computacional de los procesos.
-    \begin{remark}
-        Podemos observar que podemos modelar a cada $\Pi_{i}$ como una maquina de estado para $\forall i$ con su
-        correspodiente conjunto de estados estado $Q_{i}$ conteniendo en particular a su estado inicial  $q_{0i}$, asi como sus estados de
-        aceptación y rechazo: $q_{accept},q_{reject}\in Q_{i}$, respectivamente tal que en cualquier
+        \begin{remark}
+        Se observa que se modelará a cada $\Pi_{i}$ como una máquina de estado para $\forall i$ con su
+        correspodiente conjunto de estados estado $Q_{i}$ conteniendo en particular a su estado inicial  $q_{0i}$, así como sus estados de
+        aceptación y rechazo: $q_{accept},q_{reject}\in Q_{i}$ tal que en cualquier
         momento dado el proceso $p_{i}$ esta en el estado $q_{i}$ de $Q_{i}$.
         \space
-        Mas aún, podemos pensar en cada $\Pi_{i}$ como en una máquina de Turing, equipada con operaciones de envío y
+        Mas aún se interpretará a cada $\Pi_{i}$ como en una máquina de Turing, equipada con operaciones de envío y
         recepción de \textbf{mensajes}.
     \end{remark}
     %!Lo anterior nos da el preambulo de ver a cada algo como una maquina de Turing.
     \newline
-    Por otro lado en la capa de comunicación, tendremos el siguiente esquema:
+    Por otro lado en la capa de comunicación, se tiene el siguiente esquema:
     \newline
     %!Aqui vamos a dar una definición formal de lo que es un mensaje en un
     %!Manejador de contexto.
     \begin{definition}
-        Vámos a definir un mensaje $MSG$ como la información local que sera enviada del proceso $v$ al proceso $u$,
-        por medio del canal $((v,i),(u,j))$, donde el proceso $v$ tiene el atributo de la operacion $send(MSG)$, y el vertice
-        $v$ hace una operación $deliver(MSG)$, para que finalmente el proceso $v$, hagá una operación $compute()$.
+        Se definirá un mensaje $MSG$ como la información local que será enviada del proceso $v$ al proceso $u$,
+        por medio del canal $((v,i),(u,j))$, donde el proceso $v$ tiene el atributo de la operación $send(MSG)$, y el vértice
+        $v$ ejecuta una operación $deliver(MSG)$, para que finalmente el proceso $v$ ejecute una operación $compute()$.
         \newline
-        Podemos decir que el tamaño de la información del mensaje $MSG$, es $O(\log n)$ bits.
+        Se dirá a manera de observación que el tamaño de la información del mensaje $MSG$, es $O(\log n)$ bits.
     \end{definition}
 
-    En cualquier momento dado y en cualquier canal de comunicación $e_{i}=(u,v)$ está en algun estado
+    En cualquier momento y en cualquier canal de comunicación $e_{i}=(u,v)$ está en algun estado
     $\overline{q}_{i}$ del conjunto de estados $\overline{Q}_{i}$
     el estado $\overline{q}_{i}$ esta compuesto de dos componentes denotadas de la siguiente manera:
     $\overline{q}_{u\leftarrow v}$ y $\overline{q}_{v\leftarrow v}$ una por cada direccion del canal
-    de comunicación.
-    Vamos a denotar como $M$ a la colección de todos los posibles mensajes que se pueden enviar de un proceso a otro en toda ejecucion del algoritmo,
+    de comunicación.\newline
+    \\
+    Se denotará como $M$ a la colección de todos los posibles mensajes que se pueden enviar de un proceso a otro en toda ejecución del algoritmo,
     \space cada uno de los dos componentes $\overline{q}_{u \leftarrow v}$ es un elemento de $M \cup \lambda$,
-    $\overline{q}_{u\leftarrow v} = MSG\in M$ significa que ahora el mensaje $MSG$ esta en transicion de
-    $u$ a $v$, y denotaremos que $\overline{q}_{u\leftarrow v} = \lambda$ para representar una semantica de que
+    $\overline{q}_{u\leftarrow v} = MSG\in M$ significa que ahora el mensaje $MSG$ está en transición de
+    $u$ a $v$, y se denotara que $\overline{q}_{u\leftarrow v} = \lambda$ para representar el hecho de que
     el canal actual esta vacio en esa dirección.
-    En el inicio del computo, todos los procesos estan en el estado inicial $q_{0,i}$ $\forall i$
+    En el inicio del cómputo todos los procesos están en el estado inicial $q_{0,i}$ $\forall i$
     y todos los canales de comunicación estan vacios.
-    Es decir que sintacticamente: $\overline{q}_{i,0} = <\lambda,\lambda>$
+    Es decir se escribe como: $\overline{q}_{i,0} = <\lambda,\lambda>$
     \newline
+
     \subsubsection{Ejecución de un algoritmo en este modelo}
-    La ejecución del algoritmo en este ambiente consistira de \textbf{Eventos}, ocurriendo en diversos
+    \newline
+    La ejecución del algoritmo en este ambiente consiste de \textbf{eventos}, ocurriendo en diversos
     lugares de la red y afectando a los procesos involucrados.
-    Diremos que un \textbf{paso computacional} es una operación como máquina de Turing del proceso $p$.
+    Se dirá que un \textbf{paso computacional} es una operación como máquina de Turing del proceso $p$.
     Los eventos puede ser del tipo:
     \begin{itemize}
         \item Computacional: Representando un paso en un procesador
-        \item Comunicación: Representando la entrega o la recepción de un mensaje.
+        \item Comunicación: Representando la entrega o la recepción de un mensaje
     \end{itemize}
-    Donde cada evento de comunicación tiene una semántica de:\newline
+    Donde cada evento de comunicación se interpreta como:\newline
     $SEND(i,j,MSG)$ o $DELIVER(i,j,MSG)$ para algún mensaje $MSG$.
-    Entonces a manera de reportorio de eventos tenemos:
+    Entonces enlistando los eventos:
     \begin{enumerate}
-        \item Evento $COMPUTE(i)$:\space El proceso $v_{i}$ ejecuta una operación interna, basado en su estado local, y
-        posiblemente cambie su estado local.
+        \item Evento $COMPUTE(i)$:\space El proceso $v_{i}$ ejecuta una operación interna, basado en su estado local y
+        posiblemente mute su estado local
         \item Evento $SEND(i,j,MSG)$:\space El proceso $v_{i}$ envia de salida un mensaje $MSG$ en algún canal de
         comunicación link $e_{l}$ con destino al proceso $v_{j}$
         \item Evento $DELIVER(i,j,MSG)$:\space El mensaje $MSG $ originado de un proceso $v_{i}$
         que es enviado por el canal de comunicación $e_{l}$ es entregado en la entrada del destino $v_{j}$
     \end{enumerate}
-    Entonces la computación en un sistema distribuido lo podemos pensar de la siguiente manera: \newline
-    Como una secuencia de configuraciones, capturando el estado actual de los procesos y los canales de comunicación.\newline
-    Cada evento cambia de estado para algun procesador $v_{i}$, y posiblemente también para un canal de comunicación
-    y eso cambiara la configuracion del sistema.
-    En términos formales lo podemos pensar de la siguiente manera:
+    Entonces la computación en un sistema distribuido se pensará de la siguiente manera: \newline
+    como una secuencia de configuraciones, capturando el estado actual de los procesos y los canales de comunicación.\newline
+    Cada evento cambia de estado para algún procesador $v_{i}$ y posiblemente también para un canal de comunicación
+    y eso cambiará la configuración del sistema.
+    En términos formales se pensará de la siguiente manera:
     \theoremstyle{definition}
     \begin{definition}
         Una \textbf{configuración} es una tupla $(q_{1},\mathellipsis,q_{n},\overline{q}_{1},\mathellipsis,\overline{q}_{m})$,
@@ -556,18 +559,18 @@
         \end{equation}
 
         \begin{remark}
-            Como estamos pensando de manera intuitiva a cada uno de los procesos como una máquina de Turing, entonces
-            una vez que uno de los procesos entra en alguno de los estados:\space $q_{accept},q_{reject}$, el proceso ya no cambía
-            de estado, pero sus operaciones de envio y recepción de mensajes siguen activos, i.e quedan activos las
+            Como se imagina de manera intuitiva a cada uno de los procesos como una máquina de Turing, entonces
+            una vez que uno de los procesos entra en alguno de los estados:\space $q_{accept},q_{reject}$, el proceso ya no muta
+            de estado, pero sus operaciones de envío y recepción de mensajes siguen activos, i.e quedan activos las
             operaciones de $send(),receive()$.
         \end{remark}
         \newline
-        Entonces modelaremos la computación del algoritmo como una (posible) infinita secuencia de configuraciones
+        Luego se modelará la computación del algoritmo como una (posible) infinita secuencia de configuraciones
         alternadamente con eventos.
     \end{definition}
     \theoremstyle{definition}
     \begin{definition}
-        La ejecución de un algoritmo $\Pi$ en una grafica con cierta topología
+        La ejecución de un algoritmo $\Pi$ en una gráfica con cierta topología
         $G$, con una entrada inicial $I$ en los procesos es denotado como $\kappa_{\Pi(G,I)}$.
         Formalmente, una \textbf{ejecución} es una secuencia de la forma:
         \begin{equation}
@@ -576,29 +579,29 @@
         donde cada $C_{k}$ es una configuración y cada $\rho_{j}$ es un evento,
         y en particular $C_{0}$ denota la configuración inicial.
     \end{definition}
-    Podemos imponer ciertas restricciones en las ejecuciones del algoritmo, pero por el momento
-    podemos definir formalmente el concepto $\modelo$ en terminos de ejecuciónes para algun algoritmo
+    Se impondrá ciertas restricciones en las ejecuciones del algoritmo, pero por el momento
+    se definirá normalmente el concepto $\modelo$ en términos de las ejecuciones para algún algoritmo
     $\Pi$.\newline
-    Entonces lo anterior nos permite definir lo siguiente:
+    Entonces lo anterior nos da pauta a definir lo siguiente:
     \begin{definition}
-        Diremos que un \textbf{modelo} es un subconjunto de esas posibles ejecuciones
+        Se dirá que un \textbf{modelo} es un subconjunto de esas posibles ejecuciones
     \end{definition}
-    Con la definición anterior, nos basaremos en un modelo en particular con una propiedad en particular, a saber el que
+    Con la definición anterior, se tomará un modelo en particular con una propiedad en particular, a saber el que
     tiene una estructura de rondas.\newline
     \begin{definition}
-        Diremos que un \textbf{modelo} tiene el atributo de \textbf{rondas}:
+        Se dirá que un \textbf{modelo} tiene el atributo de \textbf{rondas}:
         Si las ejecuciones tienen estructura de \textbf{rondas}, es decir:
         \begin{enumerate}
             \item Cada proceso $p$ ejecuta \textbf{send} a todos sus vecinos, \textbf{deliver} de todos sus vecinos y finalmente \textbf{compute},
             \item Cada proceso ejecuta su $r$-ésima ronda si todos los procesos ejecutaron su $r-1$ ronda.
         \end{enumerate}
     \end{definition}\newline
-    La definición anterior nos permitira definir el siguiente modelo:
+    La definición anterior permitirá definir el siguiente modelo:
     \begin{definition}
         Llamaremos \textbf{LOCAL} al modelo que tenga el atributo de \textbf{rondas}
     \end{definition}
-    Y podemos observar que el punto 2 de la definición de rondas, es la que da el cáracter de
-    síncronia en la ejecución.
+    Se observá que el punto 2 de la definición de rondas, es la que da el carácter de
+    síncronía en la ejecución.
     %!Aqui lo que haremos es hacer es tratar de ser lo más claro en las nociones
     %!Enunciados
     \subsubsection{Ejemplos}
@@ -607,89 +610,90 @@
 
     \newpage
     \subsection{Decidibilidad}\label{subsec:decidibilidad}
-    Una vez que tenemos los elementos del modelo distribuido, podemos introducir la noción de \textbf{decibilidad}, en
-    este modelo de computo formal.
+    Una vez que se tiene los elementos del modelo distribuido, se introducirá la noción de \textbf{decibilidad} en
+    este modelo de cómputo formal.
 
     \theoremstyle{definition}
     \begin{definition}
-        Sea $w$ una cadena, podemos escribir a la cadena como $w_{0},\mathellipsis, w_{n}$, la cual sera la entrada al algoritmo
-        $\Pi(w)$, donde de manera distribuida, tendremos como inicialización, que cada proceso $p$ tendra como entrada un caracter de la cadena $w$, digamos $p_{j}(w_{k})$.\newline
-        Sea $\kappa_{\Pi(w,G)}$ una ejecución del algoritmo $\Pi$ con entrada $w$ en la grafica $G$, entonces diremos que
-        la entrada $w$ es aceptada, si existe una configuración en la ejecución $\kappa_{\Pi(w,G)}$, digamos $C_{k}$ tal que
+        Sea $w$ una cadena, se puede escribir a la cadena como $w_{0},\mathellipsis, w_{n}$, la cual será la entrada al algoritmo
+        $\Pi(w)$, donde de manera distribuida, se tendrá como inicialización, que cada proceso $p$ tendrá como entrada un caracter de la cadena $w$, por decir $p_{j}(w_{k})$.\newline
+        Sea $\kappa_{\Pi(w,G)}$ una ejecución del algoritmo $\Pi$ con entrada $w$ en la gráfica $G$, entonces se dirá que
+        la entrada $w$ es aceptada, si existe una configuración en la ejecución $\kappa_{\Pi(w,G)}$, por decir $C_{k}$ tal que
         existe un estado $q_{a}$ en $C_{k}$, de su correspondiente proceso $p_{a}$, tal que $q_{a}=q_{accept}$.\newline
-        Es decir, que el estado en esa configuracion es exactamente el estado $q_{accept}$.\newline
-        En simbolos:
+        Es decir, que el estado en esa configuración es exactamente el estado $q_{accept}$.\newline
+        En símbolos:
         \begin{equation}
             \forall \kappa_{\Pi(w,G)},\ \exists C_{K}\ \mid \exists p_{a}\ \mid q_{a,k}=q_{accept}.\label{eq:equation4}
         \end{equation}
     \end{definition}
 
     %!--En otras palabras lo que quiere decir es lo siguiente --!%
-    Lo anterior, nos permitira definir lo siguiente:
+    Lo anterior, permitirá definir lo siguiente:
     \begin{definition}
         Al conjunto de cadenas que acepta un algoritmo distribuido $\Pi$ es el lenguaje
-        de $\Pi$, o el lenguaje que decide $\Pi$, y lo denotaremos como $L(\Pi)$.
+        de $\Pi$, o el lenguaje que decide $\Pi$, y se denotará como $L(\Pi)$.
     \end{definition}
 
 
     %todo:Migrate the chapter to another file .tex e incluirlo en un main .tex
     \chapter{Simulación de modelos Maquina de Turing y \textbf{LOCAL}}\label{ch:simulacion-de-modelostextbfytextbf}
     \section{Noción de simulación en modelos}\label{sec:nocion-de-simulación-en-modelos}
-    Una vez que tenemos estos dos modelos de computo formal, a nivel logico podemos decir que:
+    Una vez que se tiene estos dos modelos de cómputo formal, a nivel logíco se dice que:
     \theoremstyle{definition}
     \begin{definition}
-        Decimos que un modelo de computo formal $T$ simula a un modelo de computo formal  $S$ si:
+        Se dice que un modelo de computo formal $T$ simula a un modelo de computo formal  $S$ si:
         \begin{equation}
         \forall x\in L(S) \ entonces \ x\in L(T)
         \end{equation}
-        Mas aún decimos que son modelos equivalentes (computacionalmente) si:
+        Mas aún se dice que son modelos equivalentes (computacionalmente) si:
         \begin{equation}
         \forall x\in L(T) \iff x\in L(S) \
         \end{equation}
     \end{definition}
     \space
-    Entonces enunciaremos nuestro teorema de la siguiente manera:
+    Entonces se enunciará el teorema de la siguiente manera:
 
     \begin{theorem}
-        Sea $TM$ una maquina de Turing, entonces existe un $\Pi$ algoritmo distribuido que simula
+        Sea $TM$ una máquina de Turing, entonces existe un $\Pi$ algoritmo distribuido que simula
         a $TM$,\space con la semántica de \textbf{simulación}, con base a la definición anterior.
     \end{theorem}
-    Una vez que tenemos enunciado este teorema, nos adentraremos al diseño del algoritmo distribuido,
-    digamos $\Pi$, tal que para toda ejecucion $\Theta_{\Pi(w,G)}$ con ambiente el modelo \textbf{LOCAL}, con la entrada $w$, para una grafica $G$ con una
-    cierta topología, es tal que \textbf{acepta}.
+    Una vez que se tiene enunciado este teorema,se dará el paso al diseño del algoritmo distribuido,
+    digamos $\Pi$, tal que para toda ejecución $\Theta_{\Pi(w,G)}$ con ambientación el modelo \textbf{LOCAL}, con la entrada $w$, para una gráfica $G$ con una
+    cierta topología es tal que \textbf{acepta}.
     \newpage
 
     \section{Diseño del algoritmo}\label{sec:diseño-del-algoritmo}
     \begin{remark}
-        Trivialmente, podemos pensar que al darle la entrada la cadena que es aceptada por una maquina de Turing $TM$,\space
+        Trivialmente, se pensará que al darle como entrada la cadena que es aceptada por una máquina de Turing $TM$,\space
         es consumida tal que cada proceso la tiene enteramente como entrada, i.e $\Pi(w)$ entonces de manera local se da
-        que $p_{j}(w),\ \forall v_{j}$, entonces este proceso en particular es tal que en algún momento de la ejecución(para alguna ejecució $\Theta_{\Pi(w,G)}$),
+        que $p_{j}(w),\ \forall v_{j}$, entonces este proceso en particular es tal que en algún momento de la ejecución(para alguna ejecución $\Theta_{\Pi(w,G)}$),
         exista una configuración $C_{k}$, y en esta exista un estado $q_{r,k}$, tal que $q_{r,k} = q_{accept}$, pues su respectivo proceso $p_{r}$ es una máquina de Turing,
-        por lo tanto de manera global, $w\in L(\Pi)$, pero podemos observar que la forma de la entrada en el algoritmo $\Pi$
-        es de manera no distribuida, pues de manera intuitiva todos los procesos saben toda la información.
+        por lo tanto de manera global, $w\in L(\Pi)$, pero se observará que la forma de la entrada en el algoritmo $\Pi$
+        es de manera no distribuida, pues de manera intuitiva todos los procesos conocen toda la información.
     \end{remark}
-    Entonces no es verdaderamente un diseño de un algoritmo distribuido, por lo tanto procederemos a diseñar de manera
-    distribuida el siguiente algoritmo:
+    Entonces no es verdaderamente un diseño de un algoritmo distribuido, por lo tanto se dará paso a diseñar de manera
+    \textbf{distribuida} siguiente algoritmo:
     \newline
     %Una vez que tenemos esta información daremos una capa de adversario tal y como lo haremos de esta manera
     %En esta parte daremos una part externa que es la noción de rival en el siguiente sentido
-    Daremos la distribución de la información a manera de contricante de la siguente manera:\newline
-    Sea $w\in L(TM)$, para una maquina de Turing $TM$ arbitraria, entonces decimos que una rebanada de la cadena
-    $w[i]$ o con notación de indice $w_{i}$ tiene localidad $i$.\newline
-    Esta semántica nos va a permitir definir lo siguiente:
+    Se dará la distribución de la información a manera de contricante de la siguente manera:\newline
+    \hfill
+    Sea $w\in L(TM)$, para una máquina de Turing $TM$ arbitraria, entonces se dicé que una rebanada(pedazo) de la cadena
+    $w[i]$, o con notación de indice $w_{i}$, tiene localidad $i$.\newline
+    Esta notación y contexto permite definir lo siguiente:
     \theoremstyle{definition}
     \begin{definition}
-        Sea $p_{k}$ un proceso de una grafica $G$, con cierta topología, entonces
+        Sea $p_{k}$ un proceso de una gráfica $G$, con cierta topología, entonces
         diremos que tendrá una familia $f_{k}$ de posibles entradas, formada por caracteres $w_{t}$, con $t$ localidad para un algoritmo
         distribuido $\Pi$, con ambientación en modelo \textbf{LOCAL}
 
     \end{definition}
-    Esto nos da la noción del control externo de las entradas, que por el momento esto nos esta generando
-    una cierta familiaridad del papel a un alto nivel de la visión del contrincante, como podremos observar
+    Esto da la noción del control externo de las entradas, que por el momento esto esta generando
+    una cierta familiaridad del papel a un alto nivel de la visión del contrincante, como se observa
     esta es la contraparte del algoritmo que esta gobernando computacionalmente (o por la capa de computo)
     del algoritmo.
-    \space
-    Entonces nos propondremos el siguiente diseño del algoritmo que nos dará a priori
+    \hfill
+    Entonces se propone el siguiente diseño del algoritmo que dará a priori
     la solución del problema que estamos atacando.
 
     %!---Esta es el diseño sin las definiciones anteriormente enunciadas --!%
@@ -717,16 +721,18 @@
     \space
     %!--El siguiente capitulo es la descripción del algoritmom ----!%
     \section{Descripción del algoritmo}\label{sec:descripción-del-algoritmo}
-    Observando el pseudocódigo del algoritmo, podemos observar que vamos a hacer la iteracion por rondas, $round$, en
-    virtud del ambiente \textbf{local}, entonces hacemos el código para cada proceso $v_{k}$, luego hacemo la lectura de
-    la entrada $w_{i}$, que es la que es por la inicializacion o despues de una operación $deliver(MSG)$, luego hacemos una
-    iteración, en la cual haremos llamadas de $\delta()$, y actualizaremos la salida de dicho llamado, para repetir este
-    proceso hasta que la localidad de la cadena de salida $w_{r}$, sea de localidad no asignada a la familia de caracteres
+    Observando el pseudocódigo del algoritmo, se observa que se hará la iteración por rondas($round$), en
+    virtud del ambiente \textbf{local}, luego se hace el código para cada proceso $v_{k}$, y la lectura de
+    la entrada $w_{i}$, que es la que es por la inicialización o después de una operación $deliver(MSG)$.
+    \hfill
+    Luego se realiza una iteración en la cual se harán llamadas de $\delta()$ y se actualizará la salida de dicho llamado, para repetir este
+    proceso hasta que la localidad de la cadena de salida $w_{r}$, sea de localidad no asignada a la familia de símbolos
     de la cadena, asignada a el proceso actual, el cual es asignado por el lado del contrincate, que es el agente externo del sistema distribuido.
-    Finalmente tomamos la decisión de regresar el estado de $q_{accept}$, si el estado $q_{r}==q_{accept}$;
-    en otro caso hacemos una operación $send(MSG)$ a los vecinos del proceso actual $v_{k}$.
-    \newline
-    Lo que sigue, es demostrar que este algoritmo es correcto, lo cual se enunciará en el siguiente teorema.
+    \hfill
+    Finalmente se toma la decisión de regresar el estado $q_{accept}$,si el estado $q_{r}==q_{accept}$;
+    en otro caso se ejecuta la operación $send(MSG)$ a los vecinos del proceso actual $v_{k}$.
+    \hfill
+    Lo que sigue, es realizar la demostración que este algoritmo es correcto, lo cual se enunciará en el siguiente teorema.
 
     \section{Demostración del procedimiento $Simula\char95Algo\char95TM$}\label{sec:demostración-del-procedimiento}
     %!--Primera parte demostrativa del teorema --%!
@@ -735,38 +741,98 @@
     \end{theorem}
     \begin{proof}
         Sea $r$ una ronda de la ejecución del algoritmo $\Pi=Simula\char95Algo\char95TM$,
-        al incio de esa ronda se estará iniciando un evento del tipo $COMPUTE(k)$, de nuestro repertorio de eventos para el proceso
-        $v_{k}$, por la naturaleza de la distrubución de la información llegara un momento
-        de la iteración en la que  se de una estructura de dato $msg\gets <q_{r},w_{r},P>$, arrojada por el llamado iterativo de
+        al incio de esa ronda se estará iniciando un evento del tipo $COMPUTE(k)$, del repertorio de eventos para el proceso
+        $v_{k}$, por la naturaleza de la distribución de la información llegará un momento
+        de la iteración en la que se de una estructura de dato del tipo $msg\gets <q_{r},w_{r},P>$, arrojada por el llamado iterativo de
         $\delta$, ya que la localidad de $w_{r}$ no esta asignada a $v_{k}$, sin perdida de generalidad.
-        Entonces, siguiendo el codigo, observamos que tenemos una lógica para la estructura de dato:
-        si $q_{r}==q_{accept}$, entonces $w\in L(\Pi)$, y se acabaria la ejecución en dicha ronda.
-        Si no, entonces hacemos la operación $Send(t,MSG)$, donde sin perdida de generalidad $t$ representa el indice de uno de los vecinos
+        \hfill
+        Entonces, siguiendo el código, se observa que se tiene una lógica para la estructura de dato:
+        \hfill
+        si $q_{r}==q_{accept}$, entonces $w\in L(\Pi)$, y se da por terminada la ejecución en dicha ronda.
+        Si no, entonces se hace la operación $Send(t,MSG)$, donde sin perdida de generalidad $t$ representa el indice de uno de los vecinos
         del proceso $v_{k}$, por otro lado como $w\in L(TM)$ entonces $\exists v_{l}$ en la ronda $r+1$
         tal que al final dicha ronda $\exists q_{l}$ estado tal que $q_{l} == q_{accept}$.\newline
         $\therefore w\in L(\pi)$, por lo tanto el algoritmo es correcto.
 
     \end{proof}
-    Una vez que tenemos la corrección del algoritmo se desprende a manera de corolario la
+    Una vez que se tiene la corrección del algoritmo, se desprende a manera de corolario la
     simulación de $TM$ en $LOCAL$.
     \begin{corrollary}
-        Sea $TM$ una maquina de Turing, entonces:
+        Sea $TM$ una máquina de Turing, entonces:
         \begin{equation}
             \forall w \  \in L(TM) \ \exists \Pi \ algoritmo \ con\ ambientación \ LOCAL\ t.q \ w \in L(\Pi)
         \end{equation}
     \end{corrollary}
 
     \begin{proof}
-        Sean $w\in L(TM)$ para una maquina de Turing y  $\Pi =Simula\char95Algo\char95TM$, $\Pi(w)$ como dicho algoritmo es correcto por el teorema 2,
-        entonces ya tenemos un algoritmo  en $LOCAL$ que hace  que $w\in L(w) \ \forall w\in L(TM)$,
-        que semánticamente se reduce a que $\Pi$ \textbf{simula} a $TM$, con $TM$ una \textbf{máquina de Turing} abstracta.
+        Sean $w\in L(TM)$ para una máquina de Turing y  $\Pi =Simula\char95Algo\char95TM$, $\Pi(w)$ como dicho algoritmo es correcto por el teorema 2,
+        entonces se desprende el hecho de tener un algoritmo  en $LOCAL$ tal que $w\in L(w) \ \forall w\in L(TM)$,
+        que en el contexto se reduce a que $\Pi$ \textbf{simula} a $TM$, con $TM$ una \textbf{máquina de Turing} abstracta.
     \end{proof}
     %!---Lo que falta es hacer un analisis de complejidad del algoritmo a manera de seccion ---!%
 
-    Entonces una vez que tenemos un algoritmo que es correcto a nivel semantico,
+    Entonces una vez que se tiene un algoritmo que es correcto a nivel lógico,
     la siguiente pregunta es la complejidad asociada a la ejecución de $\Pi \gets Simula\char95Algo\char95TM$
-    tanto espacial,de comunicación asi como temporal.
+    tanto espacial, de comunicación asi como temporal.
     \newpage
+    \section{Complejidad Computacional}\label{sec:complejidad-computacional}
+    En esta sección se presentará una de las dimensione del análisis de algoritmos, a saber la complejidad computacional.
+    Como se esta usando dos modelos de cómputo formal, se darán las definiciones de complejidad en ambos modelos.
+
+    \subsection{Complejidad computacional del modelo Máquinas de Turing}\label{subsec:complejidad-computacional-del-modelo-máquinas-de-turing}
+    Si se toma un $A$ lenguaje que es decidible, la pregunta que surge es: ¿Cuánto tiempo tardará una máquina de Turing
+    en decidirlo?.
+    Para responder de manera formal y riguroza dicha pregunta, se definirá la complejidad temporal de un algoritmo
+    en este modelo, para ello se pensará en el número de pasos que toma una máquina de Turing para que decida un lenguaje
+    en abstracto, como una función con dominio natural, i.e con dominio el conjunto de los números naturales.
+
+    \begin{definition}
+        Sea $M$ una máquina de Turing tal que se detiene para todas sus entradas.\hfill
+        El tiempo de ejecución o complejidad-temporal asociada a la máquina $M$ es la función
+        $f:\N\rightarrow\N $, donde $f(n)$ es el máximo número de pasos que $M$ usa para cualquier entrada de
+        longitud $n$.
+    \end{definition}
+    Con lo anterior se dice que si $f(n)$ es el tiempo de ejecución de $M$ entonces $M$ corre en tiempo $f(n)$,
+    y que $M$ es una $f(n)$-máquina de Turing.
+    \subsubsection{Notación Big-oh y small-oh}
+    Con el concepto anterior se darán las siguientes nociones de teoría de funciones, las cuales darán una notación
+    compacta para dar la medida de la complejidad o tiempo de ejecución de una máquina $M$ con entrada $I$.
+    Esto se hará con el fin de dar una aproximación al tiempo de ejecución de una máquina $M$, dada la compljidad de la
+    misma.
+    \hfill
+    Con eso en mente damos paso a definir lo siguiente:
+    \begin{definition}
+        Sean $f,g\N\rightarrow\R^+$ funciones\hfill
+        Se dice que $f(n) = O(g(n))$ \hfill
+        si $\exists c, n_{0}$ tal que $\forall n >= n_{0}$
+        \begin{equation}
+            f(n) <= cg(n)\label{eq:equation6}
+        \end{equation}
+        Cuando $f(n) = O(g(n))$, se dice que $g(n)$ es un limite asintoticamente superior
+        para la función $f(n)$.
+    \end{definition}
+    Esta definición formaliza la noción de medir el tiempo de ejecucion para una máquina de Turing $M$, en términos
+    de aproximar dicha función, ya que intuitivamente $f(n) = O(g(n)) $ dice que $f$ es menor o igual que $g$, si se
+    despreciamos las diferencias hasta un factor constante.
+
+    A continuación se dará un ejemplo de una máquina de Turing en la que se hará analísis de la complejidad temporal
+    de la misma.
+    \subsubsection{ejemplos}
+    Sea $M$ una máquina de Turing, tal que hace decidible al lenguaje:
+    \begin{equation}
+        A = \{0^{k}1^{k} \| k\in \N \}
+    \end{equation}
+    Procedamos a describir la máquina como procedimiento:
+    \begin{enumerate}
+        \item Scanear a través de la cinta y rechazar si un 0 es encontrado a la derecha de un 1.
+        \item Repetir si tanto 0s como 1s permanecen en la cinta.
+        \item     Scanear a través de la cinta, tachando un simple cero y un simple 1
+        \item Si todavía quedan 0s después de haber tachado todos los 0s o si aún quedan 1s despues de haber tachado todos los 0, \textbf{reject}
+        \item En otro caso si no quedan ni 0s ni 1s entonces \textbf{accept}
+    \end{enumerate}
+
+    %!Todo Crear la parte de la que se deba de hacer la complejidad temporal
+    %!todo:Definir de manera formal lo que es complejidad temporal en este modelo que consume solo cadenas as stdin
     %!---Todo: lo que tenemos que hacer ahora es hacer es una revisión ortograica del doc---!%
     \subsection{Complejidad del algoritmo}\label{subsec:complejidad-del-algoritmo}
     %todo:hacer un main.tex para hacer parte de esta estructura extendible hasta el final de la misma
