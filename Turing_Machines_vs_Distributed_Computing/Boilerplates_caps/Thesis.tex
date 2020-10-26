@@ -25,6 +25,7 @@
 \usepackage{lastpage}
 \usepackage{multicol}
 \usepackage{xcolor}
+\usepackage{glosmathtools}
 
 %Status of the document
 
@@ -87,7 +88,7 @@
         Una \textbf{cadena} sobre un alfabeto $\Sigma$ es una secuencia finita de símbolos del alfabeto,
        que es usualmente escrito cada símbolo uno sobre otro y sin separación por comas.
     \end{definition}
-    Una vez que se tiene la noci ón de cadena sobre un alfabeto, se puede dar unos cuantos ejemplos:
+    Una vez que se tiene la noción de cadena sobre un alfabeto, se puede dar unos cuantos ejemplos:
     \begin{itemize}
         \item Si $\Sigma_{1} = \{a,b\}$, entonces la cadena $abbaba$ es una cadena sobre $\Sigma_{1}$
         \item Si $\Sigma_{2} = \{ 2,3,5 \}$, entonces la cadena $32225$ es una cadena sobre $\Sigma_{2}$
@@ -133,7 +134,7 @@
         $m-veces$, con $m\in\N$ se escribirá así:\newline
         $x\dots x = x^m$
     \end{definition}
-    Finalmente se tiene los terminos "universo" de las cadenas para algún alfabeto, que se formalizará de la
+    Finalmente se tiene la noción universo de las cadenas para algún alfabeto, que se formalizará de la
     siguiente manera:
     \begin{definition}
         Sea un alfabeto $\Sigma$, se dice que un lenguaje es un conjunto de cadenas sobre el alfabeto $\Sigma$, i.e
@@ -144,33 +145,34 @@
     \end{definition}
     Entonces, una vez que se tiene la definición de lenguaje, lo siguiente es presentar el modelo de máquina de Turing,
     ya que en este contexto los problemas se modelarán en términos de lenguaje, con la noción anteriormente anunciada.
-
+    \newline
 
     \subsection{Elementos del modelo}\label{subsec:elementos-del-modelo-de-máquina-de-turing}
     Ahora, se dará la definición del modelo formal de computo, a saber el modelo de máquina de Turing,
     para ello se tendrá una presentación intuitiva del modelo.\newline
-    El modelo de máquina de Turing es a grandes razgos un modelo acaparable; lo cual quiere decir, se tendrá la posiblidad
+    El modelo de máquina de Turing es a grandes razgos un modelo con cierta robustez; lo cual quiere decir que se tendrá la posiblidad
     de resolver una cantidad de problemas, pero con ciertas limitantes.
-    \space
+    \newline
 
-    Este modelo fue propuesto por primera vez en 1936 por el matemático \textbf{Alan Turing} similares a
+    Este modelo fue propuesto por primera vez en 1936 por el matemático \textbf{Alan Turing}, similares a
     otros modelos de cómputo que no se presentará en esta tesis, como son solo por decir: autómatas finitos.
     El modelo de máquina de Turing usa una cinta infinita como su memoria ilimitada,
     además tine el cabezal, que es la que permité leer y escribir símbolos además de moverse
     a lo largo de la cinta.
-    \space
+    \newline
     Inicialmente la cinta contiene únicamente como entrada a la cadena, y lo demás es blanco.
-    Si la máquina necesita almacenar información que tendrá que ser escrita en la cinta.
+    Si la máquina necesita almacenar información, esta tendrá que ser escrita en la cinta.\newline
     Para leer la información que ha sido escrita en la cinta esta tendrá que mover su cabezal sobre ella.\space
     La máquina continurá computando hasta que tenga una salida, lo que se traduce a que tendrá una sucesión de pasos
     como los que se describieron anteriormente, hasta que se dé la definición formal de la palabra cómputo.
-    \space
+    \newline
 
-    Las salidas "aceptación, rechazo" se obtienen una vez que se ha entrado en los estados de "aceptacion, rechazo",
+    Las salidas: aceptación, rechazo, se obtienen una vez que se ha entrado en los estados de aceptacion, rechazo,
     por otro lado si no entrá en alguno de los estados que se mencionaron anteriormente, la máquina continurá para siempre, i.e
-    ésta nunca terminará de hacer su cómputo.\space
+    ésta nunca terminará de hacer su cómputo.\newline
     Esta es la presentación intuitiva de este modelo, entonces lo que sigue es definir de manera formal los elementos del modelo,
 
+    \newline
 
     \begin{definition}%!Here we need to rewrite for errors
         Una máquina de Turing is una 7-tupla, $(Q,\Sigma,\Lambda,\delta,q_{0},q_{accept},q_{reject})$
@@ -192,20 +194,20 @@
     a la izquierda y el resto de la cinta esta en blanco.Ésto quiere decir que están rellenados con símbolos blancos,
     y la manera de identificar el final de la entrada $w$ es marcado por el primer símbolo en blanco en la cinta,
     ya que el alfabeto $\Sigma$ no contiene dicho símbolo.
-    \space
+    \newline
 
     Luego, una vez que inicia la máquina $M$ con la entrada $w$, el cómputo estará gobernado por la función $\delta$.
     Algo que se puede observar es que si en algún momento del cómputo el cabezal intenta moverse a la izquierda del lado
     izquierdo extremo, éste se quedará en el mismo lugar, aunque la función de transición indique un movimiento del cabezal $L$.
+    \newline
 
-    \space
     Finalmente, el cómputo continuará hastá que entre en el estado de $q_{accept}$ ó $q_{reject}$,
     si no sucede lo anterior $M$ continuará para siempre.
     Una vez presentado el modelo y una visión intuitiva del cómputo en el mismo, se adentrará a la noción de
     \textbf{decidible}, que es la noción a la que se quiere converger en este modelo para hacer la conexión con el modelo
     de cómputo distribuido.
 
-    \newspace
+    \newline
     %!todo:Definir como se estan resolviendo los problemas en el contexto de maquinas de Turing
     %!todo:Esto quiere decir que es un lenguaje etc.
     %!Final de las observaciones de la edicion de este capitulo.
@@ -238,10 +240,12 @@
     \\
     \newline
     Entonces esta noción es la que va a dar el paso de formalizar el compúto, por lo cual de manera intuitivamente se va
-    a tener una secuencia de configuraciones:
+    a tener una secuencia de configuraciones:\newline
     \begin{equation}
-        C_{0}\mathellipsis C_{n}, n\in \N
+        C_{0}\mathellipsis C_{n}\in\mathbb{N}
     \end{equation}
+    \newline
+
     Pero este proceso se definirá entre dos estados a priorí $C_{i},C_{j}$;
     entonces esta noción permitirá definir lo siguiente:
     \begin{definition}
@@ -302,7 +306,7 @@
         se llamarán el lenguaje que \textbf{reconoce} $M$, se escribirá como $L(M)$.
 
     \end{definition}
-    \space
+    \newline
     Ahora con estas definiciones, se tendrá la siguiente noción: \newline Sea $L$ un lenguaje sobre un alfabeto $\Sigma$,
     se estipulará en términos de la existencia de una máquina de Turing que lo hace reconocible;
     así se formalizará de la siguiente manera: \newline
@@ -718,22 +722,22 @@
                \ENDFOR
         \end{algorithmic}
     \end{algorithm}
-    \space
+    \newline
     %!--El siguiente capitulo es la descripción del algoritmom ----!%
     \section{Descripción del algoritmo}\label{sec:descripción-del-algoritmo}
     Observando el pseudocódigo del algoritmo, se observa que se hará la iteración por rondas($round$), en
     virtud del ambiente \textbf{local}, luego se hace el código para cada proceso $v_{k}$, y la lectura de
     la entrada $w_{i}$, que es la que es por la inicialización o después de una operación $deliver(MSG)$.
-    \hfill
+    \newline
     Luego se realiza una iteración en la cual se harán llamadas de $\delta()$ y se actualizará la salida de dicho llamado, para repetir este
     proceso hasta que la localidad de la cadena de salida $w_{r}$, sea de localidad no asignada a la familia de símbolos
     de la cadena, asignada a el proceso actual, el cual es asignado por el lado del contrincate, que es el agente externo del sistema distribuido.
-    \hfill
+    \newline
     Finalmente se toma la decisión de regresar el estado $q_{accept}$,si el estado $q_{r}==q_{accept}$;
     en otro caso se ejecuta la operación $send(MSG)$ a los vecinos del proceso actual $v_{k}$.
-    \hfill
+    \newline
     Lo que sigue, es realizar la demostración que este algoritmo es correcto, lo cual se enunciará en el siguiente teorema.
-
+    \newline
     \section{Demostración del procedimiento $Simula\char95Algo\char95TM$}\label{sec:demostración-del-procedimiento}
     %!--Primera parte demostrativa del teorema --%!
     \begin{theorem}
@@ -745,15 +749,15 @@
         $v_{k}$, por la naturaleza de la distribución de la información llegará un momento
         de la iteración en la que se de una estructura de dato del tipo $msg\gets <q_{r},w_{r},P>$, arrojada por el llamado iterativo de
         $\delta$, ya que la localidad de $w_{r}$ no esta asignada a $v_{k}$, sin perdida de generalidad.
-        \hfill
+        \newline
         Entonces, siguiendo el código, se observa que se tiene una lógica para la estructura de dato:
-        \hfill
+        \newline
         si $q_{r}==q_{accept}$, entonces $w\in L(\Pi)$, y se da por terminada la ejecución en dicha ronda.
         Si no, entonces se hace la operación $Send(t,MSG)$, donde sin perdida de generalidad $t$ representa el indice de uno de los vecinos
         del proceso $v_{k}$, por otro lado como $w\in L(TM)$ entonces $\exists v_{l}$ en la ronda $r+1$
         tal que al final dicha ronda $\exists q_{l}$ estado tal que $q_{l} == q_{accept}$.\newline
         $\therefore w\in L(\pi)$, por lo tanto el algoritmo es correcto.
-
+        \newline
     \end{proof}
     Una vez que se tiene la corrección del algoritmo, se desprende a manera de corolario la
     simulación de $TM$ en $LOCAL$.
@@ -775,11 +779,12 @@
     la siguiente pregunta es la complejidad asociada a la ejecución de $\Pi \gets Simula\char95Algo\char95TM$
     tanto espacial, de comunicación asi como temporal.
     \newpage
-    \section{Complejidad Computacional}\label{sec:complejidad-computacional}
+
+    \chapter{Complejidad computacional en los modelos}
     En esta sección se presentará una de las dimensione del análisis de algoritmos, a saber la complejidad computacional.
     Como se esta usando dos modelos de cómputo formal, se darán las definiciones de complejidad en ambos modelos.
 
-    \subsection{Complejidad computacional del modelo Máquinas de Turing}\label{subsec:complejidad-computacional-del-modelo-máquinas-de-turing}
+    \section{Complejidad computacional en máquinas de Turing}
     Si se toma un $A$ lenguaje que es decidible, la pregunta que surge es: ¿Cuánto tiempo tardará una máquina de Turing
     en decidirlo?.
     Para responder de manera formal y riguroza dicha pregunta, se definirá la complejidad temporal de un algoritmo
@@ -787,9 +792,9 @@
     en abstracto, como una función con dominio natural, i.e con dominio el conjunto de los números naturales.
 
     \begin{definition}
-        Sea $M$ una máquina de Turing tal que se detiene para todas sus entradas.\hfill
+        Sea $M$ una máquina de Turing tal que se detiene para todas sus entradas.\newline
         El tiempo de ejecución o complejidad-temporal asociada a la máquina $M$ es la función
-        $f:\N\rightarrow\N $, donde $f(n)$ es el máximo número de pasos que $M$ usa para cualquier entrada de
+        $f:\mathbb{N}\rightarrow\mathbb{N} $, donde $f(n)$ es el máximo número de pasos que $M$ usa para cualquier entrada de
         longitud $n$.
     \end{definition}
     Con lo anterior se dice que si $f(n)$ es el tiempo de ejecución de $M$ entonces $M$ corre en tiempo $f(n)$,
@@ -799,11 +804,11 @@
     compacta para dar la medida de la complejidad o tiempo de ejecución de una máquina $M$ con entrada $I$.
     Esto se hará con el fin de dar una aproximación al tiempo de ejecución de una máquina $M$, dada la compljidad de la
     misma.
-    \hfill
+    \newline
     Con eso en mente damos paso a definir lo siguiente:
     \begin{definition}
-        Sean $f,g\N\rightarrow\R^+$ funciones\hfill
-        Se dice que $f(n) = O(g(n))$ \hfill
+        Sean $f,g:\mathbb{N}\rightarrow\mathbb{R}^+$ funciones\newline
+        Se dice que $f(n) = O(g(n))$ \newline
         si $\exists c, n_{0}$ tal que $\forall n >= n_{0}$
         \begin{equation}
             f(n) <= cg(n)\label{eq:equation6}
@@ -811,7 +816,7 @@
         Cuando $f(n) = O(g(n))$, se dice que $g(n)$ es un limite asintoticamente superior
         para la función $f(n)$.
     \end{definition}
-    Esta definición formaliza la noción de medir el tiempo de ejecucion para una máquina de Turing $M$, en términos
+    Esta definición formaliza la noción de medir el tiempo de ejecución para una máquina de Turing $M$, en términos
     de aproximar dicha función, ya que intuitivamente $f(n) = O(g(n)) $ dice que $f$ es menor o igual que $g$, si se
     despreciamos las diferencias hasta un factor constante.
 
@@ -820,23 +825,136 @@
     \subsubsection{ejemplos}
     Sea $M$ una máquina de Turing, tal que hace decidible al lenguaje:
     \begin{equation}
-        A = \{0^{k}1^{k} \| k\in \N \}
+        A = \{0^{k}1^{k} \| k\in \mathbb{N} \}\label{eq:equation12}
     \end{equation}
     Procedamos a describir la máquina como procedimiento:
     \begin{enumerate}
-        \item Scanear a través de la cinta y rechazar si un 0 es encontrado a la derecha de un 1.
+        \item Escanear a través de la cinta y rechazar si un 0 es encontrado a la derecha de un 1.
         \item Repetir si tanto 0s como 1s permanecen en la cinta.
-        \item     Scanear a través de la cinta, tachando un simple cero y un simple 1
+        \item Escanear a través de la cinta, tachando un simple cero y un simple 1
         \item Si todavía quedan 0s después de haber tachado todos los 0s o si aún quedan 1s despues de haber tachado todos los 0, \textbf{reject}
         \item En otro caso si no quedan ni 0s ni 1s entonces \textbf{accept}
     \end{enumerate}
+    \hfil
+    Se sigue el análisis de esta máquina de Turing, para ello, se hará la siguiente observación:
+    \newline
+    Se considerará los estados de esta máquina por separado.
+    En el estado 1, la máquina escanea a través de la cinta para verificar que la entrada es de la forma $0^{*}1^{*}$.
+    Al ejecutarse dicho escaneo en $n$-pasos, donde $n$ es para representar la longitud de la cadena como entrada.
+    Reposicionando el cabezal en el final del lado izquierdo de la cinta, nuevamente en $n$-pasos.
+    Entonces el total usado en este estado es de $2n$-pasos.
+    Luego en notación \textbf{big-O}, se dice que este estado usa $O(2n)$ pasos, que por la deficion anteror esto es
+    asintoticamente equivalente a $O(n)$-pasos.\newline
 
-    %!Todo Crear la parte de la que se deba de hacer la complejidad temporal
-    %!todo:Definir de manera formal lo que es complejidad temporal en este modelo que consume solo cadenas as stdin
-    %!---Todo: lo que tenemos que hacer ahora es hacer es una revisión ortograica del doc---!%
+    Luego en los estados $2$ y $3$, se sigue que la máquina de manera repetitiva escanea la cinta que en terminos
+    de las operaciones por las que ha sido dotada por definicion este objeto de cómputo es una operación de lectura,
+    y ademas tacha(escribe) con una $x$ a los $1$ y a los $0$ en cada lectura de la cinta.
+    En cada escaneo(lectura) usa $O(n)$-pasos, ya que en cada escaneo tacha(escribe) dos símbolo, a lo más en $n/2$ escaneos(lectura).\newline
+
+    Por lo tanto el tiempo consumido en los estados 2 y 3 es $(n/2)O(n)$ y como el factor no es una constante entonces eso
+    es igual a $(1/2)O(n^{2})-pasos$ que eso es asintóticamente equivalente a $O(n^{2})-pasos$.
+    Y finalmente en el estado $4$, la máquina simplemete toma la decisión de aceptar o rechazar,
+    luego el tiempo tomado en dicho paso es $O(n)$.
+    \newline
+    Luego en conclusion el tiempo tomado de $M_{1}$ con entrada de longitud $n$ es
+    \begin{equation}
+        O(n) + O(n^{2}) + O(n) = O(n^{2}+2n) = 0(n^{2})\label{eq:equation10}
+    \end{equation}
+    Luego por definición se sigue que la complejidad temporal o tiempo de ejecución es de $O(n^{2})$,
+    lo que termina el análisis temporal de $M$.\newline
+
+    Se definirá un concepto que hara una segementación del conjunto de máquinas de Turing por la complejidad temporal
+    asociada a ellas.
+    \begin{definition}
+       Sea $t:\N\rightarrow R^{+}$ una función.\newline
+        Se define la \textbf{clase} del tiempo de complejidad
+        \begin{equation}
+            TIME(t(n))\label{eq:equation11}
+        \end{equation}
+        Como la colección de todos los lenguajes tal que son decidibles para una máquina
+        de Turing en tiempo $O(t(n))$.
+    \end{definition}
+    Por lo tanto, con base a la definición anterior, el lenguaje $A\{0^{k}1^{k}\| k>=0$ es de clase $TIME(n^{2})$,
+    ya que la complejidad temporal asociada es $O(n^{2})$.\newline
+    Se puede observar que aunque exista una máquina de Turing que decida a un lenguaje en tiempo $t(g(n))$ con
+    $g:\N\rightarrow \R^{+}$ función, puede existir otra máquina que la decida asintóticamente más rápido que la anterior
+    i.e
+    \begin{equation}
+        TIME(t(n)) \ para \ t(n)=o(g(n))\label{eq:equation9}
+    \end{equation}
+    con $t:\N\rightarrow R^{+}$
+    %!Aqui se acabaria la parte de complejidad en máquinas Turing
+
+    \section{Complejidad computacional en modelo distribuido $LOCAL$}\label{sec:complejidad-computacional-en-modelo-distribuido-$local$}
+    \subsection{Complejidad temporal}\label{subsec:complejidad-temporal}
+    El tiempo de complejidad de un algoritmo secuencial es medido como el número de pasos que toma desde que se comienza
+    hasta que termina.
+    Pero ello no es suficiente en ambientes distribuidos, es decir no basta con contar el numero de pasos que termina la
+    ejecución del mismo, como por ejemplo en un ambiente computacional multiprocesos, existe la posibilidad que cuando un
+    programa segmenta el algoritmo involucrado en varios procesos tal que son intercambiados dentro y fuera de la ejecución
+    en diferentes tiempos, resultando una situación donde un proceso por un lado espera mensajes de otro proceso, tal que
+    este esta actualmente detenido.\newline
+    Para los propositos de este analísis, asumiremos que el algoritmo esta ejecutado en este sistema de manera independiente,
+    sin tener otras actividades que tienen lugar concurrentemente.
+    Sin embargo, los retrasos ocurren en cada proceso como resultado de tener que esperar información computada de otro
+    proceso, los cuales no pueden ser ignorados.\newline
+    Como podemos ver no es suficiente con contar el número de pasos que toma cada proceso, también tenemos que agregar
+    el número de huecos que toma en su funcionamiento en dicho conteo.
+    \newline
+    Formalmente la complejidad temporal se define como sigue:
+    \begin{definition}
+        [Complejidad temporal síncrona:] El tiempo de complejidad o tiempo de ejecución de un
+        algoritmo distribuido $\Pi$ en una red $G$, denotado como $TIME(\Pi,G)$, es el número de pulsos generados
+        durante la ejecución de $\Pi$ en $G$, en el peor caso, desde que el primer proceso inicia la ejecución
+        hasta que el último hallá teminado.
+        Todo esto con una entrada legal $I$ en $G$ y en un escenario de ejecución.
+    \end{definition}
+    \begin{remark}
+        Existe una definición para el mundo de algoritmos asíncronos, pero para los fines
+    de esta tesis nos limitaremos a esta definició.
+    \end{remark}
+
+    \subsection{Complejidad espacial.}\label{subsec:complejidad-espacial.}
+    Ahora vamos a definir la complejidad espacial o complejidad de memoria,
+        para ello se tomará en consideración la memoria requerida para el algoritmo, y para ello se tomará en alunos casos
+    la máxima memoria local requrida en cualquier vértice.
+
+    \begin{definition}
+        [Complejidad de memoria:] El total de complejidad espacial de un algoritmo $\Pi$ en una red $G$, denotada como
+        $MEM(\Pi, G)$, es definido como el número total de bits usados por el algoritmo en la red, en el peor de los casos.
+        El máximo espacio de complejidad de un algoritmo $\Pi$ en la red $G$ denotado como $MAX\_MEM(\Pi, G)$, es el máximo
+        número de bits usados por el algoritmo en cualquier proceso de la red, en el peor de los casos.
+        Todo esto con una entrada $I$ legal en $G$, y cualquier escenario de ejecución.
+    \end{definition}
+
+    Estas do etiquetas($MEM(\Pi,G),MAX\_MEM(\Pi,G)$) son para medir la complejidad de memoria, en particular $MAX\_MEM(\Pi, G)$ permitirá identificar algoritmos
+    logrando una distribución de memoria mas equilibrada con base a los requerimientos de la misma.
+
+    \subsection{Complejidad de mensajes}\label{subsec:complejidad-de-mensajes}
+    En este modelo distribuido se agregará una tercera capa de complejidad, que medirá el costo de comunicación en la red.
+    Para ello observemos que en un modelo centralizado se tiene por el lado de la complejidad temporal el siguiente contexto:\newline
+    \begin{enumerate}
+        \item Plazo de finalizacion, nombrado, el tiempo en el que el cliente(s) puede esperar obtener el resultado de su cómputo, y
+        \item el costo, a saber, el número esperado de las operaciones requeridas para su cómputo.
+    \end{enumerate}
+    Estos dos factores, en una ambientación distribuida no estan relacionados mutuamente.
+    Pues la computación es por la distribución del trabajo entre los proceso.
+    Luego la estimación del plazo de final es aún lograda por la noción de complejidad temporal,
+    el costo de la computación es ahora evaluada usando la noción de complejidad de mensajes, como la medida principal.\newline
+    De hecho, la complejidad de mensajes es la de mayor costo en la ejecución de un algoritmo distribuido.
+    \newline
+    La definición de complejidad de mensajes, será definida de la siguiente manera.\newline
+    La longitud basica de un mensaje $MSG$, se asume que es $O(log(n))$ bits.
+
+    \begin{definition}
+        [Complejidad de mensajes:] El costo de mensajes de transmitir un mensaje basico sobre un canal de
+        comunicación tiene por valor 1. La complejidad de mensajes de un algoritmo distribuido $\Pi$ en una red $G$,
+        denotado como $\Message(\Pi,G)$, es el número total de mensajes basicos transmitidos durante la ejecución de $\Pi$
+        en $G$ en el peor de los casos.
+        Todo bajo en una entrada legal $I$, y en cualquier escenario de ejecución.
+    \end{definition}
+
     \subsection{Complejidad del algoritmo}\label{subsec:complejidad-del-algoritmo}
-    %todo:hacer un main.tex para hacer parte de esta estructura extendible hasta el final de la misma
-
 
 
 
