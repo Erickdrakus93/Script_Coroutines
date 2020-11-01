@@ -608,10 +608,158 @@
     síncronía en la ejecución.
     %!Aqui lo que haremos es hacer es tratar de ser lo más claro en las nociones
     %!Enunciados
-    \subsubsection{Ejemplos}
-    %!todo:Pegar el ejemplo del algoritmo en LOCAL para la versión final de la tesis.
+    \subsubsection{Ejemplo de un algoritmo distribuido}
+    Se presentará un ejemplo desarrollado en el proceso de esta tesis.
+
+    \newline
+    Dado una red de procesadores con cierta topología, a saber la topología de un arbol,
+donde cada nodo tiene alojado en memoría un entero $n$, entonces el problema a solucionar es encontrar el
+elemento mas repetido en toda la red, i.e encontrar estadísticamente el modo de la red;
+para eso debemos implementar un protocolo de comunicación en el Arbol para determinar dicho valor.
+Que en términos formales es diseñar un algoritmo que sera una tupla de $n$ protocolos los cuales
+se ejecutarán en el Arbol para solucionar dicho problema.
 
 
+\begin{definition}
+    Conceptualmente se tendrá los siguientes tipos de mensajes que se enviarán en el protocolo que se enuciará mas adelante:
+    \begin{itemize}
+        \item Mensajes del tipo 1: $M(\uparrow, A_{i1},A_{i2}) $
+        \item Mensajes del tipo 2: $ M(\uparrow,(x_{modo}), max(A_{i2}))$
+    \end{itemize}
+\end{definition}
+
+
+Donde $A_{i1}$ es un arreglo de los valores locales de los nodos del sub-arbol enraizado
+en el nodo $p_{i}$, y $A_{i2}$ es un arreglo de las frecuencias de los valores locales en $A_{i1}$
+\\
+
+\begin{definition}
+Sean $M\uparrow, A_{i1}, A_{i2})$, $M(\uparrow, A_{k1}, A_{k2})$ mensajes del tipo 1, entonces se definirá la operación $Sum(M(\uparrow, A_{i1}, A_{i2}), M(\uparrow, A_{k1}, A_{k2}))$ y la definimos
+de la siguiente manera:\\
+\begin{enumerate}
+    \item Sea $x$ en $A_{i1}$, si $x$ es tal que es distinto a todo $z$ en $A_{j1}$
+     entonces \\ $A_{r1} = A_{i1}[y] \star A_{k1}$ y $A_{r2} = A_{i2}[y] \star A_{k2}$ \\
+     donde $\star$ denota la concatenación del arreglo formado por el elemento  $x = A_{i1}[y]$ con $A_{k1}$ y también denota
+     la concatenación del elemento $f_{x} = A_{i2}[y]$ con el arreglo $A_{k2}$, es decir estamos generando un arreglo
+     que contiene a los que estamos operando bajo $\star$
+    \item Sea $x$ en $A_{i1}$, si es tal que $x = A_{i1}[y] = A_{k1}[y']$ entonces $A_{r1}[y''] = A_{i1}[y] = A_{i2}[y']$  y
+    $A_{r2}[y''] = A_{i2}[y] + A_{k2}[y']$
+\end{enumerate}
+
+Y denotamos a $Sum(M(\uparrow,A_{i1}, A_{i2}), M(\uparrow, A_{k1}, A_{k2})) = M(\uparrow, A_{r1}, A_{r2})$
+\end{definition}
+\newpage
+
+A continuación se mostrará el código del algoritmo.
+
+
+\begin{algorithm}
+\begin{algorithmic}
+    \STATE $A_{first}( p_{i}, ID, x_{i} \in \mathbb{N})$
+    \IF { $p_{i}$ es una hoja}
+      \STATE $A_{r1} = (x_{p_{i}})$
+      \STATE $A_{r2} = (1)$
+      \STATE \textbf{send} $M_{p_{i}} = M(\uparrow, A_{r1}, A_{r2})$ a su padre
+    \ELSE
+      \STATE \textbf{wait} $M_{1},\dots,M_{n}$ mensajes de sus hijos
+      \STATE  $M_{j} = M(\uparrow, A_{j1}, A_{j2})$
+      \FORALL {$l,s \in \lbrace 1,\dots,n+1 \rbrace$ con $l \neq s$}
+        \STATE $Sum(M(\uparrow, A_{l1}, A_{l2}), M(\uparrow, A_{s1}, A_{s2}))$
+      \ENDFOR
+      \STATE $M(\uparrow, A_{r1}, A_{r2}) = Sum(M(\uparrow, A_{11}, A_{12}), \dots, M(\uparrow, A_{n1}, A_{n2})) $
+      \STATE $A_{p_{i}1} = A_{r1}$ // Es el array después de las operaciones de los mensajes de sus hijos
+      \STATE $A_{p_{i}2} = A_{r2}$ // Es el array después de las operaciones de los mensajes de sus hijos
+      \IF { $p_{i}$ es la raíz}
+        \STATE $M_{p_{i}} = M(\downarrow, (x_{modo}), max(A_{r2}))$
+        \STATE \textbf{return} $x_{modo}$
+      \ELSE
+        \STATE \textbf{send} $M_{p_{i}} = M(\uparrow, A_{r1}, A_{r2})$ a su padre
+      \ENDIF
+    \ENDIF
+\end {algorithmic}
+\caption{First-dis($T_{r_0},ID,x_{i}$)\label{lss}}
+\end{algorithm}
+
+    \subsubsection{Corrección del algoritmo y su complejidad.}
+
+
+Ahora se mostrará que en efecto $A_{first}$ hace lo que tiene que hacer, que en términos
+formales es decir que $A_{first}$ es correcto, para aquello diremos que es invariante en el siguiente sentido:\newline
+Que para cada ronda $ r \in \lbrace 1,\dots, h_{r_{0}} \rbrace $ se cumple que el nodo $v$ de altura $h_{v}$ ha calculado correctamente
+su variable local a saber su correspondiente $M_{v}$ que es un mensaje de la lista de tipos.
+\\
+
+\begin{theorem}
+Sea $ \pi = A_{first}$ entonces tiene la propiedad de que para cada $r \in \lbrace 1, \ldots, h_{r_{0}}  \rbrace $
+al final de la ronda r el nodo $v$ de altura $h$ ha calculado correctamente su variable local $M_{v}$ y
+además en el sub-arbol $T_{v}$ que denota que esta enraizado en $v$ tiene en su variable local las entradas de los nodos de $T_{v}$
+y con posibles repeticiones.
+
+    \textbf{Demostracion:} \\
+Sea $h=1$ entonces al final de la ronda correspondiente, $v$ es una hoja con
+base al init del algoritmo\\
+$\therefore M_{v_{h=0}}= M(\uparrow, A_{r1}, A_{r2})$
+
+Suponemos que es cierto para el paso $h=j$  y demostremos que es cierto para $h = j+1$
+como es cierto para el paso $h =j$ entonces tiene el subarbol $T_{v_{j}}$ calculada la variable
+local correspondiente, luego por la construcción de $A_{first}$ se tiene que en $v$ de altura $j+1$
+también tiene calculada su variable local que es por la construcción del algoritmo es:
+\\
+$\therefore {v_{h = j+1}} = M(\uparrow, A_{r1}, A_{r2})$
+\end{theorem}
+Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en efecto la raíz del arbol
+
+\begin{theorem}
+    Para el algoritmo $A_{first}$ en la ronda $r$ el nodo $v$ esta calculando de manera implicita el elemento mas repetido,
+    mas aún en la ronda $r = h_{r_{0}}$ es el que toma la decisión final de cual es elemento mas repetido y disemina
+    el mensaje a manera de reponse en el resto del arbol
+
+    \textbf{Demostracion:}\\
+    Sea $r$ una ronda, entonces notamos que en la correspondiente ronda el vértice $r$ podemos hacer la operación
+    en la variable local $M_{v}$ que tiene una representación $M(\uparrow, A_{r1}, A_{r2})$ por las lineas de código del
+    algoritmo, en particular se puede calcular $max(A_{r2})$ que por el mapeo implicito entre $A_{r1}$ y $A_{r2}$ le corresponde
+    el elemento mas frecuente en $A_{r2}$ a saber: $x_{modo}$
+    Y observamos que si $h= h_{r_{0}}$ y seguimos las lineas de código para ese caso, entonces para $x_{modo_{r_0}}$ es el valor
+    que se toma finalmente y es en la ronda en la que se disemina dicho mensaje.
+
+\end{theorem}
+
+
+    Ahora se tiene que analizar y deducir la complejidad del algoritmo en el sentido temporal y de mensajes.
+    Por un lado, la complejidad temporal se puede desprender observando la demostración del teorema anterior: \newline
+    que para la altura correspondiente a la raiz denotada como $h_ {r_{0}}$ será la complejidad temporal pero solo en
+    la parte del algoritmo \textbf{request}, pues en el \textbf{response} tardara exactamente lo mismo hasta diseminar
+    el mensaje en el resto de los nodos del arbol, entonces se dice más formalmente en el siguiente enunciado:
+
+\begin{theorem}
+    Sea $\pi = A_{first}$ entonces la complejidad temporal denotada como $Time(T_{first})$ = $O(h_{r_{0}})$
+    y la complejidad de mensajes es exactamente $Message(A_{first}) = O(m)$ donde $m$ denota el número de aristas
+    en $T_{r_{0}}$\newline
+
+   \textbf{Demostracion:}
+\begin{flushleft}
+    Por construcción del algoritmo y por la corrección del algoritmo, en particular por la propiedad de "Loop-Invariant"
+    podemos observar que se disemina el mensaje hasta el paso de la inducción que es $h_{r_{0}}$ correspondiente a la altura de
+    de la raíz, y luego en el proceso de diseminar el mensaje en todo el arbol de manera de \textbf{response}
+    es la misma altura, entonces la complejidad temporal es $O(h_{r_{0}})$
+
+    Por otro lado, afirmamos que hay tantas rondas como canales de comunicacion, pues en esencia se esta mapeando
+    la cantidad de mensajes con los canales de comunicación, pero eso solo en el proceso de \textbf{request} por el diseño del
+    algoritmo, en el proceso de \textbf{response} que es la diseminación del mensaje es el mismo mapeo que en el proceso
+    de \textbf{request} entonces hay tantas rondas como el doble de canales de comunicacion en el proceso de \textbf{request, response},
+    mas formalmente lo escribimos de la siguiente manera:
+    $Message(A_{first}) = O(m)$ donde $m$ denota el numero de aristas en en el Arbol en el que estamos ejecutando el algoritmo.
+
+\end{flushleft}
+\end{theorem}
+
+    \textbf{Observacion:}\\
+    Se observá que existe un subarbol en el que su raíz toma la decision de:
+    \textbf{return} $x_{modo}$\\
+    Es decir se dice que se puede optimizar $A_{first}$, sujeto a la altura $h$, y apartir de ese subarbol diseminar
+    el mensaje a manera de \textbf{response} en todo el arbol $T_{r_{0}}$
+
+    %!final del ejemplo construido en esta parte de la tesis.
     \newpage
     \subsection{Decidibilidad}\label{subsec:decidibilidad}
     Una vez que se tiene los elementos del modelo distribuido, se introducirá la noción de \textbf{decibilidad} en
@@ -647,11 +795,11 @@
     \begin{definition}
         Se dice que un modelo de computo formal $T$ simula a un modelo de computo formal  $S$ si:
         \begin{equation}
-        \forall x\in L(S) \ entonces \ x\in L(T)
+        \forall x\in L(S) \ entonces \ x\in L(T)\label{eq:equation13}
         \end{equation}
         Mas aún se dice que son modelos equivalentes (computacionalmente) si:
         \begin{equation}
-        \forall x\in L(T) \iff x\in L(S) \
+        \forall x\in L(T) \iff x\in L(S) \\label{eq:equation14}
         \end{equation}
     \end{definition}
     \space
@@ -781,7 +929,7 @@
     \newpage
 
     \chapter{Complejidad computacional en los modelos}
-    En esta sección se presentará una de las dimensione del análisis de algoritmos, a saber la complejidad computacional.
+    En esta sección se presentará una de las dimensiones del análisis de algoritmos, a saber la complejidad computacional.
     Como se esta usando dos modelos de cómputo formal, se darán las definiciones de complejidad en ambos modelos.
 
     \section{Complejidad computacional en máquinas de Turing}
@@ -882,7 +1030,7 @@
     \begin{equation}
         TIME(t(n)) \ para \ t(n)=o(g(n))\label{eq:equation9}
     \end{equation}
-    con $t:\N\rightarrow R^{+}$
+    con $t:\mathbb{N}\rightarrow \mathbb{R}^{+}$
     %!Aqui se acabaria la parte de complejidad en máquinas Turing
 
     \section{Complejidad computacional en modelo distribuido $LOCAL$}\label{sec:complejidad-computacional-en-modelo-distribuido-$local$}
@@ -894,13 +1042,16 @@
     programa segmenta el algoritmo involucrado en varios procesos tal que son intercambiados dentro y fuera de la ejecución
     en diferentes tiempos, resultando una situación donde un proceso por un lado espera mensajes de otro proceso, tal que
     este esta actualmente detenido.\newline
+
     Para los propositos de este analísis, asumiremos que el algoritmo esta ejecutado en este sistema de manera independiente,
     sin tener otras actividades que tienen lugar concurrentemente.
     Sin embargo, los retrasos ocurren en cada proceso como resultado de tener que esperar información computada de otro
     proceso, los cuales no pueden ser ignorados.\newline
+
     Como podemos ver no es suficiente con contar el número de pasos que toma cada proceso, también tenemos que agregar
     el número de huecos que toma en su funcionamiento en dicho conteo.
-    \newline
+    \newpage
+
     Formalmente la complejidad temporal se define como sigue:
     \begin{definition}
         [Complejidad temporal síncrona:] El tiempo de complejidad o tiempo de ejecución de un

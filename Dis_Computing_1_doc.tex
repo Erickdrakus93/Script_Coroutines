@@ -27,15 +27,15 @@
 Estudiamos y presentamos los elementos del Modelo de Computo
 Distribuido, en el cual se  definió de manera formal sus elementos, asi como se formalizo lo que significa la ejecución del algoritmo en un modelo de computo Distribuido
 \\
-Se presentaran y definirán las nociones del análisis de un Algoritmo Distribuido, como son:
+Se presentarán y definirán las nociones del análisis de un algoritmo distribuido, como son:
 \begin{itemize}
 
- \item Complejidad del Algoritmo,i.e Complejidad temporal.
+ \item Complejidad del algoritmo,i.e complejidad temporal.
  \item La exactitud o correccion del Algoritmo.
 \end{itemize}
 
 Entonces con estas nociones presentaremos un problema en el contexto de un ambiente distribuido
-el cual sera resulto diseñando un algoritmo.
+el cual será resultado del diseñando de un algoritmo.
 \end{abstract}
 \end{titlepage}
 \begin{center}
@@ -92,45 +92,45 @@ $ Time( \pi, G) = O(g(n) $ donde $ g $ dependerá de la naturaleza del algoritmo
 \end{center}
 \textbf{ Tenemos en contexto el siguiente Problema:}
 \\
-Dado una red de procesadores con cierta topologia, a saber la topologia de un arbol,
-donde cada nodo tiene un entero $n$, entonces el problema a solucionar es encontrar el
-elemento mas repetido en toda la red, i.e encontrar estadisticamente el modo de la red;
-para eso debemos implementar un protocolo de comunicacion en el Arbol para determinar dicho valor.
-Que en terminos formales es diseñar un algoritmo que sera una tupla de $n$ protocolos los cuales
-se ejecutaran en el Arbol para solucionar dicho problema.
+Dado una red de procesadores con cierta topología, a saber la topología de un arbol,
+donde cada nodo tiene alojado en memoría un entero $n$, entonces el problema a solucionar es encontrar el
+elemento mas repetido en toda la red, i.e encontrar estadísticamente el modo de la red;
+para eso debemos implementar un protocolo de comunicación en el Arbol para determinar dicho valor.
+Que en términos formales es diseñar un algoritmo que sera una tupla de $n$ protocolos los cuales
+se ejecutarán en el Arbol para solucionar dicho problema.
 
-\textbf{Definicion}
-Conceptualmente tendremos los siguientes tipos de mensajes que se enviaran en el protocolo que se enuciara
-mas adelante:
 
-\
-\begin{itemize}
-    \item Mensajes del tipo 1: $M(\uparrow, A_{i1},A_{i2}) $
-    \item Mensajes del tipo 2: $ M(\uparrow,(x_{modo}), max(A_{i2}))$
-\end{itemize}
-\
+\begin{definition}
+    Conceptualmente tendremos los siguientes tipos de mensajes que se enviarán en el protocolo que se enuciará mas adelante:
+    \begin{itemize}
+        \item Mensajes del tipo 1: $M(\uparrow, A_{i1},A_{i2}) $
+        \item Mensajes del tipo 2: $ M(\uparrow,(x_{modo}), max(A_{i2}))$
+    \end{itemize}
+\end{definition}
+
+
 Donde $A_{i1}$ es un arreglo de los valores locales de los nodos del sub-arbol enraizado
-en el nodo $p_{i}$ y $A_{i2}$ es un arreglo de las frecuencias de los valores locales en $A_{i1}$
+en el nodo $p_{i}$, y $A_{i2}$ es un arreglo de las frecuencias de los valores locales en $A_{i1}$
 \\
 
 \textbf{Definicion}\\
-Sean $M\uparrow, A_{i1}, A_{i2})$, $M(\uparrow, A_{k1}, A_{k2})$ mensajes del tipo 1, entonces podemos definir la operacion $Sum(M(\uparrow, A_{i1}, A_{i2}), M(\uparrow, A_{k1}, A_{k2}))$ y la definimos
+Sean $M\uparrow, A_{i1}, A_{i2})$, $M(\uparrow, A_{k1}, A_{k2})$ mensajes del tipo 1, entonces se definirá la operación $Sum(M(\uparrow, A_{i1}, A_{i2}), M(\uparrow, A_{k1}, A_{k2}))$ y la definimos
 de la siguiente manera:\\
 \begin{enumerate}
     \item Sea $x$ en $A_{i1}$, si $x$ es tal que es distinto a todo $z$ en $A_{j1}$
      entonces \\ $A_{r1} = A_{i1}[y] \star A_{k1}$ y $A_{r2} = A_{i2}[y] \star A_{k2}$ \\
-     donde $\star$ denota la concatenacion del array formado por el elemento  $x = A_{i1}[y]$ con $A_{k1}$ y tambien denota
-     la concatenacion del elemento $f_{x} = A_{i2}[y]$ con el array $A_{k2}$, es decir estamos generando un array
+     donde $\star$ denota la concatenación del arreglo formado por el elemento  $x = A_{i1}[y]$ con $A_{k1}$ y también denota
+     la concatenación del elemento $f_{x} = A_{i2}[y]$ con el arreglo $A_{k2}$, es decir estamos generando un arreglo
      que contiene a los que estamos operando bajo $\star$
     \item Sea $x$ en $A_{i1}$, si es tal que $x = A_{i1}[y] = A_{k1}[y']$ entonces $A_{r1}[y''] = A_{i1}[y] = A_{i2}[y']$  y
     $A_{r2}[y''] = A_{i2}[y] + A_{k2}[y']$
 \end{enumerate}
 
-Y denonamos a $Sum(M(\uparrow,A_{i1}, A_{i2}), M(\uparrow, A_{k1}, A_{k2})) = M(\uparrow, A_{r1}, A_{r2})$
+Y denotamos a $Sum(M(\uparrow,A_{i1}, A_{i2}), M(\uparrow, A_{k1}, A_{k2})) = M(\uparrow, A_{r1}, A_{r2})$
 
 \newpage
 
-En las siguientes lineas se muestra el Algoritmo.
+A continuacion se mostrará el código del algoritmo.
 
 
 \begin{algorithm}
@@ -147,9 +147,9 @@ En las siguientes lineas se muestra el Algoritmo.
         \STATE $Sum(M(\uparrow, A_{l1}, A_{l2}), M(\uparrow, A_{s1}, A_{s2}))$
       \ENDFOR
       \STATE $M(\uparrow, A_{r1}, A_{r2}) = Sum(M(\uparrow, A_{11}, A_{12}), \dots, M(\uparrow, A_{n1}, A_{n2})) $
-      \STATE $A_{p_{i}1} = A_{r1}$ // Es el array después de las operaciones de los mensajes de sus Hijos
-      \STATE $A_{p_{i}2} = A_{r2}$ // Es el array después de las operaciones de los mensajes de sus Hijos
-      \IF { $p_{i}$ es la raiz}
+      \STATE $A_{p_{i}1} = A_{r1}$ // Es el array después de las operaciones de los mensajes de sus hijos
+      \STATE $A_{p_{i}2} = A_{r2}$ // Es el array después de las operaciones de los mensajes de sus hijos
+      \IF { $p_{i}$ es la raíz}
         \STATE $M_{p_{i}} = M(\downarrow, (x_{modo}), max(A_{r2}))$
         \STATE \textbf{return} $x_{modo}$
       \ELSE
@@ -167,8 +167,8 @@ En las siguientes lineas se muestra el Algoritmo.
         \end{Large}
     \end{center}
 
-En esta parte del documento se mostrara que en efecto $A_{first}$ hace lo que tiene que hacer, que en terminos
-formales es decir que $A_{first}$ es correcto, para ello diremos que es invariante en el siguiente sentido:
+En esta parte del documento se mostrara que en efecto $A_{first}$ hacé lo que tiene que hacer, que en términos
+formales es decir que $A_{first}$ es correcto, para aquello diremos que es invariante en el siguiente sentido:\newline
 Que para cada ronda $ r \in \lbrace 1,\dots, h_{r_{0}} \rbrace $ se cumple que el nodo $v$ de altura $h_{v}$ ha calculado correctamente
 su variable local a saber su correspondiente $M_{v}$ que es un mensaje de la lista de tipos.
 \\
@@ -176,7 +176,7 @@ su variable local a saber su correspondiente $M_{v}$ que es un mensaje de la lis
 \begin{theorem}
 Sea $ \pi = A_{first}$ entonces tiene la propiedad de que para cada $r \in \lbrace 1, \ldots, h_{r_{0}}  \rbrace $
 al final de la ronda r el nodo $v$ de altura $h$ ha calculado correctamente su variable local $M_{v}$ y
-ademas en el sub-arbol $T_{v}$ que denota que esta enraizado en $v$ tiene en su variable local las entradas de los nodos de $T_{v}$
+además en el sub-arbol $T_{v}$ que denota que esta enraizado en $v$ tiene en su variable local las entradas de los nodos de $T_{v}$
 y con posibles repeticiones.
 
     \textbf{Demostracion:} \\
@@ -187,37 +187,37 @@ $\therefore M_{v_{h=0}}= M(\uparrow, A_{r1}, A_{r2})$
 Suponemos que es cierto para el paso $h=j$  y demostremos que es cierto para $h = j+1$
 como es cierto para el paso $h =j$ entonces tiene el subarbol $T_{v_{j}}$ calculada la variable
 local correspondiente, luego por la construccion de $A_{first}$ se tiene que en $v$ de altura $j+1$
-tambien tiene calculada su variable local que es por la construcción del algoritmo es:
+también tiene calculada su variable local que es por la construcción del algoritmo es:
 \\
 $\therefore {v_{h = j+1}} = M(\uparrow, A_{r1}, A_{r2})$
 \end{theorem}
-Del razonamiento anterior se desprende que el nodo que calcula el maximo es en efecto la raiz del Arbol
+Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en efecto la raiz del arbol
 
 \begin{theorem}
-    Para el Algoritmo $A_{first}$ en la ronda $r$ el nodo $v$ esta calculando de manera implicita el elemento mas repetido,
-    mas aun en la ronda $r = h_{r_{0}}$ es el que toma la decision final de cual es elemento mas repetido y disemina
+    Para el algoritmo $A_{first}$ en la ronda $r$ el nodo $v$ esta calculando de manera implicita el elemento mas repetido,
+    mas aún en la ronda $r = h_{r_{0}}$ es el que toma la decisión final de cual es elemento mas repetido y disemina
     el mensaje a manera de reponse en el resto del arbol
 
     \textbf{Demostracion:}\\
-    Sea $r$ una ronda, entonces notamos que en la correspondiente ronda el vertice $r$ podemos hacer la operacion
-    en la variable local $M_{v}$ que tiene una representacion $M(\uparrow, A_{r1}, A_{r2})$ por las lineas de codigo del
+    Sea $r$ una ronda, entonces notamos que en la correspondiente ronda el vertice $r$ podemos hacer la operación
+    en la variable local $M_{v}$ que tiene una representación $M(\uparrow, A_{r1}, A_{r2})$ por las lineas de código del
     algoritmo, en particular  podemos calcular $max(A_{r2})$ que por el mapeo implicito entre $A_{r1}$ y $A_{r2}$ le corresponde
     el elemento mas frecuente en $A_{r2}$ a saber: $x_{modo}$
     Y observamos que si $h= h_{r_{0}}$ y seguimos las lineas de codigo para ese caso, entonces para $x_{modo_{r_0}}$ es el valor
-    que se toma finalmente y es en la ronda en la que se  disemina dicho mensaje.
+    que se toma finalmente y es en la ronda en la que se disemina dicho mensaje.
 
 \end{theorem}
 
 
-    Ahora tenemos que analizar y deducir la complejidad del Algoritmo en el sentido temporal y de mensajes.
-    Por un lado la complejidad temporal se puede desprender observando la demostracion del teorema anterior:
-    que para la altura correspondiente a la raiz denotada como $h_ {r_{0}}$ sera la complejidad temporal pero solo en
+    Ahora se tiene que analizar y deducir la complejidad del algoritmo en el sentido temporal y de mensajes.
+    Por un lado, la complejidad temporal se puede desprender observando la demostración del teorema anterior: \newline
+    que para la altura correspondiente a la raiz denotada como $h_ {r_{0}}$ será la complejidad temporal pero solo en
     la parte del algoritmo \textbf{request}, pues en el \textbf{response} tardara exactamente lo mismo hasta diseminar
-    el mensaje en el resto de los nodos del arbol, entonces lo decimos mas formalmente en el siguiente enunciado:
+    el mensaje en el resto de los nodos del arbol, entonces se dice más formalmente en el siguiente enunciado:
 
 \begin{theorem}
     Sea $\pi = A_{first}$ entonces la complejidad temporal denotada como $Time(T_{first})$ = $O(h_{r_{0}})$
-    y la complejidad de mensajes es exactamente $Message(A_{first}) = O(m)$ donde $m$ denota el numero de aristas
+    y la complejidad de mensajes es exactamente $Message(A_{first}) = O(m)$ donde $m$ denota el número de aristas
     en $T_{r_{0}}$
 
 

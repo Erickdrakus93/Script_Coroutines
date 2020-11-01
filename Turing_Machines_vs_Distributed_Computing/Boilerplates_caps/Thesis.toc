@@ -11,19 +11,20 @@
 \contentsline {subsubsection}{Capa de comunicación}{\es@scroman {x}}%
 \contentsline {subsubsection}{Capa de Computación}{\es@scroman {x}}%
 \contentsline {subsubsection}{Ejecución de un algoritmo en este modelo}{\es@scroman {xi}}%
-\contentsline {subsubsection}{Ejemplos}{\es@scroman {xii}}%
-\contentsline {subsection}{\numberline {1.3.2}Decidibilidad}{\es@scroman {xiii}}%
-\contentsline {chapter}{\numberline {2}Simulación de modelos Maquina de Turing y \textbf {LOCAL}}{\es@scroman {xiv}}%
-\contentsline {section}{\numberline {2.1}Noción de simulación en modelos}{\es@scroman {xiv}}%
-\contentsline {section}{\numberline {2.2}Diseño del algoritmo}{\es@scroman {xv}}%
-\contentsline {section}{\numberline {2.3}Descripción del algoritmo}{\es@scroman {xvi}}%
-\contentsline {section}{\numberline {2.4}Demostración del procedimiento $Simula\char 95Algo\char 95TM$}{\es@scroman {xvi}}%
-\contentsline {chapter}{\numberline {3}Complejidad computacional en los modelos}{\es@scroman {xvii}}%
-\contentsline {section}{\numberline {3.1}Complejidad computacional en máquinas de Turing}{\es@scroman {xvii}}%
-\contentsline {subsubsection}{Notación Big-oh y small-oh}{\es@scroman {xvii}}%
-\contentsline {subsubsection}{ejemplos}{\es@scroman {xviii}}%
-\contentsline {section}{\numberline {3.2}Complejidad computacional en modelo distribuido $LOCAL$}{\es@scroman {xix}}%
-\contentsline {subsection}{\numberline {3.2.1}Complejidad temporal}{\es@scroman {xix}}%
-\contentsline {subsection}{\numberline {3.2.2}Complejidad espacial.}{\es@scroman {xx}}%
-\contentsline {subsection}{\numberline {3.2.3}Complejidad de mensajes}{\es@scroman {xx}}%
-\contentsline {subsection}{\numberline {3.2.4}Complejidad del algoritmo}{\es@scroman {xxi}}%
+\contentsline {subsubsection}{Ejemplo de un algoritmo distribuido}{\es@scroman {xii}}%
+\contentsline {subsubsection}{Corrección del algoritmo y su complejidad.}{\es@scroman {xiv}}%
+\contentsline {subsection}{\numberline {1.3.2}Decidibilidad}{\es@scroman {xvi}}%
+\contentsline {chapter}{\numberline {2}Simulación de modelos Maquina de Turing y \textbf {LOCAL}}{\es@scroman {xvii}}%
+\contentsline {section}{\numberline {2.1}Noción de simulación en modelos}{\es@scroman {xvii}}%
+\contentsline {section}{\numberline {2.2}Diseño del algoritmo}{\es@scroman {xviii}}%
+\contentsline {section}{\numberline {2.3}Descripción del algoritmo}{\es@scroman {xix}}%
+\contentsline {section}{\numberline {2.4}Demostración del procedimiento $Simula\char 95Algo\char 95TM$}{\es@scroman {xix}}%
+\contentsline {chapter}{\numberline {3}Complejidad computacional en los modelos}{\es@scroman {xx}}%
+\contentsline {section}{\numberline {3.1}Complejidad computacional en máquinas de Turing}{\es@scroman {xx}}%
+\contentsline {subsubsection}{Notación Big-oh y small-oh}{\es@scroman {xx}}%
+\contentsline {subsubsection}{ejemplos}{\es@scroman {xxi}}%
+\contentsline {section}{\numberline {3.2}Complejidad computacional en modelo distribuido $LOCAL$}{\es@scroman {xxii}}%
+\contentsline {subsection}{\numberline {3.2.1}Complejidad temporal}{\es@scroman {xxii}}%
+\contentsline {subsection}{\numberline {3.2.2}Complejidad espacial.}{\es@scroman {xxiii}}%
+\contentsline {subsection}{\numberline {3.2.3}Complejidad de mensajes}{\es@scroman {xxiii}}%
+\contentsline {subsection}{\numberline {3.2.4}Complejidad del algoritmo}{\es@scroman {xxiv}}%
