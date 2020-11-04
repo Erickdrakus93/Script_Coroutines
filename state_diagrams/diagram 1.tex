@@ -1,0 +1,29 @@
+%! Author = erick-hdz
+%! Date = 02/11/20
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-dependency}
+\usetikzlibrary{arrows, automata, positioning}
+
+
+% Document
+\begin{document}
+    \begin{tikzpicture}[shorten >= 1pt, node distance=2cm,on grid,auto]
+        \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial] (s_0)  {$s_0$};
+
+  \path[->]
+  (s_0) edge  [loop above]  {0,1} ( );
+
+    \end{tikzpicture}
+
+
+
+\end{document}

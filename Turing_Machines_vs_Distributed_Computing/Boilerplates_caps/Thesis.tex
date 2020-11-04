@@ -26,9 +26,10 @@
 \usepackage{multicol}
 \usepackage{xcolor}
 \usepackage{glosmathtools}
+\usepackage{tikz}
+\usetikzlibrary{arrows, positioning, automata}
 
 %Status of the document
-
 \pagenumbering{roman}
 \newtheorem{example}{Example}
 \newtheorem{corrollary}{Corrollary}
@@ -54,13 +55,13 @@
     \tableofcontents{}
     \chapter{Decidibilidad en los modelos}\label{ch:decidibilidad-en-los-modelos}
     \section{Introducción}\label{sec:introducción}
-    En este documento se expondrán las nociones de decibilidad, complejidad en ambos modelos %Add complexity part of both worlds
-    en el mundo de máquinas de Turing y en el mundo distribuido,
+    En este documento se expondrán nociones básicas de cómputo teórico a saber decibilidad y complejidad en ambos modelos:
+    máquina de Turing y distribuido,
     así como también se hará la formalización de la noción de simulación de modelos
     computacionales, demostrando que el modelo $A$ de  la máquina de
     Turing es equivalente en poder al modelo distribuido $B$, en particular al modelo \textbf{LOCAL}
 
-    \section{Decidibilidad del modelo máquinas de Turing}\label{sec:decidibilidasd-en-el-modelo-de-máquinas-de-turing}
+    \section{Decidibilidad del modelo máquinas de Turing}\label{sec:decidibilidasd-en-el-modelo-de-máquinas-de-Turing}
     %!todo:Hacer una explicacion intuitiva de lo que es una máquina de Turing,despues de esta done
     %!todo: de esta explicación intuitiva
     %!todo: Hacer un feedback con la escritura para que se pula la parte de la gramática
@@ -96,7 +97,7 @@
     Entonces ahora que se definió el concepto cadena sobre un alfabeto podemos definir atributos a las cadenas definidas sobre un
     alfabeto $\Sigma$,\newline
     \begin{definition}
-        Sea $w$ una cadena sobre un alfabeto $\Sigma$,dicha cadena tiene \textbf{longitud},
+        Sea $w$ una cadena sobre un alfabeto $\Sigma$, dicha cadena tiene \textbf{longitud},
         y se denotorá como $|w|$, y asi se concluirá que es el número de símbolos que contiene.
 
     \end{definition}
@@ -107,7 +108,7 @@
     A continuación se definirán ciertas operaciones o atributos asociados a estas estructuras de datos.
     \begin{definition}
         Sea una cadena $w$, se asociará a la cadena $w$ la cadena reversa denotada como $w^R$
-        y con la notación, si $w = w_{1},\mathellipsis w_{n}$, entonces $w^{R} = w_{n},\mathellipsis,w_{1}$.
+        y con la notación, si $w = w_{1},\mathellipsis w_{n}$ entonces $w^{R} = w_{n},\mathellipsis,w_{1}$.
     \end{definition}
     También se dará la noción de sub-cadena, la cual enunciaremos de la siguiente manera:\newline
     \begin{definition}
@@ -119,7 +120,7 @@
         \item $cdcd$ es una subcadena de la cadena $cdasdcadccdcd$
     \end{itemize}
     También se definirá una operación entre dos cadenas, la cual es
-    la concatenación, entonces se define formalmente de la siguiente manera:\newline
+    la concatenación entonces se define formalmente de la siguiente manera:\newline
     \begin{definition}
         Sean $w_{1}$ y $w_{2}$ dos cadenas finitas, esto es:\newline
         $\exists n,\ \exists m$ tal que $|w_{1}|=n$ y $|w_{2}|=m$
@@ -143,8 +144,8 @@
              L = \{w : w\ es \ una \ cadena\ sobre \Sigma \}
         \end{equation}
     \end{definition}
-    Entonces, una vez que se tiene la definición de lenguaje, lo siguiente es presentar el modelo de máquina de Turing,
-    ya que en este contexto los problemas se modelarán en términos de lenguaje, con la noción anteriormente anunciada.
+    Entonces una vez que se tiene la definición de lenguaje, lo siguiente es presentar el modelo de máquina de Turing,
+    ya que en este contexto los problemas se modelarán en términos de lenguaje con la noción anteriormente anunciada.
     \newline
 
     \subsection{Elementos del modelo}\label{subsec:elementos-del-modelo-de-máquina-de-turing}
@@ -167,15 +168,15 @@
     como los que se describieron anteriormente, hasta que se dé la definición formal de la palabra cómputo.
     \newline
 
-    Las salidas: aceptación, rechazo, se obtienen una vez que se ha entrado en los estados de aceptacion, rechazo,
+    Las salidas: aceptación o rechazo, que se obtienen una vez que se ha entrado en los estados de aceptación o rechazo,
     por otro lado si no entrá en alguno de los estados que se mencionaron anteriormente, la máquina continurá para siempre, i.e
     ésta nunca terminará de hacer su cómputo.\newline
-    Esta es la presentación intuitiva de este modelo, entonces lo que sigue es definir de manera formal los elementos del modelo,
+    Esta es la presentación intuitiva de este modelo entonces lo que sigue es definir de manera formal los elementos del modelo.
 
     \newline
 
     \begin{definition}%!Here we need to rewrite for errors
-        Una máquina de Turing is una 7-tupla, $(Q,\Sigma,\Lambda,\delta,q_{0},q_{accept},q_{reject})$
+        Una máquina de Turing es una 7-tupla, $(Q,\Sigma,\Lambda,\delta,q_{0},q_{accept},q_{reject})$
         donde $Q,\Sigma,\Lambda$ son conjuntos finitos.
         \begin{enumerate}
             \item $Q$ es el conjunto de estados,
@@ -183,7 +184,7 @@
             \item $\Lambda$ es el alfabeto de la cinta donde  $\sqcup\in\Lambda$ y además $\Sigma\subseteq\Lambda$,
             \item $\delta: Q\times\Lambda \rightarrow Q\times\Lambda\times\{L,R,S\}$ es la función de transición
             \item $q_{0}$ es el estado de iniciación,
-            \item $q_{accept}$ es el estado de aceptacion
+            \item $q_{accept}$ es el estado de aceptación
             \item $q_{reject}$ es el estado de rechazo donde $q_{accept} \neq q_{reject}$,
 
         \end{enumerate}
@@ -191,7 +192,7 @@
     \end{definition}
     Una vez que se tiene la definición se presentará como es el cómputo:\newline
     Inicialmente, se tendrá como entrada una cadena $w = w_{1}\dots w_{n}$ en $\Sigma$, en a lo más $n$ cuadros
-    a la izquierda y el resto de la cinta esta en blanco.Ésto quiere decir que están rellenados con símbolos blancos,
+    a la izquierda y el resto de la cinta esta en blanco. Ésto quiere decir que están rellenados con símbolos blancos,
     y la manera de identificar el final de la entrada $w$ es marcado por el primer símbolo en blanco en la cinta,
     ya que el alfabeto $\Sigma$ no contiene dicho símbolo.
     \newline
@@ -201,7 +202,7 @@
     izquierdo extremo, éste se quedará en el mismo lugar, aunque la función de transición indique un movimiento del cabezal $L$.
     \newline
 
-    Finalmente, el cómputo continuará hastá que entre en el estado de $q_{accept}$ ó $q_{reject}$,
+    Finalmente, el cómputo continuará hastá que entre en el estado de $q_{accept}$ o $q_{reject}$,
     si no sucede lo anterior $M$ continuará para siempre.
     Una vez presentado el modelo y una visión intuitiva del cómputo en el mismo, se adentrará a la noción de
     \textbf{decidible}, que es la noción a la que se quiere converger en este modelo para hacer la conexión con el modelo
@@ -234,29 +235,29 @@
     \begin{equation}
         uqv
     \end{equation}
-    Para enfatizar que en ese momento del compúto, el cabezal esta en la localidad del primer símbolo de la cadena
+    Para enfatizar que en ese momento del cómputo, el cabezal esta en la localidad del primer símbolo de la cadena
     $v$, se coloca a el estado actual $q$ entre la cadena $u$ y $v$; esto da un significado formal a la notación del concepto
     de configuración.
     \\
     \newline
-    Entonces esta noción es la que va a dar el paso de formalizar el compúto, por lo cual de manera intuitivamente se va
+    Entonces esta noción es la que va a dar el paso de formalizar el cómputo, por lo cual de manera intuitiva se va
     a tener una secuencia de configuraciones:\newline
     \begin{equation}
-        C_{0}\mathellipsis C_{n}\in\mathbb{N}
+        C_{0}\mathellipsis C_{n},\ n\in\mathbb{N}
     \end{equation}
     \newline
 
-    Pero este proceso se definirá entre dos estados a priorí $C_{i},C_{j}$;
+    Pero este proceso se definirá entre dos estados a priorí $C_{i},C_{j}$
     entonces esta noción permitirá definir lo siguiente:
     \begin{definition}
-        Se dice que la \textbf{configuración} $C_{j}$ le sigue a $C_{k}$ si:
-        Se toman las cadenas $u,v$ de $\Gamma$, y también tomamos $a,b\in \Sigma$.
-        entonces se concluye que: si pasa $\delta(q_{k},b) = (q_{j},c,L)$,
+        Se dice que la \textbf{configuración} $C_{j}$ le sigue a $C_{k}$ si:\\
+        Se toman las cadenas $u,v$ de $\Lambda$, y también tomamos $a,b\in \Sigma$.
+        entonces se concluye que: si pasa que $\delta(q_{k},b) = (q_{j},c,L)$
         entonces $uacq_{j}v$ le sigue de $uaq_{k}bv$
 
     \end{definition}
-    La anterior noción se esta definiendo con la función $\delta$, que es la que esta formalizando esta noción.
-    Como se menciono anteriormente, se estipula que las secuencias de configuraciónes, entonces se tendrá una configuración
+    La anterior noción se esta definiendo con la función $\delta$, que es la que la formaliza.
+    Como se menciono anteriormente, se estipula que las secuencias de configuraciones tendrán una configuración
     inicial.
     \begin{definition}
         Sea $M$ una máquina de Turing, $w$ una cadena, tomamos a
@@ -267,15 +268,15 @@
     el estado cero $q_{0}$ y el cabezal esta en el primera localidad de lado izquierdo de la cinta.
     Ahora las configuraciones que intuitivamente son las candidatas para
     que sean las configuraciones finales si es que la máquina termina en algun momento de este
-    proceso; pero por el momento se llamará a esas configuraciones:\newline
+    proceso son:\newline
     \begin{equation}
-        q_{accept}, q_{reject}\label{eq:equation8}
+        q_{accept},\ q_{reject}\label{eq:equation8}
     \end{equation}
     A estas configuraciones se les nombrarán como configuraciones de paro, ya que están definidas
     en términos del estado en el que entran; que son los estado de paro y de aceptación respectivamente.\newline
     %TODO: Hacer una revisión gramatical de la tesis
     Entonces se formalizará que una máquina de Turing se detiene si entra en los estados
-    $q_{accept0},q_{reject}$ y con base a esto se hará una generalización de la definición de la función delta, tomando
+    $q_{accept} \ o \ q_{reject}$, y con base a esto se hará una generalización de la definición de la función delta, tomando
     un conjunto de estados en el que no esta los estado de detención
     \newline
     Una vez aclarado esto, se tienen los elementos para definir que:\newline
@@ -296,8 +297,8 @@
     escriben en términos del lenguaje, es decir, el sentido formal de lenguaje; que son los
     conjuntos de cadenas formadas sobre un alfabeto dado $\Sigma$.
     \newpage
-    En este sentido, dada una máquina de Turing $M$,se puede tener la "coleccióń" de todas
-    las cadenas que son aceptadas por $M$, que con base a la definición de lenguaje en el mundo de máquinas de Turing
+    En este sentido, dada una máquina de Turing $M$, se puede tener la collección de todas
+    las cadenas que son aceptadas por $M$, que con base a la definición de lenguaje en el modelo de máquinas de Turing,
     esto es el conjunto de cadenas con el atributo de que son aceptadas por $M$, sobre un alfabeto $\Sigma$.
     \newline
     Ahora se formalizara lo anterior de la siguiente manera:
@@ -333,14 +334,14 @@
     \begin{definition}
         Sea $M$ máquina de Turing tal que $\forall w$ entrada, si esta se detiene en algún momento de la ejecución,
         entonces dicha máquina de Turing tiene el atributo de ser
-        \textbf{decidible}\newline
-        Donde $w$ es una cadena sobre el alfabato $\Sigma$
+        \textbf{decidible.}\newline
+        Donde $w$ es una cadena sobre el alfabato $\Sigma$.
         Es decir, siempre entrán en su estado de \textbf{aceptación}
         o en su estado de \textbf{rechazo} en algún momento de la ejecución.
     \end{definition}
     Y por el lado de la noción del lenguaje definimos lo siguiente:
     \begin{definition}
-        Se dicé que un lenguaje es \textbf{decidible} si existe un máquina de Turing
+        Se dice que un lenguaje es \textbf{decidible} si existe un máquina de Turing
         que lo \textbf{decide}.
         i.e que la máquina tiene el atributo de ser decidible.
     \end{definition}
@@ -351,7 +352,7 @@
     \begin{example}
         Tomamos el siguiente lenguaje:
         \begin{equation}
-            A = \{ 0^2^n : n>=0\}\label{eq:equation2}
+            A = \{ 0^2^n : n\geq 0 \}\label{eq:equation2}
         \end{equation}
         Es el lenguaje que consta de cadenas de 0's tal que su longitud es una
         potencia de 2.
@@ -368,13 +369,17 @@
     \end{enumerate}
     Una vez que se tiene la descripción de la máquina de Turing a un alto nivel, se puede hacer un puente
     a un bajo nivel, que es formalmente describir la máquina con sus elementos que la definen para una entrada $w$,
-    el cual nuestro puente será en describir la función $\delta$ vía un diagrama de estados
+    el cual nuestro puente será en describir la función $\delta$ vía un diagrama de estados.\\
+
     %!Describiendo el alto nivel de la maquina de Turing a un alto nivel.
-    En la etapa 1 de $M_{2}$, corta el número de ceros a la mitad. Mientras la máquina barre tráves de la cinta en la
-    etapa 1, lleva la cuenta de $0$'s vistos si es par o impar.\newline Si el número es impar mayor a 1, entonces el número original
-    de $0$'s en la entrada no puede ser una potencia de 2. Entonces la máquina \textbf{rechaza} en esa instancia.
-    Si el número de 0's visto es 1, entonces el número original tiené que ser una potencia de 2, entonces en ese
-    caso la máquina \textbf{acepta}.
+    En la etapa 1 de $M_{2}$, corta el número de ceros a la mitad, mientras la máquina barre a tráves de la cinta en la
+    etapa 1, lleva la cuenta de $0$'s vistos si es par o impar.\newline
+    Si el número es impar mayor a 1, entonces el número original
+    de $0$'s en la entrada no puede ser una potencia de 2.\\
+    Entonces la máquina \textbf{rechaza} en esa instancia.
+    Si el número de 0's visto es 1, entonces el número original tiené que ser una potencia de 2 entonces en ese
+    caso la máquina \textbf{acepta}.\\
+
     %!Descripción formal de la máquina de Turing.
     Sea $M_{2} =(Q,\Sigma,\Lambda,\delta,q_{1},q_{accept},q_{reject})$:
     \begin{enumerate}
@@ -384,28 +389,57 @@
         \item Se describirá a $\delta$ con un diagrama de estado.
         \item Los estados de inicio, aceptación y rechazo son $q_{1},q_{accept},q_{reject}$ respectivamente.
     \end{enumerate}
-    \newline
-    %!Todo: Hacer el diagrama de estado para que sea una mejor presentación.
-    %!Este diagrama se hara de la manera de draw.io
 
-    \begin{center}
-        \includegraphics{Untitled Diagram.jpg}
-    \end{center}
+    \begin{tikzpicture}[shorten >=1pt, node distance=4cm,>=,auto]
+        \tikzstyle{every state}=[fill = {rgb:black,1;white,10}]
+
+        \node[state,initial]              (s_0)                           {$s_0$};
+        \node[state]                      (s_1)[right of=s_0]             {$s_1$};
+        \node[state,accepting]            (s_reject)[below of=s_0]        {$s_{reject}$};
+        \node[state,accepting]            (s_accept)[below of=s_1]        {$s_{accept}$};
+        \node[state]                      (s_2)[right of=s_1]             {$s_2$};
+        \node[state]                      (s_3) [below of=s_2]            {$s_{3}$};
+        \node[state]                      (s_4) [above right of=s_1]      {$s_4$};
+
+        \tikzstyle{every node}=[font=\footnotesize]
+
+        \path[->,draw, thick]   (s_0) edge            node {$\sqcup,x \rightarrow R$}                        (s_reject)
+                                (s_0) edge            node {$0\rightarrow \sqcup,R$}                         (s_1)
+                    (s_1) edge  [loop above]          node[above left] {$x\rightarrow R$}                                ()
+                    (s_1) edge                        node{$\sqcup \rightarrow R$}                           (s_accept)
+                    (s_1) edge                        node {$o\rightarrow x,R$}                              (s_2)
+                    (s_2) edge  [loop right]          node{$x\rightarrow R$}                                 ()
+                    (s_2) edge  [bend left]           node{$0\rightarrow R$}                                 (s_3)
+                    (s_2) edge                        node[swap]{$\sqcup \rightarrow L$}                     (s_4)
+                    (s_3) edge  [loop right]          node {$x\rightarrow R$}                                ()
+                    (s_3) edge  [bend left ]          node {$\sqcup\rightarrow R$}                           (s_reject)
+                          edge  [bend left]           node {$0 \rightarrow x,R$}                             (s_2)
+                    (s_4) edge  [loop above]          node {$0,x\rightarrow L$}                              ()
+                           edge                       node[swap] {$\sqcup \rightarrow R$}                    (s_1);
+
+
+
+    \end{tikzpicture}
     \newline
+    \\
+
     En este diagrama, la etiqueta $0\rightarrow \sqcup,R$ que muestra en la transición del estado $q_{1}$ al estado $q_{2}$,
     tiene la semántica de la definición de la función $\delta$, que en otras palabras se describe como si:\newline
     en el estado $q_{1}$ con el cabezal leyendo $0$, la máquina va al estado $q_{2}$, escribe $\sqcup$ y mueve el cabezal
     a la derecha.\newline
+
     Lo que en términos formales significa que: $\delta(q_{1},0) = (q_{2},\sqcup, R)$.
     Otra escritura que se usará para la notación en este ejemplo más compacta,
     es denotar: $0\leftarrow R$, que la semántica es que se hace la transición del estado $q_{3}$ al estado $q_{4}$, que
     es la etiqueta que se aprecia en el diagrama de estados, y ademas significa que la máquina se mueve a la derecha en
     el momento en el que lee un $0$ en el estado $q_{3}$, pero que no altera la cinta(\no hace una operación escritura),
     entonces $\delta(q_{3}),0) = (q_{4},0,R)$ en términos del mapeo que se esta generando.\newline
+
     Esta máquina inicia escribiendo un símbolo blanco sobre el último $0$ de lado izquierdo. En particular esto sirve
     para delimitar el final de la cinta con el símbolo blanco $\sqcup$, en esta particular máquina de Turing.
     \newline
-    Ahora haremos una ejecución de esta maquina, $M_{2}$ con la entrada $w = 0000$, con lo cual se escribirá la función
+
+    Ahora se hará una ejecución de esta maquina, $M_{2}$ con la entrada $w = 0000$, con lo cual se escribirá la función
     transición $\delta$ con la semántica y escritura de las configuraciones.
 
     %!Here we can use the next sessions of the rows as we can see
@@ -473,10 +507,10 @@
     %!Aqui se ha acaabado las correcciones de la capa de comunicacion.
 
     %!Inicio de las correcciones de la capa de computacion.
-    \subsubsection{Capa de Computación}
+    \subsubsection{Capa de computación}
     Una vez que se tiene la capa de comunicación, se presentará la capa formal del modelo de
     cómputo.\newline
-    El modelo estara controlado por un algoritmo $\Pi$, que estará compuesto de protocolos(algoritmos)
+    El modelo estará controlado por un algoritmo $\Pi$, que estará compuesto de protocolos(algoritmos)
     $\Pi_{1},\mathellipsis,\Pi_{n}$, donde cada $\Pi_{i}$ residirá en su correspondiente $v_{i}$.
     \newline
     \begin{remark}
@@ -615,9 +649,9 @@
     Dado una red de procesadores con cierta topología, a saber la topología de un arbol,
 donde cada nodo tiene alojado en memoría un entero $n$, entonces el problema a solucionar es encontrar el
 elemento mas repetido en toda la red, i.e encontrar estadísticamente el modo de la red;
-para eso debemos implementar un protocolo de comunicación en el Arbol para determinar dicho valor.
-Que en términos formales es diseñar un algoritmo que sera una tupla de $n$ protocolos los cuales
-se ejecutarán en el Arbol para solucionar dicho problema.
+para eso se debe de implementar un protocolo de comunicación en el arbol para determinar dicho valor.\\
+Que en términos formales es diseñar un algoritmo que será una tupla de $n$ protocolos los cuales
+se ejecutarán en el arbol para solucionar dicho problema.
 
 
 \begin{definition}
@@ -680,24 +714,26 @@ A continuación se mostrará el código del algoritmo.
 \caption{First-dis($T_{r_0},ID,x_{i}$)\label{lss}}
 \end{algorithm}
 
+    Aunque no se ha dado las nociones de complejidad, esto será parte de la presentación de esta tesis.
+
     \subsubsection{Corrección del algoritmo y su complejidad.}
 
 
 Ahora se mostrará que en efecto $A_{first}$ hace lo que tiene que hacer, que en términos
 formales es decir que $A_{first}$ es correcto, para aquello diremos que es invariante en el siguiente sentido:\newline
 Que para cada ronda $ r \in \lbrace 1,\dots, h_{r_{0}} \rbrace $ se cumple que el nodo $v$ de altura $h_{v}$ ha calculado correctamente
-su variable local a saber su correspondiente $M_{v}$ que es un mensaje de la lista de tipos.
+su variable locall, a saber su correspondiente $M_{v}$ que es un mensaje de la lista de tipos.
 \\
 
 \begin{theorem}
 Sea $ \pi = A_{first}$ entonces tiene la propiedad de que para cada $r \in \lbrace 1, \ldots, h_{r_{0}}  \rbrace $
 al final de la ronda r el nodo $v$ de altura $h$ ha calculado correctamente su variable local $M_{v}$ y
-además en el sub-arbol $T_{v}$ que denota que esta enraizado en $v$ tiene en su variable local las entradas de los nodos de $T_{v}$
+además en el subarbol $T_{v}$ que denota que esta enraizado en $v$ tiene en su variable local las entradas de los nodos de $T_{v}$
 y con posibles repeticiones.
 
     \textbf{Demostracion:} \\
 Sea $h=1$ entonces al final de la ronda correspondiente, $v$ es una hoja con
-base al init del algoritmo\\
+base al inicio del algoritmo\\
 $\therefore M_{v_{h=0}}= M(\uparrow, A_{r1}, A_{r2})$
 
 Suponemos que es cierto para el paso $h=j$  y demostremos que es cierto para $h = j+1$
@@ -759,7 +795,7 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     Es decir se dice que se puede optimizar $A_{first}$, sujeto a la altura $h$, y apartir de ese subarbol diseminar
     el mensaje a manera de \textbf{response} en todo el arbol $T_{r_{0}}$
 
-    %!final del ejemplo construido en esta parte de la tesis.
+    %!------------------------- FINAL DEL EJEMPLO DE ESTA TESIS ----------------------------------!%
     \newpage
     \subsection{Decidibilidad}\label{subsec:decidibilidad}
     Una vez que se tiene los elementos del modelo distribuido, se introducirá la noción de \textbf{decibilidad} en
@@ -769,13 +805,15 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \begin{definition}
         Sea $w$ una cadena, se puede escribir a la cadena como $w_{0},\mathellipsis, w_{n}$, la cual será la entrada al algoritmo
         $\Pi(w)$, donde de manera distribuida, se tendrá como inicialización, que cada proceso $p$ tendrá como entrada un caracter de la cadena $w$, por decir $p_{j}(w_{k})$.\newline
+
         Sea $\kappa_{\Pi(w,G)}$ una ejecución del algoritmo $\Pi$ con entrada $w$ en la gráfica $G$, entonces se dirá que
         la entrada $w$ es aceptada, si existe una configuración en la ejecución $\kappa_{\Pi(w,G)}$, por decir $C_{k}$ tal que
         existe un estado $q_{a}$ en $C_{k}$, de su correspondiente proceso $p_{a}$, tal que $q_{a}=q_{accept}$.\newline
+
         Es decir, que el estado en esa configuración es exactamente el estado $q_{accept}$.\newline
         En símbolos:
         \begin{equation}
-            \forall \kappa_{\Pi(w,G)},\ \exists C_{K}\ \mid \exists p_{a}\ \mid q_{a,k}=q_{accept}.\label{eq:equation4}
+            \forall \kappa_{\Pi(w,G)},\ (\exists C_{K},\exists p_{a}),\ q_{a,k}=q_{accept}.\label{eq:equation4}
         \end{equation}
     \end{definition}
 
@@ -788,7 +826,7 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
 
 
     %todo:Migrate the chapter to another file .tex e incluirlo en un main .tex
-    \chapter{Simulación de modelos Maquina de Turing y \textbf{LOCAL}}\label{ch:simulacion-de-modelostextbfytextbf}
+    \chapter{Simulación de modelos Máquina de Turing y \textbf{LOCAL}}
     \section{Noción de simulación en modelos}\label{sec:nocion-de-simulación-en-modelos}
     Una vez que se tiene estos dos modelos de cómputo formal, a nivel logíco se dice que:
     \theoremstyle{definition}
@@ -799,7 +837,7 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
         \end{equation}
         Mas aún se dice que son modelos equivalentes (computacionalmente) si:
         \begin{equation}
-        \forall x\in L(T) \iff x\in L(S) \\label{eq:equation14}
+        \forall x\in L(T) \iff x\in L(S) \label{eq:equation14}
         \end{equation}
     \end{definition}
     \space
@@ -807,25 +845,26 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
 
     \begin{theorem}
         Sea $TM$ una máquina de Turing, entonces existe un $\Pi$ algoritmo distribuido que simula
-        a $TM$,\space con la semántica de \textbf{simulación}, con base a la definición anterior.
+        a $TM$.
     \end{theorem}
-    Una vez que se tiene enunciado este teorema,se dará el paso al diseño del algoritmo distribuido,
+    Una vez que se tiene enunciado este teorema, se dará el paso al diseño del algoritmo distribuido,
     digamos $\Pi$, tal que para toda ejecución $\Theta_{\Pi(w,G)}$ con ambientación el modelo \textbf{LOCAL}, con la entrada $w$, para una gráfica $G$ con una
     cierta topología es tal que \textbf{acepta}.
     \newpage
 
     \section{Diseño del algoritmo}\label{sec:diseño-del-algoritmo}
     \begin{remark}
-        Trivialmente, se pensará que al darle como entrada la cadena que es aceptada por una máquina de Turing $TM$,\space
+        Trivialmente se pensará que al darle como entrada la cadena que es aceptada por una máquina de Turing $TM$,\space
         es consumida tal que cada proceso la tiene enteramente como entrada, i.e $\Pi(w)$ entonces de manera local se da
-        que $p_{j}(w),\ \forall v_{j}$, entonces este proceso en particular es tal que en algún momento de la ejecución(para alguna ejecución $\Theta_{\Pi(w,G)}$),
+        que $p_{j}(w),\ \forall v_{j}$ entonces este proceso en particular es tal que en algún momento de la ejecución(para alguna ejecución $\Theta_{\Pi(w,G)}$),
         exista una configuración $C_{k}$, y en esta exista un estado $q_{r,k}$, tal que $q_{r,k} = q_{accept}$, pues su respectivo proceso $p_{r}$ es una máquina de Turing,
-        por lo tanto de manera global, $w\in L(\Pi)$, pero se observará que la forma de la entrada en el algoritmo $\Pi$
+        por lo tanto de manera global $w\in L(\Pi)$ pero se observará que la forma de la entrada en el algoritmo $\Pi$
         es de manera no distribuida, pues de manera intuitiva todos los procesos conocen toda la información.
     \end{remark}
-    Entonces no es verdaderamente un diseño de un algoritmo distribuido, por lo tanto se dará paso a diseñar de manera
-    \textbf{distribuida} siguiente algoritmo:
+    Entonces la observación anterior nos dice no es verdaderamente un diseño de un algoritmo distribuido, por lo tanto se dará paso a diseñar de manera
+    \textbf{distribuida} el siguiente algoritmo:
     \newline
+
     %Una vez que tenemos esta información daremos una capa de adversario tal y como lo haremos de esta manera
     %En esta parte daremos una part externa que es la noción de rival en el siguiente sentido
     Se dará la distribución de la información a manera de contricante de la siguente manera:\newline
@@ -842,9 +881,11 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \end{definition}
     Esto da la noción del control externo de las entradas, que por el momento esto esta generando
     una cierta familiaridad del papel a un alto nivel de la visión del contrincante, como se observa
-    esta es la contraparte del algoritmo que esta gobernando computacionalmente (o por la capa de computo)
+    esta es la contraparte del algoritmo que esta gobernando computacionalmente (o por la capa de cómputo)
     del algoritmo.
     \hfill
+    \newline
+
     Entonces se propone el siguiente diseño del algoritmo que dará a priori
     la solución del problema que estamos atacando.
 
@@ -877,13 +918,16 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     virtud del ambiente \textbf{local}, luego se hace el código para cada proceso $v_{k}$, y la lectura de
     la entrada $w_{i}$, que es la que es por la inicialización o después de una operación $deliver(MSG)$.
     \newline
+
     Luego se realiza una iteración en la cual se harán llamadas de $\delta()$ y se actualizará la salida de dicho llamado, para repetir este
     proceso hasta que la localidad de la cadena de salida $w_{r}$, sea de localidad no asignada a la familia de símbolos
     de la cadena, asignada a el proceso actual, el cual es asignado por el lado del contrincate, que es el agente externo del sistema distribuido.
     \newline
-    Finalmente se toma la decisión de regresar el estado $q_{accept}$,si el estado $q_{r}==q_{accept}$;
+
+    Finalmente se toma la decisión de regresar el estado $q_{accept}$, si el estado $q_{r}==q_{accept}$;
     en otro caso se ejecuta la operación $send(MSG)$ a los vecinos del proceso actual $v_{k}$.
     \newline
+
     Lo que sigue, es realizar la demostración que este algoritmo es correcto, lo cual se enunciará en el siguiente teorema.
     \newline
     \section{Demostración del procedimiento $Simula\char95Algo\char95TM$}\label{sec:demostración-del-procedimiento}
@@ -923,11 +967,6 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \end{proof}
     %!---Lo que falta es hacer un analisis de complejidad del algoritmo a manera de seccion ---!%
 
-    Entonces una vez que se tiene un algoritmo que es correcto a nivel lógico,
-    la siguiente pregunta es la complejidad asociada a la ejecución de $\Pi \gets Simula\char95Algo\char95TM$
-    tanto espacial, de comunicación asi como temporal.
-    \newpage
-
     \chapter{Complejidad computacional en los modelos}
     En esta sección se presentará una de las dimensiones del análisis de algoritmos, a saber la complejidad computacional.
     Como se esta usando dos modelos de cómputo formal, se darán las definiciones de complejidad en ambos modelos.
@@ -957,9 +996,9 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \begin{definition}
         Sean $f,g:\mathbb{N}\rightarrow\mathbb{R}^+$ funciones\newline
         Se dice que $f(n) = O(g(n))$ \newline
-        si $\exists c, n_{0}$ tal que $\forall n >= n_{0}$
+        si $\exists c, n_{0}$ tal que $\forall n \geq n_{0}$
         \begin{equation}
-            f(n) <= cg(n)\label{eq:equation6}
+            f(n) \leq cg(n)\label{eq:equation6}
         \end{equation}
         Cuando $f(n) = O(g(n))$, se dice que $g(n)$ es un limite asintoticamente superior
         para la función $f(n)$.
@@ -970,10 +1009,10 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
 
     A continuación se dará un ejemplo de una máquina de Turing en la que se hará analísis de la complejidad temporal
     de la misma.
-    \subsubsection{ejemplos}
+    \subsubsection{Ejemplos}
     Sea $M$ una máquina de Turing, tal que hace decidible al lenguaje:
     \begin{equation}
-        A = \{0^{k}1^{k} \| k\in \mathbb{N} \}\label{eq:equation12}
+        A = \{0^{k}1^{k} : k\in \mathbb{N} \}\label{eq:equation12}
     \end{equation}
     Procedamos a describir la máquina como procedimiento:
     \begin{enumerate}
@@ -1014,7 +1053,7 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     Se definirá un concepto que hara una segementación del conjunto de máquinas de Turing por la complejidad temporal
     asociada a ellas.
     \begin{definition}
-       Sea $t:\N\rightarrow R^{+}$ una función.\newline
+       Sea $t:\mathbb{N} \rightarrow R^{+}$ una función.\newline
         Se define la \textbf{clase} del tiempo de complejidad
         \begin{equation}
             TIME(t(n))\label{eq:equation11}
@@ -1024,6 +1063,7 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \end{definition}
     Por lo tanto, con base a la definición anterior, el lenguaje $A\{0^{k}1^{k}\| k>=0$ es de clase $TIME(n^{2})$,
     ya que la complejidad temporal asociada es $O(n^{2})$.\newline
+
     Se puede observar que aunque exista una máquina de Turing que decida a un lenguaje en tiempo $t(g(n))$ con
     $g:\N\rightarrow \R^{+}$ función, puede existir otra máquina que la decida asintóticamente más rápido que la anterior
     i.e
@@ -1043,7 +1083,7 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     en diferentes tiempos, resultando una situación donde un proceso por un lado espera mensajes de otro proceso, tal que
     este esta actualmente detenido.\newline
 
-    Para los propositos de este analísis, asumiremos que el algoritmo esta ejecutado en este sistema de manera independiente,
+    Para los propositos de este análsis, asumiremos que el algoritmo esta ejecutado en este sistema de manera independiente,
     sin tener otras actividades que tienen lugar concurrentemente.
     Sin embargo, los retrasos ocurren en cada proceso como resultado de tener que esperar información computada de otro
     proceso, los cuales no pueden ser ignorados.\newline
@@ -1062,7 +1102,7 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \end{definition}
     \begin{remark}
         Existe una definición para el mundo de algoritmos asíncronos, pero para los fines
-    de esta tesis nos limitaremos a esta definició.
+    de esta tesis nos limitaremos a esta definición.
     \end{remark}
 
     \subsection{Complejidad espacial.}\label{subsec:complejidad-espacial.}
@@ -1100,7 +1140,7 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \begin{definition}
         [Complejidad de mensajes:] El costo de mensajes de transmitir un mensaje basico sobre un canal de
         comunicación tiene por valor 1. La complejidad de mensajes de un algoritmo distribuido $\Pi$ en una red $G$,
-        denotado como $\Message(\Pi,G)$, es el número total de mensajes basicos transmitidos durante la ejecución de $\Pi$
+        denotado como $Message(\Pi,G)$, es el número total de mensajes basicos transmitidos durante la ejecución de $\Pi$
         en $G$ en el peor de los casos.
         Todo bajo en una entrada legal $I$, y en cualquier escenario de ejecución.
     \end{definition}
