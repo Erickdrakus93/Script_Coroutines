@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.8.18)  2 NOV 2020 21:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.8.18)  13 JUN 2021 15:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1004,13 +1004,13 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 49.
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1070,47 +1070,47 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.76     \newline
+l.79     \newline
                  
 ? 
 [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
+Underfull \hbox (badness 10000) in paragraph at lines 100--102
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--124
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+Underfull \hbox (badness 10000) in paragraph at lines 134--136
 
  []
 
 ! Undefined control sequence.
-l.135         $m-veces$, con $m\in\N
+l.138         $m-veces$, con $m\in\N
                                     $ se escribirá así:\newline
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--150
+Underfull \hbox (badness 10000) in paragraph at lines 150--153
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 152--157
+Underfull \hbox (badness 10000) in paragraph at lines 155--160
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--170
+Underfull \hbox (badness 10000) in paragraph at lines 161--173
 
  []
 
@@ -1121,16 +1121,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.176     \newline
+l.179     \newline
                   
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--199
+Underfull \hbox (badness 10000) in paragraph at lines 196--202
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 200--204
+Underfull \hbox (badness 10000) in paragraph at lines 203--207
 
  []
 
@@ -1141,21 +1141,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.211     \newline
+l.214     \newline
                   
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--245
+Underfull \hbox (badness 10000) in paragraph at lines 240--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--245
+Underfull \hbox (badness 10000) in paragraph at lines 240--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--249
+Underfull \hbox (badness 10000) in paragraph at lines 250--252
 
  []
 
@@ -1167,16 +1167,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.266     \newline
+l.269     \newline
                   
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--272
+Underfull \hbox (badness 10000) in paragraph at lines 270--275
 
  []
 
 ! Undefined control sequence.
-l.291             \item existe un $k \in \N
+l.294             \item existe un $k \in \N
                                            $ tal que $C_{k}$ es una configur...
 
 ? 
@@ -1188,39 +1188,39 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.310     \newline
+l.313     \newline
                   
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--315
+Underfull \hbox (badness 10000) in paragraph at lines 314--318
 
  []
 
 ! Double superscript.
-l.355             A = \{ 0^2^
+l.358             A = \{ 0^2^
                              n : n\geq 0 \}\label{eq:equation2}
 ? 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 370--373
+Underfull \hbox (badness 10000) in paragraph at lines 373--376
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 375--382
+Underfull \hbox (badness 10000) in paragraph at lines 378--385
 
  []
 
 ! Argument of \language@active@arg> has an extra }.
 <inserted text> 
                 \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 Runaway argument?
 ! Paragraph ended before \language@active@arg> was complete.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 Runaway argument?
@@ -1228,19 +1228,19 @@ shorten
 ! Paragraph ended before \pgfkeys@addpath was complete.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 ! Missing \endcsname inserted.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 ! Missing \endcsname inserted.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 Runaway argument?
@@ -1248,7 +1248,7 @@ shorten
 ! Paragraph ended before \pgfkeys@splitter was complete.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 Missing character: There is no / in font nullfont!
@@ -1256,40 +1256,40 @@ Missing character: There is no / in font nullfont!
 ! Argument of \language@active@arg> has an extra }.
 <inserted text> 
                 \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 Runaway argument?
 ! Paragraph ended before \language@active@arg> was complete.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 Runaway argument?
 ! Paragraph ended before \pgfkeys@addpath was complete.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 ! Missing \endcsname inserted.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 ! Missing \endcsname inserted.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 Runaway argument?
 ! Paragraph ended before \pgfkeys@splitter was complete.
 <to be read again> 
                    \par 
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 Missing character: There is no / in font nullfont!
@@ -1302,13 +1302,13 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.393 ...shorten >=1pt, node distance=4cm,>=,auto]
+l.396 ...shorten >=1pt, node distance=4cm,>=,auto]
                                                   
 ? 
 ! Argument of \language@active@arg> has an extra }.
 <inserted text> 
                 \par 
-l.406         \path[->,draw, thick]   (
+l.409         \path[->,draw, thick]   (
                                        s_0) edge            node {$\sqcup,x ...
 
 ? 
@@ -1316,7 +1316,7 @@ Runaway argument?
 ! Paragraph ended before \language@active@arg> was complete.
 <to be read again> 
                    \par 
-l.406         \path[->,draw, thick]   (
+l.409         \path[->,draw, thick]   (
                                        s_0) edge            node {$\sqcup,x ...
 
 ? 
@@ -1325,28 +1325,28 @@ Runaway argument?
 ! Paragraph ended before \pgfkeys@addpath was complete.
 <to be read again> 
                    \par 
-l.406         \path[->,draw, thick]   (
+l.409         \path[->,draw, thick]   (
                                        s_0) edge            node {$\sqcup,x ...
 
 ? 
 ! Missing \endcsname inserted.
 <to be read again> 
                    \par 
-l.406         \path[->,draw, thick]   (
+l.409         \path[->,draw, thick]   (
                                        s_0) edge            node {$\sqcup,x ...
 
 ? 
 ! Missing \endcsname inserted.
 <to be read again> 
                    \par 
-l.406         \path[->,draw, thick]   (
+l.409         \path[->,draw, thick]   (
                                        s_0) edge            node {$\sqcup,x ...
 
 ? 
 ! Missing \endcsname inserted.
 <to be read again> 
                    \par 
-l.406         \path[->,draw, thick]   (
+l.409         \path[->,draw, thick]   (
                                        s_0) edge            node {$\sqcup,x ...
 
 ? 
@@ -1355,59 +1355,59 @@ Runaway argument?
 ! Paragraph ended before \pgfkeys@splitter was complete.
 <to be read again> 
                    \par 
-l.406         \path[->,draw, thick]   (
+l.409         \path[->,draw, thick]   (
                                        s_0) edge            node {$\sqcup,x ...
 
 ? 
 Missing character: There is no / in font nullfont!
 Missing character: There is no / in font nullfont!
 
-Underfull \hbox (badness 10000) in paragraph at lines 422--425
+Underfull \hbox (badness 10000) in paragraph at lines 425--428
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 422--425
+Underfull \hbox (badness 10000) in paragraph at lines 425--428
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 426--430
+Underfull \hbox (badness 10000) in paragraph at lines 429--433
 
  []
 
 ! Undefined control sequence.
-l.435 ... $q_{3}$, pero que no altera la cinta(\no
+l.438 ... $q_{3}$, pero que no altera la cinta(\no
                                                    hace una operación escri...
 
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--437
+Underfull \hbox (badness 10000) in paragraph at lines 434--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 438--441
+Underfull \hbox (badness 10000) in paragraph at lines 441--444
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 466--469
+Underfull \hbox (badness 10000) in paragraph at lines 469--472
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 491--508
+Underfull \hbox (badness 10000) in paragraph at lines 494--511
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 491--508
+Underfull \hbox (badness 10000) in paragraph at lines 494--511
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 511--516
+Underfull \hbox (badness 10000) in paragraph at lines 514--519
 
  []
 
@@ -1418,21 +1418,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.535     \newline
+l.538     \newline
                   
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--540
+Underfull \hbox (badness 10000) in paragraph at lines 539--543
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 548--563
+Underfull \hbox (badness 10000) in paragraph at lines 551--566
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 548--563
+Underfull \hbox (badness 10000) in paragraph at lines 551--566
 
  []
 
@@ -1443,7 +1443,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.565     \newline
+l.568     \newline
                   
 ? 
 [11]
@@ -1454,18 +1454,18 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.605         \newline
+l.608         \newline
                       
 ? 
 ! Undefined control sequence.
 <recently read> \modelo 
                         
-l.621 ...efinirá normalmente el concepto $\modelo
+l.624 ...efinirá normalmente el concepto $\modelo
                                                   $ en términos de las ejec...
 
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--629
+Underfull \hbox (badness 10000) in paragraph at lines 630--632
 
  []
 
@@ -1477,7 +1477,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.636     \end{definition}\newline
+l.639     \end{definition}\newline
                                   
 ? 
 
@@ -1487,71 +1487,91 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.648     \newline
+l.651     \newline
                   
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 666--669
+Underfull \hbox (badness 10000) in paragraph at lines 669--672
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 671--673
+Underfull \hbox (badness 10000) in paragraph at lines 674--676
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 722--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--730
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 771--774
+Underfull \hbox (badness 10000) in paragraph at lines 774--777
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 806--808
+Underfull \hbox (badness 10000) in paragraph at lines 809--811
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 809--812
+Underfull \hbox (badness 10000) in paragraph at lines 812--816
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 817--821
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 836--838
+
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.844     \newline
+                  
+? 
 [16]
 Cap\'{\i }tulo 2.
 [17
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 864--867
+Underfull \hbox (badness 10000) in paragraph at lines 902--905
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 882--888
+Underfull \hbox (badness 10000) in paragraph at lines 920--926
 
  []
 
 
-! LaTeX Error: \begin{ALC@for} on input line 898 ended by \end{ALC@if}.
+! LaTeX Error: \begin{ALC@for} on input line 936 ended by \end{ALC@if}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.909                        \STATE
+l.947                        \STATE
                                     $MSG\gets<q_{r},w_{r}>$
 ? 
 
-! LaTeX Error: \begin{ALC@if} on input line 909 ended by \end{ALC@for}.
+! LaTeX Error: \begin{ALC@if} on input line 947 ended by \end{ALC@for}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.911                \ENDFOR
+l.949                \ENDFOR
                             
 ? 
 
@@ -1561,31 +1581,31 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.914     \newline
+l.952     \newline
                   
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 917--921
+Underfull \hbox (badness 10000) in paragraph at lines 955--959
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 922--926
+Underfull \hbox (badness 10000) in paragraph at lines 960--964
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 927--930
+Underfull \hbox (badness 10000) in paragraph at lines 965--968
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 931--933
+Underfull \hbox (badness 10000) in paragraph at lines 969--971
 
  []
 
 
-LaTeX Warning: Command \' invalid in math mode on input line 959.
+LaTeX Warning: Command \' invalid in math mode on input line 997.
 
 Missing character: There is no � in font cmr10!
 [19]
@@ -1593,53 +1613,53 @@ Cap\'{\i }tulo 3.
 [20
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1025--1035
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1073
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1036--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1074--1078
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1049--1052
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1090
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1066
+Underfull \hbox (badness 10000) in paragraph at lines 1102--1104
 
  []
 
 ! Undefined control sequence.
-l.1068     $g:\N
+l.1106     $g:\N
                 \rightarrow \R^{+}$ función, puede existir otra máquina qu...
 
 ? 
 ! Undefined control sequence.
-l.1068     $g:\N\rightarrow \R
+l.1106     $g:\N\rightarrow \R
                               ^{+}$ función, puede existir otra máquina qu...
 
 ? 
 
-Overfull \hbox (9.11209pt too wide) in paragraph at lines 1076--1076
+Overfull \hbox (9.11209pt too wide) in paragraph at lines 1114--1114
 []\T1/cmr/bx/n/14.4 Complejidad compu-tacio-nal en mo-de-lo dis-tri-bui-do $\OM
 L/cmm/m/it/14.4 LOCAL$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1078--1085
+Underfull \hbox (badness 10000) in paragraph at lines 1116--1123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1086--1090
+Underfull \hbox (badness 10000) in paragraph at lines 1124--1128
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 1125--1127
+Underfull \hbox (badness 10000) in paragraph at lines 1163--1165
 
  []
 
@@ -1679,39 +1699,43 @@ l.85 ... \xdef \T1/cmr/m/sc/10 {\T1/cmr/m/n/10 }\T
                                                   1/cmr/m/sc/10 \size@update...
 
 ? 
-) ) 
+)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  24390 strings out of 481239
- 463163 string characters out of 5920377
+ 463158 string characters out of 5920377
  759966 words of memory out of 5000000
  39181 multiletter control sequences out of 15000+600000
  556694 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,11n,70p,1004b,865s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/
-type1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type1/public/cm-supe
-r/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr
-/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/t
-ype1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super
-/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/
-share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/ty
-pe1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/
-sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/s
-hare/texmf/fonts/type1/public/cm-super/sfxc1000.pfb>
-Output written on Thesis.pdf (25 pages, 406820 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/t
+ype1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type1/public/cm-super
+/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/
+share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/ty
+pe1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/
+sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/s
+hare/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/typ
+e1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
+frm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/sh
+are/texmf/fonts/type1/public/cm-super/sfxc1000.pfb>
+Output written on Thesis.pdf (25 pages, 408990 bytes).
 PDF statistics:
  194 PDF objects out of 1000 (max. 8388607)
  139 compressed objects within 2 object streams

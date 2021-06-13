@@ -51,9 +51,13 @@
     %todo:Hacer antes de esta semana lo antes posible
     %todo:puntear a manera de commit los elementos del Cap 1
     %TODO:Hacer las correcciones de al menos el primer capitulo de la tesis
+    %TODO: Hacer las correcciones de definiciones y demostraciones para que se pueda hacer el resto del capitulo de la tesis.
+
     \maketitle
     \tableofcontents{}
-    \chapter{Decidibilidad en los modelos}\label{ch:decidibilidad-en-los-modelos}
+    %Aqui se cambia el nombre de decidibilidad para que se en un contexto de cualquier Modelo
+    % De los que se deba de hacer.
+    \chapter{Decidibilidad}\label{ch:decidibilidad-en-los-modelos}
     \section{Introducción}\label{sec:introducción}
     En este documento se expondrán nociones básicas de cómputo teórico a saber decibilidad y complejidad en ambos modelos:
     máquina de Turing y distribuido,
@@ -798,38 +802,71 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     %!------------------------- FINAL DEL EJEMPLO DE ESTA TESIS ----------------------------------!%
     \newpage
     \subsection{Decidibilidad}\label{subsec:decidibilidad}
-    Una vez que se tiene los elementos del modelo distribuido, se introducirá la noción de \textbf{decibilidad} en
+    Una vez que se tiene los elementos del modelo distribuido, se introducirá la noción de \textbf{decibilidad distribuida} en
     este modelo de cómputo formal.
 
     \theoremstyle{definition}
     \begin{definition}
-        Sea $w$ una cadena, se puede escribir a la cadena como $w_{0},\mathellipsis, w_{n}$, la cual será la entrada al algoritmo
-        $\Pi(w)$, donde de manera distribuida, se tendrá como inicialización, que cada proceso $p$ tendrá como entrada un caracter de la cadena $w$, por decir $p_{j}(w_{k})$.\newline
+        Sea $w$ una cadena se puede escribir a la cadena como $w_{0},\mathellipsis, w_{n}$, la cual será la entrada al algoritmo
+        $\Pi(w)$, donde de manera distribuida, se tendrá como inicialización que cada proceso $p$ tendrá como entrada un caracter de la cadena $w$, por decir $p_{j}(w_{k})$.\newline
 
         Sea $\kappa_{\Pi(w,G)}$ una ejecución del algoritmo $\Pi$ con entrada $w$ en la gráfica $G$, entonces se dirá que
-        la entrada $w$ es aceptada, si existe una configuración en la ejecución $\kappa_{\Pi(w,G)}$, por decir $C_{k}$ tal que
-        existe un estado $q_{a}$ en $C_{k}$, de su correspondiente proceso $p_{a}$, tal que $q_{a}=q_{accept}$.\newline
+        la entrada $w$ es aceptada, si existe una configuración en la ejecución $\kappa_{\Pi(w,G)}$ por decir $C_{k}$ tal que
+        existe un estado $q_{a}$ en $C_{k}$, de su correspondiente proceso $p_{a}$ tal que $q_{a}=q_{accept}$,
+        y no existe un proceso $p_{k}$ tal que $q_{k} = q_{reject}$.\newline
 
-        Es decir, que el estado en esa configuración es exactamente el estado $q_{accept}$.\newline
+        De manera dual podemos definir la noción de rechazar una cadena:\newline
+        Sea $\kappa_{\Pi(w,G)}$ una ejecución del algoritmo $\Pi$ con entrada $w$ en la gráfica $G$, entonces se dirá que
+        la entrada $w$ es rechazada si existe una configuración en la ejecución $\kappa_{\Pi(w,G)}$ por decir $C_{k}$ tal que
+        existe $q_{a} = q_{reject}$ y no existe un proceso $p_{k}$ tal que $q_{k} = q_{accept}$.\newline
+
+
+        Es decir, que el estado en esa configuración es exactamente el estado $q_{accept}$ o el estado $q_{reject}$.\newline
         En símbolos:
         \begin{equation}
-            \forall \kappa_{\Pi(w,G)},\ (\exists C_{K},\exists p_{a}),\ q_{a,k}=q_{accept}.\label{eq:equation4}
+            \forall \kappa_{\Pi(w,G)},\ (\exists C_{K},\exists p_{a}),\ q_{a,k}=q_{accept}(q_{reject}) \ \nexists p_{k} \ s.t q_{k} = q_{reject}(q_{accept}) \label{eq:equation4}
         \end{equation}
     \end{definition}
 
-    %!--En otras palabras lo que quiere decir es lo siguiente --!%
+    \begin{remark}
+        Una vez que un proceso ha entrado en su estado de aceptación para una ejecución $\kappa$
+        se puede hacer $Brodcast(G,w,p_{i})$ donde $p_{i}$ es el proceso que entra en estado de $q_{accept}(q_{reject})$,
+        comunicando en el estado en el que ha entrado como mensaje, i.e $M \leftarrow <q_{accept}>(<q_{reject}>)$.\newline
+        De esta manera se desprende que todos los estados entran en estado de aceptación o en estado de rechazo.
+    \end{remark}
+    En este texto tomaremos únicamente algoritmos que cumplen la propiedad de terminación,
+    es decir que para una entrada $w$ esta es aceptada o rechazada.\newline
+
     Lo anterior, permitirá definir lo siguiente:
     \begin{definition}
         Al conjunto de cadenas que acepta un algoritmo distribuido $\Pi$ es el lenguaje
-        de $\Pi$, o el lenguaje que decide $\Pi$, y se denotará como $L(\Pi)$.
+        de $\Pi$  o el lenguaje que decide $\Pi$, y se denotará como $L(\Pi)$.
     \end{definition}
+    \newline
 
+    Como observación supondremos por simplicidad que cada proceso tendrá como entrada un caracter de la cadena,
+    sin embargo se puede tener el caso en el que cada proceso inicia con un segmento de la cadena de tamaño constante.
 
-    %todo:Migrate the chapter to another file .tex e incluirlo en un main .tex
+    %! TODO: Hacer las correcciones de las definiciones de simulacion %!.
+    %! Primero Tendremos las simulación con los modelos de máquinas de Turing y modelos
+    %! con terminación en el modelo LOCAL.
     \chapter{Simulación de modelos Máquina de Turing y \textbf{LOCAL}}
     \section{Noción de simulación en modelos}\label{sec:nocion-de-simulación-en-modelos}
-    Una vez que se tiene estos dos modelos de cómputo formal, a nivel logíco se dice que:
+    Se hablará de los modelos con los que haremos la conexión de la noción de simulación en estos modelos
+    con la terminación correspondiente, así que se dará todo en términos de los modelos LOCAL. y en términos del modelo de máquina de Turing.
+    
+    Una vez que se tiene estos dos modelos de cómputo formal, se definirá las nociones
+    de simulación y de decidibilidad.
     \theoremstyle{definition}
+
+    % Todo: Hacer la correccion de la definicion de modelo.
+    % Todo: Y con base a esas correcciones hacer, hacer un check del diseño del algoritmo,
+    % Hacer una definicion con las terminaciones en LOCAL con el modelo de computo distribuido.
+    % Aquí se hablará unicamente de los modelos de MT y de los modelos distribuidos.
+    % Despues hacer las modificaciones de las soluciones de las que se tienen.
+
+
+
     \begin{definition}
         Se dice que un modelo de computo formal $T$ simula a un modelo de computo formal  $S$ si:
         \begin{equation}
@@ -842,6 +879,8 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \end{definition}
     \space
     Entonces se enunciará el teorema de la siguiente manera:
+
+    %Todo:Hacer las modificaciones para que las definiciones de simulacion sean correctas.
 
     \begin{theorem}
         Sea $TM$ una máquina de Turing, entonces existe un $\Pi$ algoritmo distribuido que simula
@@ -1146,6 +1185,10 @@ Del razonamiento anterior se desprende que el nodo que calcula el máximo, es en
     \end{definition}
 
     \subsection{Complejidad del algoritmo}\label{subsec:complejidad-del-algoritmo}
+    %Todo: Hacer las correcciones de las definiciones principales de simulacion de modelos.
+    %todo: Hacer las correcciones del algoritmo de simulacion.
+    % Hace las correcciones de decidibilidad distribuida.
+    % Entender la reducibilidad en terminos del modelo de la maquina de turing
 
 
 

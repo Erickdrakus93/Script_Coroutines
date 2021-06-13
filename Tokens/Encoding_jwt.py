@@ -28,6 +28,10 @@ class CreateAuth(graphene.Mutation):
     """ This mutation is to create the token for the Authorization """
 
     class Arguments:
+        """
+        @:arg This is the fields for the schema
+        @:arg inner type of graphene as the inputs
+        """
         mame = graphene.String(required=True)
         password = graphene.String(required=True)
         user_id = graphene.Int()

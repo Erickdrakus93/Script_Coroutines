@@ -1,5 +1,5 @@
 \babel@toc {spanish}{}
-\contentsline {chapter}{\numberline {1}Decidibilidad en los modelos}{\es@scroman {ii}}%
+\contentsline {chapter}{\numberline {1}Decidibilidad}{\es@scroman {ii}}%
 \contentsline {section}{\numberline {1.1}Introducción}{\es@scroman {ii}}%
 \contentsline {section}{\numberline {1.2}Decidibilidad del modelo máquinas de Turing}{\es@scroman {ii}}%
 \contentsline {subsection}{\numberline {1.2.1}Cadenas y lenguajes}{\es@scroman {ii}}%
